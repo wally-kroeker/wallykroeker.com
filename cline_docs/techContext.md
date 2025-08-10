@@ -1,0 +1,22 @@
+- Technologies used:
+  - Next.js (React framework)
+  - Tailwind CSS
+  - Node.js 20
+  - pnpm (package manager)
+  - Markdown for content
+  - Proxmox LXC (Linux containers)
+  - Cloudflare Tunnel
+  - Systemd (service management)
+  - Optional: self-hosted analytics
+
+- Development setup:
+  - Clone repo, install dependencies with pnpm, run dev/build/start scripts.
+  - Environment variables managed via .env.local.
+  - Deployment via systemd unit and Cloudflare Tunnel config.
+  - No reverse proxy; HTTPS handled by Cloudflare.
+
+- Technical constraints:
+  - Minimal JS/animations.
+  - No trackers or analytics by default.
+  - No vendor lock-in for core functions.
+  - Fast (<100KB), accessible, privacy-respecting.

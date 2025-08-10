@@ -1,0 +1,13 @@
+- Key technical decisions:
+  - Next.js + Tailwind for speed, flexibility, and minimalism.
+  - Markdown-based content for transparency and version control.
+  - Deployment on Proxmox LXC containers for isolation and reproducibility.
+  - Cloudflare Tunnel for secure, tracker-free HTTPS publishing (no public inbound, no reverse proxy).
+  - Systemd for process management.
+  - No heavy JS, no trackers, no lock-in.
+
+- Architecture patterns:
+  - Static and dynamic content served via Next.js.
+  - Content organized by type: Project, Guide, Post, Signature Lines.
+  - Git-based workflow for content and code.
+  - DNS routed through Cloudflare Tunnel to local app instance.

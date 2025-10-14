@@ -7,7 +7,7 @@ export default function Header() {
       <Container>
         <div className="py-3 flex items-center justify-between">
           <Link href="/" className="font-semibold tracking-tight text-zinc-100">
-            Wally Kroker
+            Wally Kroeker
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <Link href="/projects" className="hover:text-white">Projects</Link>

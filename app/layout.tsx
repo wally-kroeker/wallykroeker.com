@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Wally Kroker — Build open, useful systems',
+  title: 'Wally Kroeker — Build open, useful systems',
   description: 'Proof‑of‑work over promises. Transparent build logs, field guides, and minimal tools to reuse today.',
 }
 

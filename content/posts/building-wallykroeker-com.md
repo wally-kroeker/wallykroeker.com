@@ -5,7 +5,7 @@ tags: ["Build Log", "Personal Brand", "Next.js", "Open Tools"]
 description: "Why the site exists, the key choices, and what ships in MVP."
 ---
 
-> **Raw note:** "I need to figure out Wally Kroker. I’m crafting my online presence. I want everyone to thrive, not just me. The site should reflect that philosophy and make it easy for others to reuse what I build."
+> **Raw note:** "I need to figure out Wally Kroeker. I’m crafting my online presence. I want everyone to thrive, not just me. The site should reflect that philosophy and make it easy for others to reuse what I build."
 
 ## Why This Build Matters
 WallyKroeker.com is more than a portfolio — it’s a public workshop. Every choice, from tech stack to tone, follows the compass: **Build open, useful systems so more people can thrive.** This first release is the scaffolding for years of public builds.

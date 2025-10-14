@@ -14,6 +14,7 @@
   - Environment variables managed via .env.local.
   - Deployment via systemd unit and Cloudflare Tunnel config.
   - No reverse proxy; HTTPS handled by Cloudflare.
+  - Project managed under local Git repository; remote origin: https://github.com/wally-kroeker/wallykroeker.com.git
 
 - Technical constraints:
   - Minimal JS/animations.

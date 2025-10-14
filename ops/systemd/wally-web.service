@@ -4,15 +4,16 @@ After=network.target
 
 [Service]
 Type=simple
-User=wally
+User=docker
 WorkingDirectory=/home/docker/wallykroeker.com
 Environment=NODE_ENV=production
-ExecStart=/usr/bin/pnpm start -p 3000
+# Execute the Next.js server directly with the full path to node
+ExecStart=/home/docker/.nvm/versions/node/v22.18.0/bin/node node_modules/next/dist/bin/next start -p 3000 -H 0.0.0.0
 Restart=on-failure
 RestartSec=5
 NoNewPrivileges=true
 ProtectSystem=full
-ProtectHome=true
+# ProtectHome=true
 
 [Install]
 WantedBy=multi-user.target

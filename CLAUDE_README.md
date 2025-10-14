@@ -21,10 +21,15 @@ This document provides a comprehensive guide for managing the wallykroeker.com p
 
 ## 3. Development Workflow
 
-This project uses a two-server model: a **Development Server** (where you operate) and a **Production Server**.  the production server lives at 10.10.10.21 in the docker users home/WALLYKROEKER.COM  You can ssh to the server ssh docker@10.10.10.21
+This project uses a two-server model: a **Development Server** (where you operate) and a **Production Server**. The production server details (IP, user) should be managed securely and provided to the development agent out-of-band.
 
 ### Step 1: Setup the Development Environment
-1.  **Clone the Repository**: `git clone https://github.com/wally-kroeker/wallykroeker.com.git`
+The remote repository on GitHub is now seeded with the production code and is ready to be cloned.
+
+1.  **Clone the Repository**: On your development machine, clone the repository:
+    ```bash
+    git clone https://github.com/wally-kroeker/wallykroeker.com.git
+    ```
 2.  **Install Dependencies**: `pnpm install`
 3.  **Run the Dev Server**: `pnpm dev`. The site will be available at `http://localhost:3000`.
 
@@ -37,23 +42,6 @@ This project uses a two-server model: a **Development Server** (where you operat
 1.  **Linting**: Run `pnpm lint` to check for code quality issues.
 2.  **Production Build**: Run `pnpm build` to ensure the project builds without errors.
 3.  **Preview**: Run `pnpm start` to preview the production build locally.
-
-### Initial Production Server Setup
-
-Before you can deploy for the first time, you need to authorize the development environment to connect to the production server via SSH.
-
-1.  **Copy the Setup Script to Production**: Transfer the `scripts/prepare-prod-server.sh` file from this repository to the `docker` user's home directory on the production server (`10.10.10.21`). You can use `scp` for this:
-    ```bash
-    scp scripts/prepare-prod-server.sh docker@10.10.10.21:~/
-    ```
-
-2.  **Execute the Script on Production**: SSH into the production server and run the script:
-    ```bash
-    ssh docker@10.10.10.21
-    chmod +x ~/prepare-prod-server.sh
-    ~/prepare-prod-server.sh
-    ```
-This script adds the necessary public key to `~/.ssh/authorized_keys`, allowing passwordless deployments from the development environment. This only needs to be done once.
 
 ## 4. Deployment to Production
 

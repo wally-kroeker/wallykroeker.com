@@ -1,10 +1,11 @@
 import Container from '@/components/Container'
-import { getAll } from '@/lib/markdown'
+import { getAll, isPublic } from '@/lib/markdown'
 
 export const dynamic = 'force-static'
 
 export default async function BlogIndex() {
-  const posts = await getAll('posts')
+  const allPosts = await getAll('posts')
+  const posts = allPosts.filter(p => isPublic(p.meta))
   return (
     <section className="border-t border-zinc-900">
       <Container>

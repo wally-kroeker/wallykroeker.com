@@ -81,22 +81,26 @@ Runs on port 3000
 **Workflow**: Dev → GitHub → Production (GitHub is the source of truth)
 
 ### Production Stack
-- **Host**: Proxmox LXC container (Ubuntu, unprivileged, nesting=1)
-- **Runtime**: Node.js 20 + pnpm
-- **Process Manager**: systemd service (`wally-web.service`)
-- **Networking**: Cloudflare Tunnel (no reverse proxy, HTTPS handled by Cloudflare)
-- **Deployment Script**: `scripts/redeploy.sh`
-  - Pulls latest from GitHub (`git pull origin main`)
-  - Installs dependencies (`pnpm install`)
-  - Builds production bundle (`pnpm build`)
-  - Restarts systemd service
+- **Host**: Proxmox LXC container at 10.10.10.21 (Ubuntu, unprivileged, nesting=1)
+- **User**: `docker` (SSH: `ssh docker@10.10.10.21`)
+- **Sudo Password**: `Ra2Ra331234`
+- **Runtime**: Node.js 22.18.0 (installed via NVM at `/home/docker/.nvm/versions/node/v22.18.0`)
+- **Package Manager**: pnpm (installed globally via npm)
+- **Process Manager**: systemd service (`wally-web.service`) running on port 3000
+- **Networking**: Cloudflare Tunnel (routes to localhost:3000, HTTPS handled by Cloudflare)
+- **Project Path**: `/home/docker/wallykroeker.com`
 
 ### Deployment Workflow
 1. Make changes locally and test (`pnpm dev`, `pnpm build`)
 2. Commit with conventional commit format: `type: description`
 3. Push to `main` branch on GitHub: `git push origin main`
 4. SSH to production server
-5. Run `scripts/redeploy.sh` to pull and deploy
+5. Run deployment manually with PATH set:
+   ```bash
+   ssh docker@10.10.10.21 'export PATH=/home/docker/.nvm/versions/node/v22.18.0/bin:$PATH && cd /home/docker/wallykroeker.com && git pull origin main && pnpm install && pnpm build && echo "Ra2Ra331234" | sudo -S systemctl restart wally-web'
+   ```
+
+**Known Issue**: `scripts/redeploy.sh` fails because pnpm is not in PATH for non-interactive SSH sessions (NVM only loads in .bashrc). Must use explicit PATH export as shown above.
 
 ### Git Workflow
 - **Branch**: `main` (single branch, direct commits)
@@ -130,6 +134,115 @@ Runs on port 3000
 ### Adding New Guides
 Same as posts but in `content/guides/*.md`
 
+## Publishing Loop System
+
+### Content Structure
+
+Three content types with distinct purposes:
+
+1. **Blog Posts** (`content/posts/*.md`) → `/blog`
+   - Daily overviews, announcements, time-based updates
+   - Can reference projects via `projects: ["slug"]` array
+
+2. **Standalone Guides** (`content/guides/*.md`) → `/guides/[slug]` (future)
+   - Tutorials, how-tos, deployment guides
+   - Not tied to specific projects
+
+3. **Project Hubs** (`content/projects/<slug>/`) → `/projects/<slug>`
+   - `index.md` - Project overview and status
+   - `build-log.md` - Living milestone log (H2 sections)
+   - Timeline aggregates: blog posts referencing project + build log milestones
+
+### Frontmatter Schemas
+
+#### Daily Overview Post
+```yaml
+---
+title: "Daily overview – YYYY-MM-DD"
+date: "YYYY-MM-DD"
+projects: ["slug1", "slug2"]  # optional, links post to project timelines
+tags: ["build-log", "ai"]
+status: "draft" | "published"
+reviewed: true | false
+sensitivity: "public" | "internal" | "client"
+description: "Brief summary"
+---
+```
+
+#### Project Hub Index
+```yaml
+---
+title: "Project Name"
+project: "slug"
+type: "project"
+status: "active" | "paused" | "done"
+stage: "Prototype" | "MVP" | etc
+links:
+  repo: "https://github.com/..."
+  docs: "/projects/slug/build-log"
+  demo: "https://..."
+reviewed: true
+sensitivity: "public"
+---
+
+One paragraph describing what this project is and why it exists.
+```
+
+#### Project Build Log
+```yaml
+---
+title: "Build Log – Project Name"
+project: "slug"
+type: "project-log"
+reviewed: true
+sensitivity: "public"
+---
+
+## YYYY-MM-DD — Milestone title
+- **Summary:** One paragraph.
+- **Why it matters:** Bullets.
+- **Commits:** List of commit subjects.
+- **Artifacts:** Links to repos/PRs.
+- **Next steps:** Bullets.
+```
+
+### Visibility Rules
+
+**Three-gate system**: Content only appears publicly when ALL are true:
+- `status === "published"`
+- `reviewed === true`
+- `sensitivity === "public"`
+
+**Defaults** (for existing content): `status=published`, `reviewed=true`, `sensitivity=public`
+
+### Timeline Aggregation
+
+Project hubs (`/projects/<slug>`) show a unified timeline of:
+1. Blog posts where `projects` array includes the slug (filtered by public gates)
+2. H2 sections from `build-log.md` (each H2 is a milestone, parsed for dates)
+
+Sorted by date descending. Implemented in `lib/projectUpdates.ts`.
+
+### n8n Integration Points
+
+The publishing agent (n8n workflow) should:
+1. Scan configured project repos for commits
+2. Parse commit conventions: `type(project/<slug>): subject #tags !milestone`
+3. Generate daily overview posts in `content/posts/YYYY-MM-DD-overview.md`
+4. Append milestones to `content/projects/<slug>/build-log.md` when `!milestone` detected
+5. Always set `status: "draft"`, `reviewed: false` for generated content
+6. Never modify `reviewed` or `status` fields - user controls publishing
+
+### Commit Conventions
+
+```
+type(project/<slug>): subject #tags !milestone
+
+Types: feat, fix, chore, docs, refactor, perf, test
+Tags: #build-log #how-to #postmortem #release #architecture #philosophy #ai
+Flags: !milestone (triggers build-log append)
+```
+
 ## Design Constraints
 
 - **Performance**: Target <100KB page weight
@@ -153,3 +266,19 @@ For complete workflow instructions see:
 - **WORKFLOW.md** - Complete end-to-end workflow guide (development, git, deployment)
 - **workflow-test.md** - Step-by-step test script to validate workflow
 - Covers: content addition, code changes, git operations, testing, deployment
+
+## Known Issues & Workarounds
+
+### ESLint Interactive Prompt
+Running `pnpm lint` triggers an interactive ESLint configuration prompt. For automated workflows, skip linting or use non-interactive alternatives.
+
+### NVM PATH Issue on Production
+NVM node/pnpm binaries are not in PATH for non-interactive SSH sessions because .bashrc only loads for interactive shells.
+
+**Workaround**: Always export PATH before running node/pnpm commands via SSH:
+```bash
+export PATH=/home/docker/.nvm/versions/node/v22.18.0/bin:$PATH
+```
+
+### Port Conflicts in Development
+If `pnpm dev` finds port 3000 in use, it automatically selects port 3001. Check terminal output for the actual port.

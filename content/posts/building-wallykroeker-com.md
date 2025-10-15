@@ -1,8 +1,14 @@
-# Building WallyKroeker.com: From Local Dev to Production
+---
+title: "Building WallyKroeker.com: From Local Dev to Production"
+date: "2025-10-14"
+tags: ["Build Log", "AI-Assisted Development", "Next.js", "Proxmox", "Cloudflare Tunnel"]
+description: "A full walkthrough of how I built and deployed my personal site using Claude Code, WSL, and a Proxmox LXC container—with a focus on transparent, repeatable workflows."
+status: "published"
+reviewed: true
+sensitivity: "public"
+---
 
-**Date:** 2025-10-14
-**Tags:** Build Log, AI-Assisted Development, Next.js, Proxmox, Cloudflare Tunnel
-**Description:** A full walkthrough of how I built and deployed my personal site using Claude Code, WSL, and a Proxmox LXC container—with a focus on transparent, repeatable workflows.
+# Building WallyKroeker.com: From Local Dev to Production
 
 > **Raw note:** “I’m figuring out Wally Kroeker. I’m crafting my online presence. I want everyone to thrive, not just me. The site should reflect that philosophy and make it easy for others to reuse what I build.”
 

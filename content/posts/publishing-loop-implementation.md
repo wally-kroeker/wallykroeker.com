@@ -1,7 +1,7 @@
 ---
 title: "Building the Publishing Loop: Git-First Content Pipeline"
 date: "2025-10-15"
-projects: ["publishing-loop"]
+projects: ["wk-site"]
 tags: ["Build Log", "AI-Assisted Development", "Next.js", "Architecture"]
 description: "How we built a zero-friction publishing system with project hubs, timeline aggregation, and privacy gates—turning commits into transparent public updates."
 status: "published"
@@ -187,7 +187,7 @@ Created `app/projects/[slug]/page.tsx`:
 
 Created sample project hub:
 ```
-content/projects/publishing-loop/
+content/projects/wk-site/
   index.md       # Overview: what it is, why it matters
   build-log.md   # First milestone documenting this implementation
 ```
@@ -196,7 +196,7 @@ Created daily overview post:
 ```
 content/posts/2025-10-15-overview.md
 ```
-With `projects: ["publishing-loop"]` to link it to the timeline.
+With `projects: ["wk-site"]` to link it to the timeline.
 
 **Filtering test:**
 Created draft post with:
@@ -319,7 +319,7 @@ app/
 
 content/
   projects/
-    publishing-loop/
+    wk-site/
       index.md         # +15 lines (NEW - project overview)
       build-log.md     # +30 lines (NEW - first milestone)
   posts/
@@ -341,7 +341,7 @@ CLAUDE.md              # +110 lines (schemas and rules)
 - "Invalid Date" bug is gone ✅
 - Drafts are hidden ✅
 
-### Project Hub (`/projects/publishing-loop`)
+### Project Hub (`/projects/wk-site`)
 - **Header:** Title, status pill ("active"), stage pill ("Implementation")
 - **Overview:** Short description with links (repo, docs)
 - **Timeline:** Vertical line with:
@@ -359,14 +359,14 @@ Timeline updates automatically as:
 Visit these URLs:
 - **Blog:** http://localhost:3000/blog
 - **This post:** http://localhost:3000/blog/publishing-loop-implementation
-- **Project hub:** http://localhost:3000/projects/publishing-loop
+- **Project hub:** http://localhost:3000/projects/wk-site
 
 The project hub timeline should now show **three items**:
 1. This post (blog reference)
 2. Daily overview post (blog reference)
 3. Planning milestone (from build-log.md)
 
-All from a single `projects: ["publishing-loop"]` field in this post's frontmatter.
+All from a single `projects: ["wk-site"]` field in this post's frontmatter.
 
 ---
 
@@ -407,9 +407,9 @@ Flags: !milestone (triggers build-log append)
 
 Examples:
 ```bash
-feat(project/publishing-loop): add timeline aggregation #build-log #ai
+feat(project/wk-site): add timeline aggregation #build-log #ai
 docs(project/wk-site): CTA block and link targets #release !milestone
-chore(project/adhd-tasker): normalize commit parsing #architecture
+chore(project/taskman): normalize commit parsing #architecture
 ```
 
 n8n extracts:

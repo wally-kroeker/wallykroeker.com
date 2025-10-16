@@ -1,0 +1,40 @@
+{
+  "repos": [
+    {
+      "slug": "publishing-loop",
+      "name": "Publishing Loop",
+      "path": "/home/walub/projects/wallykroeker.com",
+      "type": "local",
+      "description": "Automated content generation system using N8N workflows. Transforms git commits into daily overviews and build logs.",
+      "currentGoals": [
+        "Daily commit aggregation and summarization",
+        "Automated milestone detection and build log updates",
+        "AI-powered content generation with human review gates"
+      ]
+    },
+    {
+      "slug": "wk-site",
+      "name": "wallykroeker.com",
+      "path": "/home/walub/projects/wallykroeker.com",
+      "type": "local",
+      "description": "Personal website and technical blog built with Next.js 14. Git-first publishing system where commits become blog posts.",
+      "currentGoals": [
+        "Publishing Loop automation (WSL + N8N daily rollup)",
+        "AI-powered daily summaries",
+        "Project timeline and build log system"
+      ]
+    },
+    {
+      "slug": "taskman",
+      "name": "TaskMan",
+      "path": "/home/walub/projects/vikunja",
+      "type": "local",
+      "description": "ADHD-friendly task management system. Fork of Vikunja with N8N workflow automations for AI-powered task breakdown.",
+      "currentGoals": [
+        "Production AI task breakdown workflow",
+        "Publishing loop integration",
+        "Weekly task summary automation"
+      ]
+    }
+  ]
+}

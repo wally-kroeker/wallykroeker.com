@@ -57,6 +57,9 @@ importers:
       '@types/react-dom':
         specifier: 18.3.0
         version: 18.3.0
+      '@types/unist':
+        specifier: ^3.0.3
+        version: 3.0.3
       autoprefixer:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.41)

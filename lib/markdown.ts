@@ -16,7 +16,7 @@ export type PostMeta = {
   tags?: string[]
   description?: string
   // Publishing gates
-  status?: 'draft' | 'published'
+  status?: 'draft' | 'published' | 'active'
   reviewed?: boolean
   sensitivity?: 'public' | 'internal' | 'client'
   // Project references

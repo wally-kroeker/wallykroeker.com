@@ -22,11 +22,4 @@ export const projects = [
     meta: 'Presence → Practice',
     cta: 'Visit StillPoint',
   },
-  {
-    title: 'Homelab / AI / Security Builds',
-    blurb: 'Build logs + guides: Proxmox, Cloudflare Tunnel, n8n, MCP, AD audits, and more.',
-    href: '/blog',
-    meta: 'Proof‑of‑Work',
-    cta: 'Explore Builds',
-  },
 ]

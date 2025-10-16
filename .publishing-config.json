@@ -1,18 +1,6 @@
 {
   "repos": [
     {
-      "slug": "publishing-loop",
-      "name": "Publishing Loop",
-      "path": "/home/walub/projects/wallykroeker.com",
-      "type": "local",
-      "description": "Automated content generation system using N8N workflows. Transforms git commits into daily overviews and build logs.",
-      "currentGoals": [
-        "Daily commit aggregation and summarization",
-        "Automated milestone detection and build log updates",
-        "AI-powered content generation with human review gates"
-      ]
-    },
-    {
       "slug": "wk-site",
       "name": "wallykroeker.com",
       "path": "/home/walub/projects/wallykroeker.com",

@@ -1,7 +1,7 @@
 export const site = {
   url: process.env.SITE_URL ?? 'https://wallykroeker.com',
   substack: process.env.SUBSTACK_URL ?? 'https://cognitiveloop.substack.com',
-  discord: process.env.DISCORD_INVITE ?? 'https://discord.gg/YOUR_INVITE',
+  discord: process.env.DISCORD_INVITE ?? 'https://discord.gg/jTPHqpbEWp',
   stillpoint: process.env.STILLPOINT_URL ?? 'https://stillpointproject.org',
   linkedin: process.env.LINKEDIN_URL ?? 'https://www.linkedin.com/in/wallykroeker',
   x: process.env.X_URL ?? 'https://x.com/YOUR_HANDLE',

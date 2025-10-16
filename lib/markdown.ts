@@ -42,7 +42,12 @@ export function isPublic(meta: PostMeta): boolean {
   const reviewed = meta.reviewed ?? true
   const sensitivity = meta.sensitivity ?? 'public'
 
-  return status === 'published' && reviewed === true && sensitivity === 'public'
+  // For projects, 'active' status counts as public-ready
+  const isStatusPublic = meta.type === 'project'
+    ? (status === 'published' || status === 'active')
+    : status === 'published'
+
+  return isStatusPublic && reviewed === true && sensitivity === 'public'
 }
 
 async function mdToHtml(markdown: string) {
@@ -125,16 +130,15 @@ export async function getGuideByPath(relPath: string) {
       // Create a remark tree with just these nodes
       const sectionTree: any = { type: 'root', children: sec.nodes }
 
-      // Use runSync + stringify to transform remark AST -> rehype AST -> HTML
-      const processor = unified()
+      // Transform remark AST -> rehype AST -> HTML
+      const file = await unified()
         .use(remarkRehype)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
         .use(rehypeStringify)
+        .process(sectionTree)
 
-      const hast = processor.runSync(sectionTree)
-      const html = processor.stringify(hast)
-      return { heading: sec.heading, html: String(html) }
+      return { heading: sec.heading, html: String(file) }
     })
   )
 
@@ -158,4 +162,34 @@ export async function getAllPosts() {
       return { slug: `/blog/${slug}`, frontmatter: frontmatter as PostMeta, content }
     })
   )
+}
+
+export async function getAllProjectHubs() {
+  const projectsDir = path.join(process.cwd(), 'content', 'projects')
+  if (!fs.existsSync(projectsDir)) return []
+
+  const folders = fs.readdirSync(projectsDir).filter((f) => {
+    const stat = fs.statSync(path.join(projectsDir, f))
+    return stat.isDirectory()
+  })
+
+  const projects = await Promise.all(
+    folders.map(async (folder) => {
+      const indexPath = path.join(projectsDir, folder, 'index.md')
+      if (!fs.existsSync(indexPath)) return null
+
+      const raw = fs.readFileSync(indexPath, 'utf8')
+      const { data: frontmatter, content } = matter(raw)
+      const html = await mdToHtml(content)
+
+      return {
+        slug: folder,
+        meta: frontmatter as PostMeta,
+        content,
+        html,
+      }
+    })
+  )
+
+  return projects.filter((p) => p !== null)
 }

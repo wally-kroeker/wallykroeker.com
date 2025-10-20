@@ -17,3 +17,5 @@ dist/
 .roo/
 cline_docs/
 .github_pat
+screenshots/
+*.json:Zone.Identifier

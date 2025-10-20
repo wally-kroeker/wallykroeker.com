@@ -34,3 +34,9 @@ Refined the N8N daily overview prompt to match the tone and style defined in COM
 **Commit**: [`09e8c74`](https://github.com/wally-kroeker/wallykroeker.com/commit/09e8c74)
 
 Built the complete project hub and timeline rendering system. Projects display chronological milestone progressions with commit hashes, dates, and technical summaries. The timeline structure organizes work into digestible entries that show evolution over time. Implemented data schema for storing milestone information and template components for consistent display. This provides visitors clear visibility into project development history.
+
+## 2025-10-20 — Publishing Loop Documentation
+
+**Commit**: [`827e1c1`](https://github.com/wally-kroeker/wallykroeker.com/commit/827e1c1)
+
+Added comprehensive documentation for the publishing loop automation system that runs daily via WSL and N8N. The system handles automated rollup of daily activities and generates AI-powered summaries for the portfolio site. Documentation covers the technical workflow from data collection through summary generation and publishing. This establishes the foundation for automated content updates without manual intervention. The milestone entries track progress on timeline visualization and build log systems that showcase project evolution. Core infrastructure now supports continuous documentation of development work.

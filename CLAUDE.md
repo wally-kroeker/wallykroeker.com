@@ -316,21 +316,138 @@ Flags: !milestone - Only commits with this flag are processed by Publishing Loop
 - `fix(project/wk-site): resolve build-log formatting bug #build-log !milestone`
 - `docs(project/taskman): update workflow documentation #architecture` (no !milestone flag = ignored)
 
-### Manual Execution
+### Full Publishing Automation Workflow
 
-The system is designed for manual trigger when developer is ready to publish milestones:
+The publishing script handles the complete end-of-day workflow automatically: collect milestones → AI summaries → commit → push → production deploy.
+
+#### Pre-requisites
+1. All local work must be committed before running the script
+2. Commits destined for build-log must include `!milestone` flag
+3. Working tree must be clean (script enforces this)
+
+#### End-of-Day Workflow
+
+**Step 1: Commit your work with milestone flag**
+```bash
+git add .
+git commit -m "feat(project/taskman): implement feature X #build-log !milestone"
+git push origin main
+```
+
+**Step 2: Run the automation (does everything else)**
+```bash
+/home/walub/.local/bin/project-build-log-update.sh
+```
+
+The script then:
+1. ✅ Pre-flight check - Validates working tree is clean
+2. ✅ Collects milestone commits since last run (7 day lookback on first run, incremental after)
+3. ✅ Sends to N8N webhook for AI processing
+4. ✅ N8N generates 4-6 sentence technical summaries
+5. ✅ Script appends formatted entries to build-log.md files
+6. ✅ Auto-commits build-log changes to git
+7. ✅ Pushes to GitHub
+8. ✅ Deploys to production via SSH (pull → build → restart)
+
+#### Script Modes
 
 ```bash
-# Run immediately (uses state file for timestamp-based collection)
+# Normal execution (full automation)
 /home/walub/.local/bin/project-build-log-update.sh
 
-# Dry-run to see what would be sent to N8N
+# Dry-run preview (shows what would be sent to N8N, no changes)
 /home/walub/.local/bin/project-build-log-update.sh --dry-run
 
-# Reset state and recollect last 7 days (first run behavior)
+# Reset state file for full re-collection
 rm -f /home/walub/.local/bin/.build-log-state.json
 /home/walub/.local/bin/project-build-log-update.sh
 ```
+
+#### Script Implementation Details
+
+**Location**: `/home/walub/.local/bin/project-build-log-update.sh` (also copied to `scripts/project-build-log-update.sh` for repo tracking)
+
+**Key Sections**:
+1. **Pre-flight Check** (lines 101-126)
+   - Validates clean git working tree
+   - Fails fast with helpful instructions if uncommitted changes exist
+   - Ensures deploy.sh will pass its own pre-flight check
+
+2. **Commit Collection** (lines 115-186)
+   - Reads `.publishing-config.json` for all tracked projects
+   - Runs git log with timestamp-based filtering (state file tracks last run)
+   - Filters commits for `!milestone` flag only
+   - Groups by project slug
+
+3. **N8N Webhook** (lines 200-268)
+   - Sends milestone commits as JSON payload
+   - Includes repo metadata, commit details, timestamps
+   - 2-minute timeout to prevent hanging
+   - Validates JSON response
+
+4. **Build-Log Updates** (lines 274-333)
+   - Processes N8N response for milestone summaries
+   - Appends formatted H2 sections to project build-logs
+   - Creates entries in format: `## YYYY-MM-DD — Feature Name`
+   - Includes GitHub commit links
+
+5. **Git Commit & Push** (lines 350-378)
+   - Checks for actual changes before committing
+   - Uses conventional commit format
+   - Tags with `#build-log` for visibility
+   - Pushes to GitHub
+
+6. **Production Deploy** (lines 381-394)
+   - Calls `scripts/deploy.sh` (which SSH's to production)
+   - Deploy.sh handles: pre-flight check → pull → build → restart
+   - NVM PATH automatically exported on production for pnpm
+   - Systemd service `wally-web` restarted after build
+
+#### State File Tracking
+
+**File**: `/home/walub/.local/bin/.build-log-state.json`
+
+```json
+{
+  "lastRun": "2025-10-20T23:42:27Z",
+  "lastSuccessfulRun": "2025-10-20T23:42:27Z",
+  "runCount": 4
+}
+```
+
+- Auto-created on first run
+- Updated after each successful execution
+- Tracks timestamps for incremental commit collection
+- Delete to reset and re-collect last 7 days
+
+#### Environment Variables
+
+Optional overrides (defaults shown):
+```bash
+CONTENT_REPO=/home/walub/projects/wallykroeker.com
+N8N_WEBHOOK=https://n8n.vrexplorers.com/webhook/publishing-loop-test-wsl
+N8N_WEBHOOK_SECRET=5d75bb3e84b7adcfc40f3011746fa4e74e4dbfc0501c56fd2eb14dedb455f241
+```
+
+#### Troubleshooting
+
+**"Uncommitted changes detected"**
+- Means you have unstaged/uncommitted work before running the script
+- Fix: `git add . && git commit -m "..."` then run script again
+
+**"Build log not found"**
+- Script found a milestone but `content/projects/<slug>/build-log.md` doesn't exist
+- Fix: Create the file with proper frontmatter (see Frontmatter Schemas section)
+
+**"N8N returned HTTP XXX"**
+- Webhook unreachable or returning error
+- Check N8N workflow is running and webhook is configured
+- Use `--dry-run` to test without calling webhook
+
+**"Failed to connect to production server"**
+- SSH connection issue to `docker@10.10.10.21`
+- Verify SSH key is configured and sudo password is current
+- Check production server is online
 
 ## Design Constraints
 

@@ -40,3 +40,9 @@ Built the complete project hub and timeline rendering system. Projects display c
 **Commit**: [`827e1c1`](https://github.com/wally-kroeker/wallykroeker.com/commit/827e1c1)
 
 Added comprehensive documentation for the publishing loop automation system that runs daily via WSL and N8N. The system handles automated rollup of daily activities and generates AI-powered summaries for the portfolio site. Documentation covers the technical workflow from data collection through summary generation and publishing. This establishes the foundation for automated content updates without manual intervention. The milestone entries track progress on timeline visualization and build log systems that showcase project evolution. Core infrastructure now supports continuous documentation of development work.
+
+## 2025-10-20 — Publishing Loop Automation
+
+**Commit**: [`4e755af`](https://github.com/wally-kroeker/wallykroeker.com/commit/4e755af)
+
+Integrated automation script that orchestrates daily publishing workflows using WSL and N8N. The system enables automated daily rollups of project activity and generates AI-powered summaries without manual intervention. Setup includes script integration for the publishing loop alongside cleanup of legacy automation code. This creates a foundation for consistent daily publishing cadence tied to build log and timeline systems. The automation bridges local development environment (WSL) with workflow orchestration (N8N) for reliable scheduled execution.

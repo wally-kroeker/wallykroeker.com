@@ -10,7 +10,11 @@
         "Publishing Loop automation (WSL + N8N daily rollup)",
         "AI-powered daily summaries",
         "Project timeline and build log system"
-      ]
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "wallykroeker.com"
+      }
     },
     {
       "slug": "taskman",
@@ -22,7 +26,11 @@
         "Production AI task breakdown workflow",
         "Publishing loop integration",
         "Weekly task summary automation"
-      ]
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "vikunja"
+      }
     }
   ]
 }

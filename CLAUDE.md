@@ -136,38 +136,114 @@ Same as posts but in `content/guides/*.md`
 
 ## Publishing Loop System
 
+The Publishing Loop is a git-first automation system that transforms milestone commits into portfolio documentation. It consists of three components:
+
+1. **Bash Script** (`/home/walub/.local/bin/project-build-log-update.sh`)
+2. **N8N Workflow** (`Publishing Loop - AI Enhanced`)
+3. **Build Logs** (living documentation in project folders)
+
+### How It Works (End-to-End)
+
+1. **Developer commits** with `!milestone` flag:
+   ```
+   feat(project/taskman): implement AI task breakdown #build-log !milestone
+   ```
+
+2. **Manual trigger** (run script when ready):
+   ```bash
+   /home/walub/.local/bin/project-build-log-update.sh
+   ```
+
+3. **Script execution**:
+   - Collects commits since last run (via `.build-log-state.json` timestamp tracking)
+   - Filters for `!milestone` flagged commits only
+   - Groups by project (wk-site, taskman, etc.)
+   - Sends JSON payload to N8N webhook
+
+4. **N8N workflow processes**:
+   - Parse Commits node: Extracts conventional commit metadata
+   - AI Story Generator: Reads formatted milestones, creates 4-6 sentence technical summaries
+   - Generate Milestones: Builds response with GitHub commit links
+
+5. **Script appends results**:
+   - Writes H2-formatted entries to `content/projects/<slug>/build-log.md`
+   - Updates state file with current timestamp
+   - Skips deprecated projects (publishing-loop)
+
+### Configuration
+
+**Source of truth**: `/home/walub/projects/wallykroeker.com/.publishing-config.json`
+
+Defines tracked projects:
+```json
+{
+  "repos": [
+    {
+      "slug": "wk-site",
+      "name": "wallykroeker.com",
+      "path": "/home/walub/projects/wallykroeker.com",
+      "type": "local",
+      "description": "...",
+      "currentGoals": [...],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "wallykroeker.com"
+      }
+    },
+    {
+      "slug": "taskman",
+      "name": "TaskMan",
+      "path": "/home/walub/projects/vikunja",
+      "type": "local",
+      "description": "...",
+      "currentGoals": [...],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "vikunja"
+      }
+    }
+  ]
+}
+```
+
+**Critical**: The `slug` value must match exactly in three places:
+1. Commit message scope: `feat(project/<slug>): ...`
+2. Folder name: `content/projects/<slug>/`
+3. Configuration file: `"slug": "<slug>"`
+
+### State Tracking
+
+**File**: `/home/walub/.local/bin/.build-log-state.json`
+
+Stores execution history:
+```json
+{
+  "lastRun": "2025-10-19T23:13:26Z",
+  "lastSuccessfulRun": "2025-10-19T23:13:26Z",
+  "runCount": 1
+}
+```
+
+On first run, defaults to 7 days lookback. Subsequent runs use last execution timestamp for incremental collection.
+
 ### Content Structure
 
 Three content types with distinct purposes:
 
 1. **Blog Posts** (`content/posts/*.md`) → `/blog`
-   - Daily overviews, announcements, time-based updates
+   - Daily overviews, announcements, time-based updates (future feature)
    - Can reference projects via `projects: ["slug"]` array
 
-2. **Standalone Guides** (`content/guides/*.md`) → `/guides/[slug]` (future)
+2. **Project Hubs** (`content/projects/<slug>/`)  → `/projects/<slug>`
+   - `index.md` - Project overview and status
+   - `build-log.md` - Living milestone log (H2 sections, auto-generated)
+   - Timeline aggregates: blog posts referencing project + build log milestones
+
+3. **Standalone Guides** (`content/guides/*.md`) → `/guides/[slug]` (future)
    - Tutorials, how-tos, deployment guides
    - Not tied to specific projects
 
-3. **Project Hubs** (`content/projects/<slug>/`) → `/projects/<slug>`
-   - `index.md` - Project overview and status
-   - `build-log.md` - Living milestone log (H2 sections)
-   - Timeline aggregates: blog posts referencing project + build log milestones
-
 ### Frontmatter Schemas
-
-#### Daily Overview Post
-```yaml
----
-title: "Daily overview – YYYY-MM-DD"
-date: "YYYY-MM-DD"
-projects: ["slug1", "slug2"]  # optional, links post to project timelines
-tags: ["build-log", "ai"]
-status: "draft" | "published"
-reviewed: true | false
-sensitivity: "public" | "internal" | "client"
-description: "Brief summary"
----
-```
 
 #### Project Hub Index
 ```yaml
@@ -188,22 +264,23 @@ sensitivity: "public"
 One paragraph describing what this project is and why it exists.
 ```
 
-#### Project Build Log
+#### Project Build Log (Auto-Generated)
 ```yaml
 ---
 title: "Build Log – Project Name"
 project: "slug"
 type: "project-log"
+status: "published"
 reviewed: true
 sensitivity: "public"
+description: "From .publishing-config.json"
 ---
 
-## YYYY-MM-DD — Milestone title
-- **Summary:** One paragraph.
-- **Why it matters:** Bullets.
-- **Commits:** List of commit subjects.
-- **Artifacts:** Links to repos/PRs.
-- **Next steps:** Bullets.
+## 2025-10-19 — Task Title Refinement Fix
+
+**Commit**: [`a64b984`](https://github.com/wally-kroeker/vikunja/commit/a64b984)
+
+Fixed a bug in the AI Task Breakdown workflow where parent task titles weren't being properly refined after subtask generation. The issue caused inconsistencies between the original task name and the AI-improved version, leading to confusion in task hierarchies. The fix ensures that when the AI suggests a clearer task title, the parent task gets updated correctly in Linear...
 ```
 
 ### Visibility Rules
@@ -213,7 +290,7 @@ sensitivity: "public"
 - `reviewed === true`
 - `sensitivity === "public"`
 
-**Defaults** (for existing content): `status=published`, `reviewed=true`, `sensitivity=public`
+**Build-log entries**: Always set to published/true/public (auto-generated content, trusted via git commit review)
 
 ### Timeline Aggregation
 
@@ -223,24 +300,36 @@ Project hubs (`/projects/<slug>`) show a unified timeline of:
 
 Sorted by date descending. Implemented in `lib/projectUpdates.ts`.
 
-### n8n Integration Points
-
-The publishing agent (n8n workflow) should:
-1. Scan configured project repos for commits
-2. Parse commit conventions: `type(project/<slug>): subject #tags !milestone`
-3. Generate daily overview posts in `content/posts/YYYY-MM-DD-overview.md`
-4. Append milestones to `content/projects/<slug>/build-log.md` when `!milestone` detected
-5. Always set `status: "draft"`, `reviewed: false` for generated content
-6. Never modify `reviewed` or `status` fields - user controls publishing
-
 ### Commit Conventions
 
 ```
 type(project/<slug>): subject #tags !milestone
 
 Types: feat, fix, chore, docs, refactor, perf, test
+Scope: project/<slug> - Must match configured project slug
 Tags: #build-log #how-to #postmortem #release #architecture #philosophy #ai
-Flags: !milestone (triggers build-log append)
+Flags: !milestone - Only commits with this flag are processed by Publishing Loop
+```
+
+**Examples:**
+- `feat(project/taskman): add AI task breakdown #build-log !milestone`
+- `fix(project/wk-site): resolve build-log formatting bug #build-log !milestone`
+- `docs(project/taskman): update workflow documentation #architecture` (no !milestone flag = ignored)
+
+### Manual Execution
+
+The system is designed for manual trigger when developer is ready to publish milestones:
+
+```bash
+# Run immediately (uses state file for timestamp-based collection)
+/home/walub/.local/bin/project-build-log-update.sh
+
+# Dry-run to see what would be sent to N8N
+/home/walub/.local/bin/project-build-log-update.sh --dry-run
+
+# Reset state and recollect last 7 days (first run behavior)
+rm -f /home/walub/.local/bin/.build-log-state.json
+/home/walub/.local/bin/project-build-log-update.sh
 ```
 
 ## Design Constraints

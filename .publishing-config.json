@@ -31,6 +31,22 @@
         "owner": "wally-kroeker",
         "repo": "vikunja"
       }
+    },
+    {
+      "slug": "bob",
+      "name": "Bob",
+      "path": "/home/walub/projects/Personal_AI_Infrastructure",
+      "type": "local",
+      "description": "Personal AI Infrastructure (PAI) - Open-source AI orchestration system built on Claude Code. WSL2-based fork with skills system, hooks, and context management for augmenting daily workflows.",
+      "currentGoals": [
+        "Skills-based architecture refinement",
+        "Comprehensive documentation",
+        "Upstream PAI synchronization"
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "Bob"
+      }
     }
   ]
 }

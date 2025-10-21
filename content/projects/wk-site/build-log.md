@@ -46,3 +46,9 @@ Added comprehensive documentation for the publishing loop automation system that
 **Commit**: [`4e755af`](https://github.com/wally-kroeker/wallykroeker.com/commit/4e755af)
 
 Integrated automation script that orchestrates daily publishing workflows using WSL and N8N. The system enables automated daily rollups of project activity and generates AI-powered summaries without manual intervention. Setup includes script integration for the publishing loop alongside cleanup of legacy automation code. This creates a foundation for consistent daily publishing cadence tied to build log and timeline systems. The automation bridges local development environment (WSL) with workflow orchestration (N8N) for reliable scheduled execution.
+
+## 2025-10-21 — Bob/PAI Publishing Integration
+
+**Commit**: [`0a51796`](https://github.com/wally-kroeker/wallykroeker.com/commit/0a51796)
+
+Connected the Bob project and its PAI foundation into the automated publishing loop. This enables daily rollup posts to automatically include updates from the skills-based architecture work happening in Bob. The integration required mapping Bob's milestone commits to the existing N8N workflow that generates daily summaries. This brings Bob development activity into the same visibility system as the main site work, making cross-project progress tracking more cohesive.

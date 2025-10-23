@@ -52,3 +52,21 @@ Integrated automation script that orchestrates daily publishing workflows using 
 **Commit**: [`0a51796`](https://github.com/wally-kroeker/wallykroeker.com/commit/0a51796)
 
 Connected the Bob project and its PAI foundation into the automated publishing loop. This enables daily rollup posts to automatically include updates from the skills-based architecture work happening in Bob. The integration required mapping Bob's milestone commits to the existing N8N workflow that generates daily summaries. This brings Bob development activity into the same visibility system as the main site work, making cross-project progress tracking more cohesive.
+
+## 2025-10-21 — Bob/PAI Publishing Loop Integration
+
+**Commit**: [`0a51796`](https://github.com/wally-kroeker/wallykroeker.com/commit/0a51796)
+
+Integrated the "Bob/PAI" project into the automated publishing loop for the main portfolio site. This connects the Bob repository to the central N8N workflow that monitors for new milestone commits. When a new milestone is detected, the workflow automatically pulls the commit data and generates a new build log entry on the site. This automation ensures the project's progress is continuously and accurately reflected on the live site. The integration required adding the new repository endpoint to the N8N configuration and updating the site's data models.
+
+## 2025-10-20 — Publishing Loop Automation Script
+
+**Commit**: [`4e755af`](https://github.com/wally-kroeker/wallykroeker.com/commit/4e755af)
+
+This commit introduces the core automation script for the "publishing loop" system. The script runs on a daily schedule within a WSL environment, orchestrated by an N8N workflow. It fetches recent milestone commits from all connected project repositories using the Git API. The script then formats this data into a structured JSON file that the static site generator consumes to build project timeline pages. This system removes the manual process of updating build logs and ensures the portfolio reflects development activity in near real-time.
+
+## 2025-10-20 — Publishing Loop Documentation
+
+**Commit**: [`827e1c1`](https://github.com/wally-kroeker/wallykroeker.com/commit/827e1c1)
+
+Added comprehensive documentation for the newly implemented publishing loop system. This documentation outlines the system's architecture, including the roles of WSL, N8N, and the static site generator. It details the process for connecting new projects to the loop and the specific commit message format required for a commit to be captured as a milestone. Initial milestone entries were also backfilled to populate the project timelines. This foundational documentation is crucial for maintaining and extending the automation system over time.

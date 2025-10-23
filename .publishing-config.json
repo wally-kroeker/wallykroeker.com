@@ -47,6 +47,22 @@
         "owner": "wally-kroeker",
         "repo": "Bob"
       }
+    },
+    {
+      "slug": "goodfields",
+      "name": "GoodFields",
+      "path": "/home/walub/projects/goodfields.io",
+      "type": "local",
+      "description": "GoodFields - Professional security consulting and technology services company website. Built with Next.js 14 and deployed to production Proxmox container.",
+      "currentGoals": [
+        "Production deployment and Cloudflare tunnel setup",
+        "Publishing loop integration",
+        "Service offerings and case studies"
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "goodfields.io"
+      }
     }
   ]
 }

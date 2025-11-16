@@ -63,6 +63,38 @@
         "owner": "wally-kroeker",
         "repo": "goodfields.io"
       }
+    },
+    {
+      "slug": "prismis",
+      "name": "Prismis",
+      "path": "/home/walub/projects/prismis",
+      "type": "local",
+      "description": "AI-powered research department - monitors RSS feeds, Reddit, and YouTube with semantic search and intelligent priority ranking. Built with Go daemon, Bubbletea TUI, and Python ML components.",
+      "currentGoals": [
+        "Development and contribution setup",
+        "Feature implementation and testing",
+        "Documentation and build log tracking"
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "prismis"
+      }
+    },
+    {
+      "slug": "fablab",
+      "name": "FabLab",
+      "path": "/home/walub/projects/fablab",
+      "type": "local",
+      "description": "Personal infrastructure and network documentation. Enterprise-grade Proxmox infrastructure with comprehensive documentation, hardware/software inventory, network topology, and operational runbooks.",
+      "currentGoals": [
+        "Comprehensive infrastructure documentation (G1)",
+        "Hardware inventory implementation (G2)",
+        "Software/service inventory tracking (G3)"
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "fablab"
+      }
     }
   ]
 }

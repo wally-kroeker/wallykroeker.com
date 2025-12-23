@@ -95,6 +95,39 @@
         "owner": "wally-kroeker",
         "repo": "fablab"
       }
+    },
+    {
+      "slug": "firefly",
+      "name": "Firefly III",
+      "path": "/home/walub/projects/firefly-iii",
+      "type": "local",
+      "description": "Personal finance management system deployed on Proxmox. Multi-entity financial tracking for Personal/GoodFields/FabLab with integration into Bob's financial-system skill for automated budget analysis and runway forecasting.",
+      "currentGoals": [
+        "Phase 1: Manual entry + entity segregation",
+        "Phase 2: Bank import automation via Data Importer",
+        "Phase 3: N8N orchestration + proactive alerts"
+      ],
+      "github": {
+        "owner": "firefly-iii",
+        "repo": "firefly-iii"
+      }
+    },
+    {
+      "slug": "bob-and-friends",
+      "name": "Bob and Friends",
+      "path": "/home/walub/projects/bob-and-friends",
+      "type": "local",
+      "description": "Multi-agent orchestration system inspired by Bobiverse. Bob (original) coordinates five specialized clone agents (Bill, Mario, Riker, Howard, Homer) for parallel task execution. Built on Claude Agent SDK with ATXP Cloud deployment.",
+      "currentGoals": [
+        "Define detailed agent personas and capabilities",
+        "Deploy Riker (Researcher) to ATXP Cloud as first clone",
+        "Build multi-agent collaboration workflows",
+        "Demonstrate multi-agent architecture for GoodFields consulting"
+      ],
+      "github": {
+        "owner": "wally-kroeker",
+        "repo": "bob-and-friends"
+      }
     }
   ]
 }

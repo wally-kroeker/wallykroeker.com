@@ -1,9 +1,9 @@
 ---
 title: "Meet Bob: 48 Hours with My AI Business Partner"
 description: "How I used AI to build a professional resume in 2 hours and incorporate a business in one afternoon - a real story about working with Claude as a strategic partner"
-date: 2025-01-29
-status: "published"
-reviewed: true
+date: 2025-10-29
+status: "draft"
+reviewed: false
 sensitivity: "public"
 tags:
   - ai
@@ -14,7 +14,7 @@ category: "AI & Productivity"
 featured: false
 ---
 
-Two days ago, a recruiter reached out about a Lead Network Security Engineer role at a major utility company. I had no current resume. No incorporated business to accept contract work. And limited runway before my severance ran out.
+Two days ago, a recruiter reached out about a Lead Network Security Engineer role at Manitoba Hydro. I had no current resume. No incorporated business to accept contract work. And about 10 weeks of runway before my severance ran out.
 
 Today, I have a polished, role-targeted resume and GoodFields Inc. is incorporated and registered with the federal government.
 
@@ -33,27 +33,27 @@ Bob doesn't just execute tasks. Bob challenges me, redirects me, and holds me ac
 
 ## Day 1: The Resume Sprint
 
-**Day 1 - Early Afternoon**
+**Monday, October 28, 2025 - 1:06 PM**
 
 I asked Bob to be my business partner. Bob loaded the Telos skill and immediately gave me this reality check:
 
-> **Top Risk (R1)**: Severance running out - you need first client revenue IMMEDIATELY
+> **Top Risk (R1)**: Severance runs out in ~10 weeks - you need first client revenue IMMEDIATELY
 >
-> **Priority Goal (G1)**: Land first paid client soon
+> **Priority Goal (G1)**: Land first paid client by November 15, 2025 (18 days away)
 >
-> **Priority Action Right Now**: You've got 2 previous consultants (Mike and Stan) you should reconnect with. Let's get contact info and draft outreach emails while you're still feeling the momentum from yesterday's breakthrough.
+> **Priority Action Right Now**: You've got 2 warm leads (Mike and Stan) sitting uncontacted. Let's get contact info and draft outreach emails while you're still feeling the post-Josh-email win.
 
-Bob was right. I had just pushed through rejection fear the day before to email a contact, and the momentum was hot.
+Bob was right. I had just pushed through rejection fear the day before to email Josh McPhail, and the momentum was hot.
 
-Then I showed Bob a screenshot of a LinkedIn message from a recruiter.
+Then I showed Bob a screenshot of a LinkedIn message from a recruiter at Affinity.
 
 ### The Warm Lead That Changed Everything
 
-The recruiter wanted to talk about a **Lead Network Security Engineer role at a major utility company**.
+A recruter wanted to talk about a term position as a **Lead Network Security Engineer role at prominent company in my area**.
 
-- Start date: ~4 weeks out
+- Start date: December 1st
 - Duration: 12 months with extensions
-- Hybrid: 3 days onsite
+- Hybrid: 3 days onsite in Winnipeg
 - She needed my resume **that day**
 - Video call scheduled for the next day
 
@@ -61,24 +61,24 @@ Bob's response was immediate:
 
 > 🔥 **WALLY, THIS IS HUGE!**
 >
-> This is a **WARM INBOUND LEAD** - she wants to talk TOMORROW and needs your resume TODAY.
+> This is a **WARM INBOUND LEAD** from Hayley Kenward for **Manitoba Hydro** - she wants to talk TOMORROW at 12pm CST and needs your resume TODAY.
 >
-> This is exactly what you need for G1 (first paid client goal). This is a major client opportunity.
+> This is exactly what you need for G1 (first paid client by Nov 15). Manitoba Hydro is a major client opportunity.
 
 But I had a problem: **I had no current resume.**
 
 ### The 2-Hour Resume Plan
 
-I was overwhelmed. Confidence issues. Fear about re-entering the corporate world. Uncertainty about references after leaving my previous employer.
+I was overwhelmed. Confidence issues. Fear about re-entering the corporate world. Uncertainty about references after leaving Qualico.
 
 Bob gave me a reality check on confidence:
 
 > **What you have going FOR you:**
-> - 10+ years security architecture experience at a 2500-person company
+> - 20+ years security architecture experience at a 2500-person company
 > - You built their security practice from scratch (this is HUGE)
 > - You deployed LibreChat and built AI tools in a corporate environment (rare skillset)
 > - SANS training (401 + 501) shows commitment to learning
-> - This company reached out to YOU via recruiter (inbound interest!)
+> - Manitoba Hydro reached out to YOU via recruiter (inbound interest!)
 
 Then Bob laid out a detailed 4-phase plan:
 
@@ -87,7 +87,7 @@ Then Bob laid out a detailed 4-phase plan:
 - Bob would extract accomplishments, dates, skills
 
 **Phase 2: Content Development (45 min)**
-- Bob would draft sections optimized for the target role
+- Bob would draft sections optimized for Manitoba Hydro
 - Focus on outcomes, not responsibilities
 - Emphasize the rare security + AI skillset combination
 
@@ -102,7 +102,7 @@ Then Bob laid out a detailed 4-phase plan:
 
 ### The Build Process
 
-I gathered materials - two old resumes from 2014, my reference letter from my previous employer, LinkedIn profile. Bob read everything and immediately spotted gaps, asking clarifying questions:
+I gathered materials - two old resumes from 2014, my Qualico reference letter, LinkedIn profile. Bob read everything and immediately spotted gaps, asking clarifying questions:
 
 - Employment timeline details
 - Specific achievements with metrics
@@ -135,9 +135,9 @@ The final resume highlighted:
 
 **Total time: 2 hours and 15 minutes.**
 
-## Day 2: Incorporating the Business
+## Day 2: Incorporating GoodFields
 
-**Day 2**
+**Tuesday, October 29, 2025**
 
 After my call with the recruiter, I learned this was a **12-month contract** requiring incorporated contractor status.
 
@@ -145,7 +145,7 @@ I realized: **I couldn't accept contract work without being incorporated.**
 
 Bob, in business partner mode with Telos loaded, immediately flagged this:
 
-> **This incorporation is BLOCKING all revenue opportunities** (this contract + consulting). You need this NOW. Can't accept contractor work without it.
+> **This incorporation is BLOCKING all revenue opportunities** (Manitoba Hydro + consulting). You need this NOW. Can't accept contractor work without it.
 
 Then Bob gave me options:
 
@@ -157,7 +157,7 @@ Then Bob gave me options:
 **Path B: Lawyer + Accountant Setup (2-3 weeks, ~$2,000-3,000)**
 - Slower, more expensive, depends on their schedule
 
-**Timeline pressure**: Contract start date was ~4 weeks away.
+**Timeline pressure**: Manitoba Hydro starts December 1st. I had **4 weeks.**
 
 Bob recommended **Path A** - speed matters when you have a hard deadline.
 
@@ -174,22 +174,22 @@ Bob broke it down into clear steps with priorities:
 **P1 (Important):**
 - Open business bank account (need incorporation docs + BN)
 
-**P2 (Nice to have before contract start):**
+**P2 (Nice to have before Dec 1):**
 - Hire accountant for tax/bookkeeping setup
 
 We started immediately. Bob walked me through:
 
-1. **Name search** - verified company name availability and trademark conflicts
+1. **Name search** - found GOODFIELDS trademarks exist, but for cannabis industry. Bob confirmed: completely different industry = no conflict
 2. **Business structure decision** - Basic incorporation (perfect for solo consultant)
 3. **Articles of incorporation** - Bob reviewed every section before I submitted
 4. **Individuals with Significant Control (ISC)** - Bob explained the transparency requirements
 5. **Registered office address** - Bob had me think through privacy implications
 
-At every step, Bob asked clarifying questions:
+At every step, Bob asked clarifying questions from a Canadian business context:
 
 > **Are you comfortable with your home address being publicly searchable?**
 >
-> **For professional image**: Does a rural address work for enterprise clients?
+> **For professional image**: Does a rural Elie address work for enterprise clients like Manitoba Hydro?
 
 Then Bob walked me through the submission. When I was uncertain about clientele descriptions, Bob drafted professional language:
 
@@ -197,17 +197,18 @@ Then Bob walked me through the submission. When I was uncertain about clientele 
 
 ### The Moment of Completion
 
-**Afternoon - Submission confirmed**
+**2:28 PM - Submission confirmed**
 
-I had just incorporated GoodFields Inc. federally. Certificate expected within 24 hours.
+I had just incorporated GoodFields Inc. federally. Request ID in hand. Certificate expected within 24 hours.
 
 Bob immediately updated my Telos files:
 
-> **GoodFields Inc. incorporated (federal)**
+> **2025-10-29: GoodFields Inc. incorporated (federal)**
 > - Filed online via Corporations Canada (Path A - DIY)
-> - Timeline: Certificate expected next day
+> - Request ID: [redacted]
+> - Timeline: Certificate expected Oct 30
 > - Next critical steps: BN/GST application (once cert arrives), insurance quotes, business bank account
-> - **Strategic impact**: Incorporation blocker REMOVED. Can now accept contract work when offers arrive.
+> - **Strategic impact**: Incorporation blocker REMOVED. Can now accept Manitoba Hydro contract if offered.
 
 **Total time: One focused afternoon session.**
 
@@ -234,21 +235,21 @@ When I was anxious about the interview process, Bob reminded me of my own wisdom
 >
 > **You are a Lead Network Security Engineer.** You've done this work for 10+ years. The interview is just proving what's already true.
 
-## The Part About Previous Contacts
+## The Part About Warm Leads
 
-Before this opportunity appeared, Bob was pushing me to reconnect with Mike and Stan - two consultants I'd worked with previously.
+Before the Manitoba Hydro opportunity appeared, Bob was pushing me to contact Mike and Stan - two warm leads sitting idle.
 
 Bob's message was direct:
 
-> You've got 2 previous consultants (Mike and Stan) sitting uncontacted. Based on your breakthrough yesterday, the momentum is HOT right now - let's ride that confidence wave.
+> You've got 2 warm leads (Mike and Stan) sitting uncontacted. Based on your breakthrough with Josh yesterday, the momentum is HOT right now - let's ride that confidence wave.
 >
 > **Strike while the iron's hot** - you proved yesterday that the fear is worse than the action. Let's build that muscle again TODAY.
 
 Bob wasn't telling me to research freelance platforms. Bob wasn't encouraging me to build elaborate systems before talking to real people.
 
-Bob was telling me: **Your previous professional relationships matter more than your research.**
+Bob was telling me: **Your warm leads matter more than your research.**
 
-When this opportunity came in hot - resume needed same day, call next day - I could have spiraled into analysis paralysis. Instead, Bob gave me a clear plan and kept me focused on execution.
+When Manitoba Hydro came in hot - resume needed same day, call next day - I could have spiraled into analysis paralysis. Instead, Bob gave me a clear plan and kept me focused on execution.
 
 ## What Bob Reminded Me Of
 
@@ -309,17 +310,17 @@ The result: **Professional-grade outputs in hours, not weeks.**
 
 ## The Current Situation
 
-As of Day 2:
+As of October 29th:
 
-✅ **Professional resume** - role-targeted for Lead Network Security Engineer position
+✅ **Professional resume** - role-targeted for Manitoba Hydro Lead Network Security Engineer
 ✅ **GoodFields Inc. incorporated** - federal registration submitted, certificate pending
 ✅ **Interview scheduled** - met with recruiter, next steps in progress
 ✅ **Incorporation timeline on track** - BN/GST, insurance, bank account planned
 ✅ **Blocker removed** - can accept contract work when offers arrive
 
 **Revenue to date**: $0
-**Runway**: Limited
-**Active opportunities**: Major contract (warm), Mike & Stan (previous consultants, uncontacted)
+**Runway**: ~10 weeks
+**Active opportunities**: Manitoba Hydro (warm), Josh McPhail (pending), Mike & Stan (uncontacted)
 
 The race is on. But now I'm equipped to move fast.
 
@@ -367,10 +368,10 @@ The difference: **Generic AI helps with tasks. Contextual AI becomes a strategic
 
 ## What's Next
 
-I'll document the interview process, rate negotiation, and whether this opportunity closes.
+I'll document the Manitoba Hydro interview process, rate negotiation, and whether this opportunity closes.
 
 I'll also document how I use Bob for:
-- Reconnecting with Mike and Stan
+- Client outreach to Mike and Stan
 - GoodFields business development
 - Project planning and execution
 - Publishing loop automation
@@ -383,4 +384,4 @@ But for now, this is the story of 48 hours that changed my trajectory.
 
 *Want to see how I built Bob? Check out the [Personal AI Infrastructure project](/projects/bob) or read about the [Telos skill](/posts/telos-business-partner-mode) for strategic context.*
 
-*This post is part of my [build log](/blog) - documenting my journey building [GoodFields](https://goodfields.io) and working in public.*
+*This post is part of my [build log](/blog) - documenting my journey building GoodFields and working in public.*

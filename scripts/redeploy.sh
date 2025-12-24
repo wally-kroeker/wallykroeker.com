@@ -5,7 +5,8 @@ set -euo pipefail
 export PATH=/home/docker/.nvm/versions/node/v22.18.0/bin:$PATH
 
 cd /home/docker/wallykroeker.com
-git pull origin main
+git fetch origin
+git reset --hard origin/main
 pnpm install
 pnpm build
 sudo systemctl restart wally-web

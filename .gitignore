@@ -20,3 +20,10 @@ cline_docs/
 screenshots/
 *.json:Zone.Identifier
 CLAUDE.md
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

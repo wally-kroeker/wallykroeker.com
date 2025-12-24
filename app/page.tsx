@@ -11,7 +11,7 @@ export default function Page() {
             {/* Left Column - Text */}
             <div className="md:col-span-6 flex flex-col gap-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-                Let's figure out how to use technology to live free and thrive.
+                Let's figure out how to use technology to thrive.
               </h1>
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-lg">
                 20+ years building secure infrastructure. Now exploring the intersection of AI, resilience, and being human. Join me on the journey.

@@ -14,14 +14,13 @@ export default function Page() {
                 I build secure, open AI systems
               </h1>
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-lg">
-                Helping technical teams navigate AI risks with practical frameworks.
-                Transparent processes. Reusable tools. No fluff.
+                20+ years building secure infrastructure. Now exploring how AI and humans work together without losing our humanity. Building in public, sharing what I learn.
               </p>
 
               {/* Trust Signals */}
               <div className="flex flex-wrap gap-4 text-sm text-zinc-400 py-2">
                 <span className="flex items-center gap-1.5">
-                  <span className="text-zinc-500">✓</span> 15+ years infrastructure
+                  <span className="text-zinc-500">✓</span> 20+ years infrastructure
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="text-zinc-500">✓</span> Security-first AI
@@ -33,16 +32,10 @@ export default function Page() {
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <a
-                  href="/work"
+                  href="/engage"
                   className="px-6 py-3 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors"
                 >
-                  Let's Work Together
-                </a>
-                <a
-                  href="/projects"
-                  className="px-6 py-3 border border-zinc-700 text-zinc-100 rounded-lg hover:bg-zinc-900 transition-colors"
-                >
-                  Explore My Work
+                  Let's Connect
                 </a>
               </div>
             </div>
@@ -131,9 +124,6 @@ export default function Page() {
             <div className="flex flex-wrap gap-4 justify-center">
               <a href="/community" className="px-6 py-3 bg-zinc-800 text-white rounded-lg font-semibold hover:bg-zinc-700 transition">
                 Learn More
-              </a>
-              <a href="#" className="px-6 py-3 border border-zinc-600 text-zinc-300 rounded-lg hover:text-white hover:border-zinc-500 transition">
-                Join Discord
               </a>
             </div>
           </div>

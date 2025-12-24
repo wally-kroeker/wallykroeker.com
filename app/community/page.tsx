@@ -1,34 +1,57 @@
 import Container from '@/components/Container'
-import { site } from '@/lib/siteConfig'
 
 export default function CommunityPage() {
   return (
-    <section className="border-t border-zinc-900">
+    <div className="pt-12 pb-20 md:pt-24 md:pb-32">
       <Container>
-        <div className="py-10 grid md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-8">
-            <h1 className="text-xl font-semibold">Community</h1>
-            <p className="mt-2 text-zinc-300 max-w-3xl">
-              "The Search for Ultimate Reality"—a Discord for curious builders and philosophers. Share ideas, ask better questions, and make small things together.
+        <div className="max-w-2xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Greybeard AI Collective
+          </h1>
+          <p className="text-xl text-zinc-400 leading-relaxed mb-12">
+            Regular meetups for infrastructure and security folks navigating AI adoption.
+          </p>
+
+          <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-16">
+            <h2 className="text-2xl font-bold text-white mb-4">Coming Early 2026</h2>
+            <p className="text-zinc-300 leading-relaxed mb-8">
+              A peer learning community for greybeards—people who've seen tech cycles come and go and want to learn and share practical AI insights together.
             </p>
-            <div className="mt-4">
-              <a href={site.discord} className="rounded-2xl border border-zinc-700 px-4 py-2 text-sm hover:bg-zinc-900">
-                Join the Server
-              </a>
-            </div>
+            <a 
+              href="https://www.linkedin.com/in/wally-kroeker/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors"
+            >
+              Follow on LinkedIn for Updates
+            </a>
           </div>
-          <div className="md:col-span-4">
-            <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-5">
-              <h3 className="text-sm font-medium text-zinc-300">Signature Lines</h3>
-              <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-                <li>Useful beats perfect.</li>
-                <li>Build small, ship openly.</li>
-                <li>Make it easy for the next person.</li>
-              </ul>
+
+          <div className="border-t border-zinc-900 pt-12">
+            <p className="text-zinc-500 mb-6 italic">In the meantime, check out:</p>
+            <div className="flex flex-col md:flex-row justify-center gap-6 md:gap-12">
+              <a 
+                href="https://cognitiveloop.substack.com"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-zinc-300 hover:text-white transition"
+              >
+                <span className="block font-semibold text-white mb-1">Cognitive Loop</span>
+                <span className="text-sm">AI and consciousness reflections</span>
+              </a>
+              <a 
+                href="https://stillpointproject.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-300 hover:text-white transition"
+              >
+                <span className="block font-semibold text-white mb-1">StillPoint Project</span>
+                <span className="text-sm">Community and fiction exploring presence</span>
+              </a>
             </div>
           </div>
         </div>
       </Container>
-    </section>
+    </div>
   )
 }

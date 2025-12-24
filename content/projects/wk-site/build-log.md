@@ -10,13 +10,23 @@ description: "Personal website and technical blog built with Next.js 14. Git-fir
 
 ## 2025-12-23 — Strategic Content Update for "Year of the Agent"
 
-**Commit**: [current]
+**Commit**: [`fdced2f`](https://github.com/wally-kroeker/wallykroeker.com/commit/fdced2f)
 
 Implemented a major content overhaul to prepare the site for the "Year of the Agent" article series. 
 - **Homepage**: Updated experience to 20+ years, refined hero subhead for human+AI focus, and consolidated the primary CTA to "Let's Connect". Removed the secondary "Explore My Work" button to focus user attention on a single engagement path.
 - **Engage Page**: Created a new central hub at `/engage` featuring a 4-card grid layout for commercial consulting (GoodFields), philosophical reflections (Substack), solarpunk fiction (StillPoint), and professional networking (LinkedIn).
 - **Work Page**: Simplified service offerings to focus on Secure Foundations Review, AI Jumpstart, and Private ChatGPT hosting.
 - **Community Page**: Replaced active Discord recruitment with a placeholder for the Greybeard AI Collective (GBAIC) launching in early 2026.
+
+## 2025-12-23 — Headline Refinement & Building Grid
+
+**Commit**: [`a15def5`](https://github.com/wally-kroeker/wallykroeker.com/commit/a15def5)
+
+Refined homepage messaging and structure for greater clarity:
+- **Headline**: Updated to "Let's figure out how to use technology to thrive." focusing on the ultimate human outcome.
+- **Subheadline**: Shifted focus to the intersection of AI, resilience, and humanity.
+- **Where I'm Building**: Replaced the generic "What I Do" section with a high-intent grid linking directly to commercial work (GoodFields), infrastructure labs (FabLab), and philosophical writing (Cognitive Loop).
+- **Infrastructure**: Secured deployment workflow by removing hardcoded passwords and implementing passwordless sudo for service restarts.
 
 
 

@@ -8,6 +8,17 @@ sensitivity: "public"
 description: "Personal website and technical blog built with Next.js 14. Git-first publishing system where commits become blog posts."
 ---
 
+## 2025-12-23 — Strategic Content Update for "Year of the Agent"
+
+**Commit**: [current]
+
+Implemented a major content overhaul to prepare the site for the "Year of the Agent" article series. 
+- **Homepage**: Updated experience to 20+ years, refined hero subhead for human+AI focus, and consolidated the primary CTA to "Let's Connect". Removed the secondary "Explore My Work" button to focus user attention on a single engagement path.
+- **Engage Page**: Created a new central hub at `/engage` featuring a 4-card grid layout for commercial consulting (GoodFields), philosophical reflections (Substack), solarpunk fiction (StillPoint), and professional networking (LinkedIn).
+- **Work Page**: Simplified service offerings to focus on Secure Foundations Review, AI Jumpstart, and Private ChatGPT hosting.
+- **Community Page**: Replaced active Discord recruitment with a placeholder for the Greybeard AI Collective (GBAIC) launching in early 2026.
+
+
 
 
 

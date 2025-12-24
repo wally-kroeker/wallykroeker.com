@@ -8,5 +8,5 @@ cd /home/docker/wallykroeker.com
 git pull origin main
 pnpm install
 pnpm build
-echo "Ra2Ra331234" | sudo -S systemctl restart wally-web
+sudo systemctl restart wally-web
 echo "Redeployed successfully."

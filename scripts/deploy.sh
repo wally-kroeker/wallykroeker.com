@@ -26,6 +26,6 @@ git push origin main
 
 # Deploy to production
 echo "🔧 Deploying to production server..."
-ssh docker@10.10.10.21 'bash -s' < scripts/redeploy.sh
+ssh docker@wallykroeker.apps.kroeker.fun 'bash -s' < scripts/redeploy.sh
 
 echo "✅ Deployment complete!"

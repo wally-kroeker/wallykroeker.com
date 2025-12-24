@@ -318,7 +318,7 @@ git pull origin main
 
 1. **SSH to production server**
    ```bash
-   ssh docker@<production-server-ip>
+   ssh docker@wallykroeker.apps.kroeker.fun
    ```
 
 2. **Navigate to project directory**
@@ -415,7 +415,7 @@ git commit -m "content: add n8n Docker setup guide"
 git push origin main
 
 # 5. Deploy to production
-ssh docker@production-server
+ssh docker@wallykroeker.apps.kroeker.fun
 cd /home/docker/wallykroeker.com
 git pull origin main
 ./scripts/redeploy.sh

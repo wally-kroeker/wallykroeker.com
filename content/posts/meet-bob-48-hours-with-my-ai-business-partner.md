@@ -2,8 +2,8 @@
 title: "Meet Bob: 48 Hours with My AI Business Partner"
 description: "How I used AI to build a professional resume in 2 hours and incorporate a business in one afternoon - a real story about working with Claude as a strategic partner"
 date: 2025-10-29
-status: "draft"
-reviewed: false
+status: "published"
+reviewed: true
 sensitivity: "public"
 tags:
   - ai

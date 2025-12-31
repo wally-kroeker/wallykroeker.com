@@ -2,8 +2,8 @@
 title: "Building Bob: Adapting Personal AI Infrastructure for WSL"
 description: "How I forked and customized the Personal AI Infrastructure project to run on WSL2, creating a persistent AI assistant with memory, custom skills, and context awareness"
 date: 2025-11-08
-status: "draft"
-reviewed: false
+status: "published"
+reviewed: true
 sensitivity: "public"
 tags:
   - ai

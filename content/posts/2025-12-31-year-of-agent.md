@@ -1,8 +1,8 @@
 ---
 title: "Looking Back at 2025: The Year We Found the Edges"
 date: 2025-12-31
-tags: [ai, agents, infrastructure, security, devops, greybeard-collective]
-description: "What we learned about AI agents from the trenches - a practitioner's perspective on what 2025 was really about, and why the Greybeard AI Collective matters."
+tags: [ai, agents, infrastructure, security, devops, graybeard-collective]
+description: "What we learned about AI agents from the trenches - a practitioner's perspective on what 2025 was really about, and why the GrayBeard AI Collective matters."
 ---
 
 *What we learned about AI agents from the trenches - a practitioner's perspective*
@@ -265,7 +265,7 @@ The practitioners who stay in the game now - infra engineers, sysadmins, SREs - 
 
 ---
 
-## Why We Need a Greybeard AI Collective
+## Why We Need a GrayBeard AI Collective
 
 Back in November, I met up for beers with two colleagues I've known for years. Both are veteran IT infrastructure people - the kind who've been through enough hype cycles to know the difference between demos and 3am pages.
 
@@ -275,9 +275,9 @@ The conversation drifted to the old Manitoba VMUG - the VMware User Group that u
 
 "We should have a place like that to share what works with AI," one of them said.
 
-A few days later, I had lunch with a couple of colleagues. Same themes - agents, infrastructure reality, what actually works. That's when the joke started: if this lunch was the "first meeting," then the next one would be the second meeting of the Greybeard AI Collective - where I'd show off Bob and what AI can actually do for infrastructure work.
+A few days later, I had lunch with a couple of colleagues. Same themes - agents, infrastructure reality, what actually works. That's when the joke started: if this lunch was the "first meeting," then the next one would be the second meeting of the GrayBeard AI Collective - where I'd show off Bob and what AI can actually do for infrastructure work.
 
-**Greybeard** doesn't mean you literally have gray hair (though in my case it's true). In infrastructure circles, it means you've been in the trenches long enough to see the deeper patterns in systems. You know what it looks like when hype meets operational reality. You've deployed enough "revolutionary" technologies to recognize when something's ready versus when it's still baking.
+**GrayBeard** doesn't mean you literally have gray hair (though in my case it's true). In infrastructure circles, it means you've been in the trenches long enough to see the deeper patterns in systems. You know what it looks like when hype meets operational reality. You've deployed enough "revolutionary" technologies to recognize when something's ready versus when it's still baking.
 
 This is exactly why that conversation stuck with me.
 

@@ -27,6 +27,7 @@ This isn't just a static site—it's a documentation automation system designed 
 
 - **Publishing Loop** — N8N workflow running in WSL that monitors configured repos, aggregates commits using conventional commit parsing, and generates draft daily summaries and milestone entries
 - **Project Hubs** — Dynamic pages (`/projects/[slug]`) with unified timelines aggregating both blog references and H2-section milestones from build logs
+- **Daemon Personal API** — Public API at `/daemon` exposing structured information (mission, projects, preferences) queryable by humans and AI systems, part of the [Daemon ecosystem](https://github.com/danielmiessler/Daemon)
 - **Three-Gate Publishing** — Frontmatter-based visibility system (`status` × `reviewed` × `sensitivity`) allowing AI-generated drafts to coexist with public content
 - **Markdown Processing Pipeline** — unified/remark/rehype with custom H2 section parsing for milestone extraction
 
@@ -87,6 +88,7 @@ content/
 ├── projects/<slug>/ # Project hubs with living documentation
 │   ├── index.md     # Project overview and status
 │   └── build-log.md # Milestone log (H2 sections)
+├── daemon.md        # Personal API data (Daemon ecosystem format)
 └── guides/          # Standalone tutorials (future)
 ```
 
@@ -125,6 +127,31 @@ Most technical blogs have a publishing friction problem: you do the work, then y
 This system inverts that: git commits are the primary documentation format (conventional commits already describe type, scope, and intent). Automation aggregates and formats them into human-readable daily summaries and project timelines. Human review happens at the end, where you're adding context and polish rather than reconstructing what happened from memory.
 
 The result: documentation happens as a side effect of normal development workflow, not as a separate obligation.
+
+## Daemon Personal API
+
+The `/daemon` route implements a personal API based on Daniel Miessler's [Daemon project](https://github.com/danielmiessler/Daemon). It's a structured way to expose public information about yourself that both humans and AI systems can query.
+
+**Why a Daemon?**
+- Standardized format for personal information (mission, projects, preferences)
+- Queryable by AI assistants (future: JSON-RPC endpoint for Daemon Watch integration)
+- Part of a growing ecosystem where personal daemons can interact with each other
+- Complements the AI partnership work with Bob (Personal AI Infrastructure)
+
+**Data Format:** Section-based markdown in `content/daemon.md`:
+```markdown
+[ABOUT]
+Your bio and introduction...
+
+[MISSION]
+Your purpose and goals...
+
+[PREFERENCES]
+- Tool preferences
+- Communication style
+```
+
+The daemon parser (`lib/daemon.ts`) converts sections to HTML and extracts list items for structured display.
 
 ## Frontmatter Schema
 

@@ -75,4 +75,28 @@ Deployment is handled by pushing changes from the development environment to the
   - `scripts/redeploy.sh`: The production deployment script.
 - `package.json`: Project scripts and dependencies.
 
+## 6. Branding & Style Guidelines
+
+### GrayBeard AI Collective Branding
+**CRITICAL**: The official branding is **GrayBeard** (capital G, capital B), not "greybeard" or "Greybeard".
+
+**Correct usage:**
+- **Proper name**: "GrayBeard AI Collective"
+- **Tag/slug**: `graybeard-collective` (lowercase, hyphenated)
+- **Descriptive adjective**: "graybeard" (lowercase when used as an adjective, e.g., "graybeard infrastructure practitioner")
+
+**Examples:**
+- ✅ "Join the GrayBeard AI Collective"
+- ✅ "A peer learning community for graybeards"
+- ✅ Tags: `graybeard-collective`
+- ❌ "Greybeard AI Collective"
+- ❌ "greybeard-ai-collective"
+
+**When editing content:**
+Always use Find & Replace to ensure consistency across:
+- Article content (`content/posts/`)
+- App pages (`app/**/*.tsx`)
+- Tags and metadata
+- Documentation
+
 This document should provide all the necessary context for managing the project.

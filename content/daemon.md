@@ -10,9 +10,9 @@ Content follows until the next section.
 
 My name is Wally Kroeker and I'm a Technical Architect and Security Consultant based in Winnipeg, Canada.
 
-I've spent 15+ years building infrastructure, designing security systems, and helping organizations adopt technology pragmatically. My work bridges three domains that rarely overlap: infrastructure operations, security architecture, and AI adoption strategy.
+I've spent 20+ years building infrastructure, designing security systems, and helping organizations adopt technology pragmatically. My work bridges three domains that rarely overlap: infrastructure operations, security architecture, and AI adoption strategy.
 
-I have ADHD, which shapes how I build systems: low friction, high automation, externalized memory, minimal cognitive overhead. I work with an AI assistant named Bob (built on Personal AI Infrastructure) who helps me stay focused, manage tasks, and ship work consistently.
+I work with an AI assistant named Bob, built on [Personal AI Infrastructure](https://github.com/danielmiessler/Personal_AI_Infrastructure) (PAI) - an open-source framework for building context-rich AI assistants. Bob helps me stay focused, manage tasks, and ship work consistently. I build systems with low friction, high automation, and externalized memory to reduce cognitive overhead.
 
 [CURRENT_LOCATION]
 
@@ -20,7 +20,7 @@ Winnipeg, Canada
 
 [MISSION]
 
-Help technical teams adopt AI safely and effectively. Build systems that reduce cognitive overhead and enable human flourishing. Demonstrate enterprise-grade patterns at home-lab scale so others can learn and adapt.
+Build useful, open systems that help people thrive. Enable human flourishing through technology that respects privacy, reduces cognitive overhead, and serves people rather than extracting from them. Share knowledge openly so others can adapt patterns to their own contexts.
 
 [AI_PARTNERSHIP]
 
@@ -53,27 +53,30 @@ Missions:
 - FabLab: Enterprise-grade home lab infrastructure (Proxmox, containers, IdP, networking)
 - Personal AI Infrastructure (PAI): ADHD-optimized AI assistant framework
 - wallykroeker.com: Personal site built in public with transparent build logs
-- Cognitive Loop: Daily writing practice exploring AI, resilience, and being human
+- Cognitive Loop: Writing practice exploring AI, consciousness, and presence
 
 [PREFERENCES]
 
-- Writing tools: Cursor IDE with Claude, Neovim for quick edits
+- Writing tools: Cursor IDE with Claude Code
 - Programming: TypeScript, Python, Go
-- Operating system: Linux (WSL2 + Ubuntu), occasional macOS
-- AI models: Claude (primary), Gemini for research, local models for testing
+- Operating system: Linux (WSL2 + Ubuntu), Windows
+- AI models: Claude (primary), Gemini for research, local models 
 - Infrastructure: Proxmox, Docker, Cloudflare Tunnels, Authentik
 - Task management: Vikunja with AI integration
-- Communication: Direct, honest, async-preferred
+- Communication: Direct, honest,
 - Work style: Deep focus blocks, heavy automation, externalized memory
 - Values: Openness, usefulness, security-first, community over competition
 
 [DAILY_ROUTINE]
 
-- Morning: Review overnight AI task completions, process Vikunja inbox
-- Focus blocks: Deep work on consulting or projects (Bob manages task switching)
-- Afternoon: Client calls, community engagement, documentation
-- Evening: Cognitive Loop writing, reading, low-stakes experimentation
-- Throughout: Bob provides gentle nudges for time management and task completion
+(Aspirational - the rhythm I'm building toward)
+
+- Morning: Breathwork and mobility (8-12 min), compass check to set the day's priority
+- Deep work: Two focused build blocks (60-120 min each) with clear handoffs for future-me
+- Midday reset: Movement and brief admin sweep to protect afternoon energy
+- Late day: Learning time - reading and capturing insights about security, agents, or systems
+- Evening: Family first, optional Cognitive Loop writing when life allows, shutdown ritual to plan tomorrow's start
+- Throughout: Bob manages task flow (Vikunja), financial tracking (Firefly III), and gentle accountability
 
 [PREDICTIONS]
 

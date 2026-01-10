@@ -136,7 +136,7 @@ export default function Page() {
         <Container>
           <div className="bg-zinc-900 rounded-2xl p-8 md:p-12 text-center border border-zinc-800">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Join the Greybeard AI Collective
+              Join the GrayBeard AI Collective
             </h2>
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto text-lg">
               Practitioner community for infrastructure engineers and security folks

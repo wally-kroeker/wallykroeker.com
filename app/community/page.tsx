@@ -6,7 +6,7 @@ export default function CommunityPage() {
       <Container>
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Greybeard AI Collective
+            GrayBeard AI Collective
           </h1>
           <p className="text-xl text-zinc-400 leading-relaxed mb-12">
             Regular meetups for infrastructure and security folks navigating AI adoption.
@@ -15,7 +15,7 @@ export default function CommunityPage() {
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-16">
             <h2 className="text-2xl font-bold text-white mb-4">Coming Early 2026</h2>
             <p className="text-zinc-300 leading-relaxed mb-8">
-              A peer learning community for greybeards—people who've seen tech cycles come and go and want to learn and share practical AI insights together.
+              A peer learning community for graybeards—people who've seen tech cycles come and go and want to learn and share practical AI insights together.
             </p>
             <a 
               href="https://www.linkedin.com/in/wally-kroeker/"

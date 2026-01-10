@@ -120,7 +120,7 @@ export default function ProjectsPage() {
           Want to Learn How I Built This?
         </h3>
         <p className="text-zinc-300 mb-8 max-w-2xl mx-auto text-lg">
-          Join the Greybeard AI Collective for deep-dives, build logs, and
+          Join the GrayBeard AI Collective for deep-dives, build logs, and
           practitioner discussions on infrastructure, security, and AI.
         </p>
         <a href="/community" className="px-6 py-3 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors">

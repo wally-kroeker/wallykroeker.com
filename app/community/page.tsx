@@ -16,8 +16,11 @@ export default function CommunityPage() {
 
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-12">
             <h2 className="text-2xl font-bold text-white mb-4 text-center">First Meetup: January 28, 2026</h2>
-            <p className="text-zinc-300 leading-relaxed mb-6 text-center">
+            <p className="text-zinc-300 leading-relaxed mb-4 text-center">
               Wednesday, 7pm Central on Discord
+            </p>
+            <p className="text-zinc-400 text-sm mb-6 text-center italic">
+              (Last Wednesday of every month going forward)
             </p>
             <p className="text-zinc-300 leading-relaxed mb-8">
               I'll demo my PAI (Personal AI Infrastructure) framework—Bob and friends. The actual system running my consulting practice: multi-agent orchestration, automation glue, the whole stack. More importantly: I'll show the architecture and how to build something similar yourself.
@@ -35,6 +38,13 @@ export default function CommunityPage() {
                 Join the Discord
               </a>
             </div>
+          </div>
+
+          <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-12">
+            <h3 className="text-lg font-bold text-white mb-3">Between Meetups</h3>
+            <p className="text-zinc-400 leading-relaxed">
+              Discord is home base. Drop questions, share what you're building, debug async. The monthly call is the anchor—Discord is where the real work happens.
+            </p>
           </div>
 
           <div className="mb-12">
@@ -75,6 +85,19 @@ export default function CommunityPage() {
                 <span>Beginner AI tutorials—this isn't that</span>
               </li>
             </ul>
+          </div>
+
+          <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-12">
+            <h3 className="text-lg font-bold text-white mb-3">About Wally</h3>
+            <p className="text-zinc-400 leading-relaxed mb-3">
+              I'm Wally Kroeker. Spent 12 years in security and infrastructure—built systems, hardened networks, automated what could be automated. Now running GoodFields Consulting, helping clients build secure, maintainable infrastructure.
+            </p>
+            <p className="text-zinc-400 leading-relaxed mb-3">
+              I built Bob (and the rest of PAI) as my AI business partner—not a chatbot, an actual external executive function. Multi-agent orchestration, task delegation, the works. Runs my consulting practice and offloads the ADHD tax.
+            </p>
+            <p className="text-zinc-400 leading-relaxed">
+              I'm doing this because I'd rather figure this out with peers than alone. If you're the kind of person who builds systems instead of complaining about them, you'll fit right in.
+            </p>
           </div>
 
           <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-12">

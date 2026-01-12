@@ -106,7 +106,7 @@ This collective is NOT for:
 
 ## How to Join
 
-Discord: https://discord.gg/Skn98TXg
+Discord: [Join the GrayBeard AI Collective](https://discord.gg/Skn98TXg)
 
 First Meetup: Wednesday, January 28, 2026 @ 7pm Central (Discord voice)
 
@@ -133,10 +133,10 @@ See you on January 28.
 Wally
 
 Links:
-- GrayBeard AI Collective Discord: https://discord.gg/Skn98TXg
-- GoodFields Consulting: https://goodfields.io
-- Personal site: https://wallykroeker.com
-- LinkedIn: https://www.linkedin.com/in/wally-kroeker/
+- [GrayBeard AI Collective Discord](https://discord.gg/Skn98TXg)
+- [GoodFields Consulting](https://goodfields.io)
+- [wallykroeker.com](https://wallykroeker.com)
+- [LinkedIn](https://www.linkedin.com/in/wally-kroeker/)
 
 ---
 

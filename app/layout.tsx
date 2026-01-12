@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Wally Kroeker — Build open, useful systems',
-  description: 'Proof‑of‑work over promises. Transparent build logs, field guides, and minimal tools to reuse today.',
+  description: 'Security and AI consulting for businesses that value privacy, pragmatism, and transparent build logs over marketing promises.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -90,7 +90,7 @@ export default function CommunityPage() {
           <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-12">
             <h3 className="text-lg font-bold text-white mb-3">About Wally</h3>
             <p className="text-zinc-400 leading-relaxed mb-3">
-              I'm Wally Kroeker. Spent 12 years in security and infrastructure—built systems, hardened networks, automated what could be automated. Now running GoodFields Consulting, helping clients build secure, maintainable infrastructure.
+              I'm Wally Kroeker. Spent 20+ years in security and infrastructure—built systems, hardened networks, automated what could be automated. Now running GoodFields Consulting, helping clients build secure, maintainable infrastructure.
             </p>
             <p className="text-zinc-400 leading-relaxed mb-3">
               I built Bob (and the rest of PAI) as my AI business partner—not a chatbot, an actual external executive function. Multi-agent orchestration, task delegation, the works. Runs my consulting practice and offloads the ADHD tax.

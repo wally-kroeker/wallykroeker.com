@@ -8,12 +8,12 @@
 
 html, body {
   height: 100%;
-  background-color: rgb(9 9 11); /* zinc-950 */
+  background-color: #121212;
 }
 
 .prose {
   --tw-prose-body: theme(colors.zinc.200);
-  --tw-prose-headings: theme(colors.zinc.100);
+  --tw-prose-headings: theme(colors.zinc.200);
   --tw-prose-links: theme(colors.zinc.100);
   --tw-prose-bold: theme(colors.zinc.100);
   --tw-prose-counters: theme(colors.zinc.400);

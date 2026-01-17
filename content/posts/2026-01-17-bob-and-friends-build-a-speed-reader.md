@@ -1,5 +1,5 @@
 ---
-title: "Bob and Friends Build a Speed Reader in 48 Hours"
+title: "Bob and Friends Build a Speed Reader in Hours"
 description: "What happens when you give your AI team an idea during online training? A case study in multi-agent collaboration, unexpected RAM issues, and why delegating to specialized AI agents actually works."
 date: 2026-01-17
 status: "published"
@@ -33,9 +33,9 @@ Then the obvious question: **Why don't I just... build one?**
 
 Not me personally. I'm a consultant with deliverables. But Bob and the team? They're literally sitting there waiting for interesting problems.
 
-So I pitched it to Bob Prime: "Hey, can you guys build me a speed reader?"
+So I pitched it to Bob: "Hey, can you guys build me a speed reader?"
 
-His response, in typical Bob fashion: "That's a plan. It's a good plan. Give me a day to mobilize the team."
+His response, in typical Bob fashion: "Give me a bit to mobilize the team."
 
 ---
 

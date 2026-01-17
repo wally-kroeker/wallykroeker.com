@@ -28,3 +28,53 @@ html, body {
   --tw-prose-th-borders: theme(colors.zinc.700);
   --tw-prose-td-borders: theme(colors.zinc.800);
 }
+
+/* Speed Reader Components */
+
+.word-display-container {
+  @apply bg-zinc-900 border border-zinc-800 rounded-lg;
+  @apply min-h-[200px] flex flex-col items-center justify-center;
+  @apply p-8 md:p-12 transition-colors duration-200;
+}
+
+.word-display-container:hover {
+  @apply bg-zinc-800 border-zinc-700;
+}
+
+.word-display-container:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-zinc-950;
+}
+
+.control-btn-primary {
+  @apply p-4 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ring-offset-zinc-950;
+  @apply w-14 h-14 flex items-center justify-center;
+}
+
+.control-btn-secondary {
+  @apply p-3 bg-zinc-800 hover:bg-zinc-700 rounded-lg transition-colors;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ring-offset-zinc-950;
+  @apply w-12 h-12 flex items-center justify-center;
+}
+
+.preset-btn {
+  @apply flex-1 px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded text-sm transition-colors;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ring-offset-zinc-950;
+}
+
+.preset-btn.active {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+/* Custom slider styling */
+.speed-slider {
+  @apply h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer;
+}
+
+.speed-slider::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 bg-blue-500 rounded-full cursor-pointer;
+}
+
+.speed-slider::-moz-range-thumb {
+  @apply w-4 h-4 bg-blue-500 rounded-full cursor-pointer border-0;
+}

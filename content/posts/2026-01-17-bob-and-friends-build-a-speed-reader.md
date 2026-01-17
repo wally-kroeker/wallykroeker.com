@@ -17,7 +17,7 @@ featured: true
 image: "/images/bobiverse-team.png"
 ---
 
-# Bob and Friends Build a Speed Reader in 48 Hours
+# Bob and Friends Build a Speed Reader in Hours
 
 It started with online training and a reading bottleneck. It ended with a production-ready speed reader, a RAM-induced system crash, and a masterclass in why specialized AI agents beat solo coding every time.
 
@@ -127,13 +127,15 @@ Checked GitHub. Last commit: halfway through the implementation. **Not ideal.**
 
 ## The Recovery: Mario Steps In
 
-I stepped away for the night. When I revisited the project the next morning, I had a decision: restart from scratch, or pick up where we left off?
+I went to bed. The crash happened, the session was lost, and I figured I'd deal with it in the morning.
+
+When I woke up and checked the project, I had a decision: restart from scratch, or pick up where we left off?
 
 This is where **Mario** (The Engineer) earned his keep.
 
 Mario's personality: pragmatic, thorough, no-nonsense. His job: finish what Bender started, clean up any half-implemented state, and get it across the finish line.
 
-**What Mario did:**
+**What Mario did (in about 10 minutes):**
 1. Reviewed the partial commit history
 2. Read Bill's handoff documentation (all 15 files of it)
 3. Picked up exactly where Gemini left off
@@ -143,7 +145,7 @@ Mario's personality: pragmatic, thorough, no-nonsense. His job: finish what Bend
 
 **The result:** Production-ready speed reader at `/tools/speed-reader`, live on wallykroeker.com.
 
-Zero drama. Just execution.
+Ten minutes. Zero drama. Just execution.
 
 ---
 
@@ -168,11 +170,11 @@ Try it yourself: [wallykroeker.com/tools/speed-reader](https://wallykroeker.com/
 - Pure React + Tailwind (no external libraries)
 
 **Timeline:**
-- Day 1: Research (Riker)
-- Day 2: Design (Bill + Howard) → Implementation (Gemini/Bender → crash)
-- Day 3: Recovery and completion (Mario)
+- Afternoon: Research (Riker), Design (Bill + Howard), Implementation start (Gemini/Bender)
+- Evening: RAM crash → went to bed
+- Next morning: Recovery and completion (Mario, ~10 minutes)
 
-**Total development time:** 48 hours from idea to production.
+**Total active development time:** A few hours of agent work from idea to production.
 
 ---
 
@@ -260,7 +262,7 @@ At 450 WPM, thanks to Bob and friends.
 - **Code:** [GitHub repo](https://github.com/wally-kroeker/wallykroeker.com) (tag: `speed-reader-v1.0`)
 - **Documentation:** Full retrospective in `/docs/projects/speed-reader/`
 - **Team:** Riker, Bill, Howard, Gemini/Bender, Mario, coordinated by Bob Prime
-- **Timeline:** 2026-01-15 to 2026-01-17 (48 hours)
+- **Active work time:** A few hours of agent work (afternoon + 10-minute recovery)
 
 ---
 

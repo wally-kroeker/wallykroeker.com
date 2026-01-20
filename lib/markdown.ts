@@ -23,18 +23,24 @@ export type PostMeta = {
   projects?: string[]  // for blog posts that reference projects
   project?: string     // for project hub pages
   // Project-specific
-  type?: 'project' | 'project-log' | 'post'
+  type?: 'project' | 'project-log' | 'post' | 'build-log'
   stage?: string
   links?: {
     repo?: string
     docs?: string
     demo?: string
   }
+  // Build log specific
+  author?: string
+  session_count?: number
+  projects_touched?: string[]
+  work_types?: string[]
 }
 
 const postsDir = path.join(process.cwd(), 'content', 'posts')
 const guidesDir = path.join(process.cwd(), 'content', 'guides')
 const projectsDir = path.join(process.cwd(), 'content', 'projects')
+const buildLogsDir = path.join(process.cwd(), 'content', 'build-logs')
 
 export function isPublic(meta: PostMeta): boolean {
   // Default to published/public for existing content without these fields
@@ -192,4 +198,46 @@ export async function getAllProjectHubs() {
   )
 
   return projects.filter((p) => p !== null)
+}
+
+export async function getAllBuildLogs() {
+  if (!fs.existsSync(buildLogsDir)) return []
+
+  const files = fs.readdirSync(buildLogsDir).filter((f) => f.endsWith('.md') && f !== '_index.md')
+  const logs = await Promise.all(
+    files.map(async (file) => {
+      const date = file.replace(/\.md$/, '')
+      const fullPath = path.join(buildLogsDir, file)
+      const raw = fs.readFileSync(fullPath, 'utf8')
+      const { data: frontmatter, content } = matter(raw)
+      const html = await mdToHtml(content)
+
+      return {
+        date,
+        meta: frontmatter as PostMeta,
+        content,
+        html,
+      }
+    })
+  )
+
+  return logs.sort((a, b) => (a.date > b.date ? -1 : 1))
+}
+
+export async function getBuildLogByDate(date: string) {
+  const fullPath = path.join(buildLogsDir, `${date}.md`)
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Build log not found: ${date}`)
+  }
+
+  const raw = fs.readFileSync(fullPath, 'utf8')
+  const { data: frontmatter, content } = matter(raw)
+  const html = await mdToHtml(content)
+
+  return {
+    date,
+    meta: frontmatter as PostMeta,
+    content,
+    html,
+  }
 }

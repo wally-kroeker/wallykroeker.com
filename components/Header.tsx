@@ -11,8 +11,9 @@ export default function Header() {
           </Link>
           <nav className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6 text-sm w-full md:w-auto">
             <Link href="/projects" className="hover:text-white">Projects</Link>
-            <Link href="/loop" className="hover:text-white">Cognitive Loop</Link>
+            <Link href="/build-log" className="hover:text-white">Build Log</Link>
             <Link href="/blog" className="hover:text-white">Tech Blog</Link>
+            <Link href="/loop" className="hover:text-white">Cognitive Loop</Link>
             <Link href="/community" className="hover:text-white">Community</Link>
             <Link href="/work" className="hover:text-white">Work With Me</Link>
           </nav>

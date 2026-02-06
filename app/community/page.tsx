@@ -15,15 +15,15 @@ export default function CommunityPage() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-12">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">First Meetup: January 28, 2026</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: February 25, 2026</h2>
             <p className="text-zinc-300 leading-relaxed mb-4 text-center">
               Wednesday, 7pm Central on Discord
             </p>
             <p className="text-zinc-400 text-sm mb-6 text-center italic">
-              (Last Wednesday of every month going forward)
+              (Last Wednesday of every month)
             </p>
             <p className="text-zinc-300 leading-relaxed mb-8">
-              I'll demo my PAI (Personal AI Infrastructure) framework—Bob and friends. The actual system running my consulting practice: multi-agent orchestration, automation glue, the whole stack. More importantly: I'll show the architecture and how to build something similar yourself.
+              Each month I demo what's new with PAI (Personal AI Infrastructure)—Bob and friends. The actual system running my consulting practice: multi-agent orchestration, automation glue, the whole stack. Plus architecture walkthroughs so you can build something similar yourself.
             </p>
             <p className="text-zinc-400 leading-relaxed mb-8">
               Then we talk: <span className="text-white font-semibold">What are you building?</span>
@@ -45,6 +45,25 @@ export default function CommunityPage() {
             <p className="text-zinc-400 leading-relaxed">
               Discord is home base. Drop questions, share what you're building, debug async. The monthly call is the anchor—Discord is where the real work happens.
             </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="text-xl font-bold text-zinc-100 mb-6">Previous Meetings</h3>
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6">
+              <div className="flex items-baseline justify-between mb-3">
+                <h4 className="text-lg font-semibold text-zinc-100">Meeting #1 — January 28, 2026</h4>
+                <span className="text-zinc-500 text-sm">6 attendees · 87 min</span>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-4">
+                First meeting of the collective. Six infrastructure veterans joined for a live demo of PAI deploying Uptime Kuma into a home lab from a single prompt — Proxmox VM clone, Docker setup, DNS record, security patches, all in about 7 minutes. Also demoed building custom tools on the fly at client sites (the "Digital Blacksmith" concept).
+              </p>
+              <p className="text-zinc-400 leading-relaxed mb-4">
+                Discussion covered the real cost of heavy AI usage ($100+/month across providers), the gap between enterprise AI vendor promises and implementation reality, and the value of picking tools and mastering them vs. constant switching.
+              </p>
+              <p className="text-zinc-500 italic text-sm">
+                "It's like building tools on the fly as you need them. I used to wish I was good enough at coding to create cool tools for myself... now, just build them as you need to."
+              </p>
+            </div>
           </div>
 
           <div className="mb-12">

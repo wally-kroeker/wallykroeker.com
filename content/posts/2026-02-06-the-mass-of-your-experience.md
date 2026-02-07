@@ -3,7 +3,7 @@ title: "The Mass of Your Experience"
 description: "Everyone's talking about what AI can do. Nobody's talking about the 20 years of pattern recognition that tells it what to do."
 date: 2026-02-06
 status: "published"
-reviewed: false
+reviewed: true
 sensitivity: "public"
 tags:
   - ai

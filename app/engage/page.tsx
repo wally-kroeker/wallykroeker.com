@@ -1,4 +1,11 @@
+import type { Metadata } from 'next'
 import Container from '@/components/Container'
+
+export const metadata: Metadata = {
+  title: 'Connect',
+  description: 'Get in touch with Wally Kroeker. Consulting, community, and collaboration opportunities.',
+  alternates: { canonical: 'https://wallykroeker.com/engage' },
+}
 
 export default function Page() {
   const cards = [

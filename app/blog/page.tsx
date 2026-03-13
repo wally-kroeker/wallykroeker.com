@@ -1,7 +1,14 @@
+import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import { getAll, isPublic } from '@/lib/markdown'
 
 export const dynamic = 'force-static'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Build logs, decision records, and technical writing on security, AI, and infrastructure.',
+  alternates: { canonical: 'https://wallykroeker.com/blog' },
+}
 
 export default async function BlogIndex() {
   const allPosts = await getAll('posts')

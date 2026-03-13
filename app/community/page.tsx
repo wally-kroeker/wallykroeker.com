@@ -1,4 +1,11 @@
+import type { Metadata } from 'next'
 import Container from '@/components/Container'
+
+export const metadata: Metadata = {
+  title: 'GrayBeard AI Collective',
+  description: 'Monthly meetups for infrastructure veterans building with AI. Practitioner-led, no vendor pitches.',
+  alternates: { canonical: 'https://wallykroeker.com/community' },
+}
 
 export default function CommunityPage() {
   return (

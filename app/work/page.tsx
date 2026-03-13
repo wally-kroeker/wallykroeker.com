@@ -1,4 +1,11 @@
+import type { Metadata } from 'next'
 import Container from '@/components/Container'
+
+export const metadata: Metadata = {
+  title: 'Work With Me',
+  description: 'Security assessments, AI implementation consulting, and fractional technical leadership. Pragmatic guidance for teams navigating AI adoption.',
+  alternates: { canonical: 'https://wallykroeker.com/work' },
+}
 
 export default function WorkPage() {
   const services = [

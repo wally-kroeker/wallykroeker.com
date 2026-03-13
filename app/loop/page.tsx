@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import { site } from '@/lib/siteConfig'
+
+export const metadata: Metadata = {
+  title: 'Cognitive Loop',
+  description: 'Transparent human+AI writing. Ship the thinking, not just the conclusions.',
+  alternates: { canonical: 'https://wallykroeker.com/loop' },
+}
 
 export default function LoopPage() {
   return (

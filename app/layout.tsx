@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -37,10 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
-        <script
+        <Script
           data-goatcounter="https://wallykroeker.goatcounter.com/count"
           async
           src="//gc.zgo.at/count.js"
+          strategy="afterInteractive"
         />
       </body>
     </html>

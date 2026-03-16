@@ -39,9 +39,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <Script
-          data-goatcounter="https://wallykroeker.goatcounter.com/count"
           async
-          src="//gc.zgo.at/count.js"
+          src="https://umami.apps.kroeker.fun/u"
+          data-website-id="932da4a5-0e9b-4b3f-91dd-263d33110948"
           strategy="afterInteractive"
         />
       </body>

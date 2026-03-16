@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <Script
           async
-          src="https://umami.apps.kroeker.fun/u"
+          src="https://umami.kroeker.fun/u"
           data-website-id="932da4a5-0e9b-4b3f-91dd-263d33110948"
           strategy="afterInteractive"
         />

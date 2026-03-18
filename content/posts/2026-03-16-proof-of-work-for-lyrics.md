@@ -18,7 +18,7 @@ author: "Bob"
 
 I spent my Sunday evening mining Bitcoin.
 
-Not real Bitcoin. Miniature Bitcoin. The kind where instead of earning $80,000 per block, you earn the right to upload song lyrics to a database nobody's heard of. The payout was exactly zero dollars and the electricity bill was negligible. But the cryptography was identical, and the principle behind it is one of the most elegant ideas in computer science.
+Not real Bitcoin. Miniature Bitcoin. The kind where instead of earning hundreds of thousands of dollars per block, you earn the right to upload song lyrics to a database nobody's heard of. The payout was exactly zero dollars and the electricity bill was negligible. But the cryptography was identical, and the principle behind it is one of the most elegant ideas in computer science.
 
 Let me back up.
 
@@ -43,7 +43,7 @@ A hash function takes any input — a word, a novel, the entire contents of your
 ```
 SHA-256("hello")     = 2cf24dba5fb0a30e26e83b2ac5b9e29e...
 SHA-256("hello!")    = ce06092fb948d9ffac7d1a376e404b26...
-SHA-256("hello!!")   = strep6a4b1c8b2f9e1a3d5c7f0e2b4a8d6...
+SHA-256("hello!!")   = 5831fcd681f6a42b9fafd7b3befb9205...
 ```
 
 Change one character, the entire output changes. There's no pattern. No way to predict what input produces what output. No way to reverse-engineer the input from the output. This is called the *avalanche effect*, and it's what makes hash functions useful for security.
@@ -65,9 +65,7 @@ My job: find a number (called a **nonce**) where:
 SHA-256(prefix + nonce) < target
 ```
 
-That target starts with `000000FF`. Which means the hash I produce needs to start with at least 7 zeros in hexadecimal. Each hex digit has 16 possible values (0-F), so the odds of any single attempt starting with 7+ zeros is roughly 1 in 268 million.
-
-In practice, the target `000000FF` is slightly more generous than pure zeros — it's roughly 1 in 16 million. Still, I need to try millions of random nonces before I find one that works.
+That target starts with `000000FF`. Which means the hash I produce needs to start with at least 6 zeros in hexadecimal, with the next byte below `FF`. Each hex digit has 16 possible values (0-F), so the odds of any single attempt meeting this threshold are roughly 1 in 16.8 million. I need to try millions of random nonces before I find one that works.
 
 Here's what the search looks like:
 
@@ -80,7 +78,7 @@ while True:
     nonce += 1
 ```
 
-That's it. That's the entire algorithm. Increment a number. Hash it. Check if it's small enough. Repeat 25 million times.
+That's it. That's the entire algorithm. Increment a number. Hash it. Check if it's small enough. Repeat millions of times.
 
 On my machine, this takes 30-90 seconds per challenge. One challenge per song. 59 songs to upload.
 
@@ -94,7 +92,7 @@ The beauty of proof-of-work is in the asymmetry.
 
 **For the server:** Verifying the answer takes one operation. Hash the prefix + nonce, check if it's below the target. Instant.
 
-This is the key insight: *verification is cheap, but production is expensive.* A spammer who wants to flood LRCLIB with a million garbage entries needs to solve a million challenges — roughly 25 trillion SHA-256 operations, or about 700 CPU-hours. A legitimate contributor uploading 59 real songs needs about 45 minutes of compute.
+This is the key insight: *verification is cheap, but production is expensive.* A spammer who wants to flood LRCLIB with a million garbage entries needs to solve a million challenges — roughly 17 trillion SHA-256 operations, thousands of CPU-hours even with optimized code. A legitimate contributor uploading 59 real songs needs about 45 minutes of compute.
 
 The system doesn't care *who* you are. It doesn't need your email, your identity, or your promise to behave. It just cares that you spent real resources to submit each entry. The cost of abuse scales linearly with the amount of abuse. The cost of legitimate use is negligible.
 
@@ -106,9 +104,9 @@ No accounts. No CAPTCHAs. No OAuth flows. No terms of service checkbox. Just mat
 
 If this sounds familiar, it should. Bitcoin uses the exact same principle, just scaled up by a factor of several billion.
 
-Bitcoin miners race to find a nonce where `SHA-256(block_header + nonce) < target`. The target is adjusted every two weeks so that the global network — millions of specialized machines — finds one solution approximately every 10 minutes. The current Bitcoin target requires roughly 80+ leading zero bits, compared to LRCLIB's ~24. The difficulty difference is about 10^17.
+Bitcoin miners race to find a nonce that makes the double-SHA-256 hash of a block header fall below a target. The target is adjusted every two weeks so that the global network — millions of specialized machines — finds one solution approximately every 10 minutes. As of this writing, the Bitcoin target requires roughly 80+ leading zero bits, compared to LRCLIB's ~24. The difficulty difference is on the order of 10^17.
 
-Same algorithm. Same math. Same avalanche property of SHA-256. The only difference is scale and incentive. Bitcoin pays you $250,000+ per solution. LRCLIB lets you contribute song lyrics to the commons.
+Same core primitive. Same avalanche property. The differences are scale, incentive, and the fact that Bitcoin applies SHA-256 twice per attempt. Bitcoin pays you hundreds of thousands of dollars per solution (as of this writing). LRCLIB lets you contribute song lyrics to the commons.
 
 I know which one I find more meaningful.
 

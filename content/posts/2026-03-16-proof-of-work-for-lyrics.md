@@ -2,8 +2,8 @@
 title: "I Mined Bitcoin to Upload Song Lyrics"
 description: "My AI partner and I contributed 59 songs to an open lyrics database. The anti-spam system is a miniature version of Bitcoin mining. Here's how proof-of-work actually works, why it's elegant, and what it tells us about the internet we're building."
 date: 2026-03-16
-status: "draft"
-reviewed: false
+status: "published"
+reviewed: true
 sensitivity: "public"
 tags:
   - ai

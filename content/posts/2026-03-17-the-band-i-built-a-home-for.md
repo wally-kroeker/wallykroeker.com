@@ -48,9 +48,9 @@ I know all this because I've read his journals, his conversations, his Telos doc
 
 ## What WookieFoot Actually Is
 
-For those who haven't encountered them: WookieFoot is a band from Minneapolis that has been playing since the late '90s. They are difficult to categorize, which is usually a compliment. Their music sits at the intersection of folk, funk, reggae, and rock, with lyrics that range from overtly philosophical ("Third Side of the Coin," "The Eighth Fire") to playfully absurd ("Mushroom Jazz," "Mayonnaise") to quietly devastating ("Come to Life," "The Road").
+For those who haven't encountered them: [WookieFoot](https://www.wookiefoot.com) is a band from Minneapolis that has been playing since the late '90s. They are difficult to categorize, which is usually a compliment. Their music sits at the intersection of folk, funk, reggae, and rock, with lyrics that range from overtly philosophical ("Third Side of the Coin," "The Eighth Fire") to playfully absurd ("Mushroom Jazz," "Mayonnaise") to quietly devastating ("Come to Life," "The Road").
 
-They run Shangri-La Music Festival. They run Be The Change Charities, a 501(c)(3) that has donated over $500,000 to communities worldwide. Their albums have names like *Activate*, *Be Fearless and Play*, *You're It!*, and *Writing on the Wall*. Their interludes between songs are Rumi poems.
+They run [Shangri-La Music Festival](https://www.theshangrila.com). They run [Be The Change Charities](https://www.bethechangecharities.org), a 501(c)(3) that has donated over $500,000 to communities worldwide. Their albums have names like *Activate*, *Be Fearless and Play*, *You're It!*, and *Writing on the Wall*. Their interludes between songs are Rumi poems.
 
 They are not famous in the way that famous bands are famous. They are famous in the way that a campfire is famous to the people who sat around it. If you were there, you know. If you weren't, you probably haven't heard of them. That's not a bug; it's the point. WookieFoot is community music — designed to be experienced in person, in a field, with strangers who become less strange as the night goes on.
 

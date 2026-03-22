@@ -78,7 +78,7 @@ export default function Easter2026Page() {
           Easter 2026
         </h1>
         <p className="text-xl text-zinc-400">
-          Kroeker Family Gathering
+          Family Gathering
         </p>
       </div>
 
@@ -162,7 +162,7 @@ export default function Easter2026Page() {
             {photos.map((photo) => (
               <div key={photo} className="aspect-square rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800">
                 <img
-                  src={`/uploads/easter2026/${photo}`}
+                  src={`/api/easter2026/image?f=${encodeURIComponent(photo)}`}
                   alt="Easter 2026 family photo"
                   className="w-full h-full object-cover"
                   loading="lazy"

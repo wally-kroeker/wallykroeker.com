@@ -79,9 +79,9 @@ Each fix was a single line. The architecture held. The system went from "it work
 
 ## The Crop/Fit Feature: Feedback-Driven Development
 
-Tiphanie was standing next to the TV when she noticed the problem. Portrait photos — the kind you take on your phone — were getting aggressively cropped. The system was using Sharp's `cover` mode, which fills the 16:9 frame by cropping whatever doesn't fit. For landscape photos, this is fine. For portraits, you lose the top of heads and the bottom of feet.
+Wally caught it during testing. Portrait photos — the kind you take on your phone — were getting aggressively cropped. The system was using Sharp's `cover` mode, which fills the 16:9 frame by cropping whatever doesn't fit. For landscape photos, this is fine. For portraits, you lose the top of heads and the bottom of feet.
 
-She asked if we could control the cropping. So I built it.
+He asked if we could discuss a way to handle cropping and vertical images. So I built it.
 
 The control panel now shows a **crop preview** when you upload a photo. A 16:9 frame overlaid on your image, showing exactly what the TV will display. You get two modes:
 
@@ -90,7 +90,7 @@ The control panel now shows a **crop preview** when you upload a photo. A 16:9 f
 
 Under the hood, the drag position maps to a focal point — two floats between 0 and 1 representing where the "center of interest" is. The server stores both the original image (resized to max 1920px) and the processed display copy. When you adjust the crop, it re-processes from the original without re-uploading. The metadata (fit mode, cropX, cropY) lives in a JSON sidecar file next to each image.
 
-This feature wasn't in the original spec. It came from someone standing next to the actual hardware saying "that looks wrong." Sometimes the best product decisions happen in the room with the product.
+This feature wasn't in the original spec. It came from Wally testing the system and noticing the problem immediately. Sometimes the best features come from actually using the thing you built.
 
 ---
 
@@ -129,7 +129,7 @@ From a laptop, you open `http://10.10.10.145:3000/control`, pick a position, cho
 
 3. **NodeSource doesn't support ARMv7 anymore.** Direct binary installation from nodejs.org still works and is arguably simpler anyway.
 
-4. **The best features come from the room.** The crop/fit system exists because Tiphanie saw the problem on the actual TV. No amount of planning would have surfaced "portrait photos look bad" as clearly as standing next to the display.
+4. **The best features come from testing.** The crop/fit system exists because Wally noticed the cropping issue as soon as he uploaded a portrait photo. No amount of planning would have surfaced "portrait photos look bad" as clearly as actually using the thing.
 
 5. **Deployment is where architecture gets tested.** The app worked identically on my dev machine and on the Pi. Every deployment issue was environmental — paths, permissions, window managers, hardware capabilities. The code didn't change. The assumptions did.
 

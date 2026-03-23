@@ -32,6 +32,8 @@ export async function GET(request: NextRequest) {
     return new NextResponse(data, {
       headers: {
         'Content-Type': contentType,
+        'X-Content-Type-Options': 'nosniff',
+        'Content-Disposition': 'inline',
         'Cache-Control': 'public, max-age=86400',
       },
     })

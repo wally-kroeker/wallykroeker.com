@@ -71,13 +71,52 @@ function formatTime(ts: number) {
   })
 }
 
+const ASCII_CHARS = ' .:-=+*#%@'
+const MAX_ASCII_WIDTH = 120
+
+function imageToAscii(img: HTMLImageElement, maxWidth: number = MAX_ASCII_WIDTH): string {
+  const canvas = document.createElement('canvas')
+  const ctx = canvas.getContext('2d')
+  if (!ctx) return ''
+
+  const aspect = img.height / img.width
+  // Characters are ~2x taller than wide, so halve the height ratio
+  const width = Math.min(maxWidth, img.width)
+  const height = Math.floor(width * aspect * 0.5)
+
+  canvas.width = width
+  canvas.height = height
+  ctx.drawImage(img, 0, 0, width, height)
+
+  const imageData = ctx.getImageData(0, 0, width, height)
+  const pixels = imageData.data
+  let ascii = ''
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4
+      const brightness = (pixels[i] * 0.299 + pixels[i + 1] * 0.587 + pixels[i + 2] * 0.114) / 255
+      const charIndex = Math.floor(brightness * (ASCII_CHARS.length - 1))
+      ascii += ASCII_CHARS[charIndex]
+    }
+    ascii += '\n'
+  }
+
+  return ascii
+}
+
+type Mode = 'text' | 'image'
+
 export default function AsciiPage() {
+  const [mode, setMode] = useState<Mode>('text')
   const [prompt, setPrompt] = useState('')
   const [font, setFont] = useState('Standard')
   const [output, setOutput] = useState('')
   const [gallery, setGallery] = useState<GalleryItem[]>([])
   const [copied, setCopied] = useState(false)
   const [fontsLoaded, setFontsLoaded] = useState(false)
+  const [converting, setConverting] = useState(false)
+  const [imageWidth, setImageWidth] = useState(MAX_ASCII_WIDTH)
 
   useEffect(() => {
     for (const [key, data] of Object.entries(FONTS)) {
@@ -126,6 +165,35 @@ export default function AsciiPage() {
     }
   }
 
+  const handleImageUpload = useCallback((file: File) => {
+    setConverting(true)
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const img = new Image()
+      img.onload = () => {
+        const art = imageToAscii(img, imageWidth)
+        setOutput(art)
+        const item: GalleryItem = {
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+          prompt: file.name,
+          font: `Image (${imageWidth}w)`,
+          art,
+          timestamp: Date.now(),
+        }
+        setGallery(prev => saveGallery([item, ...prev]))
+        setConverting(false)
+      }
+      img.src = e.target?.result as string
+    }
+    reader.readAsDataURL(file)
+  }, [imageWidth])
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault()
+    const file = e.dataTransfer.files[0]
+    if (file?.type.startsWith('image/')) handleImageUpload(file)
+  }, [handleImageUpload])
+
   const deleteItem = (id: string) => {
     setGallery(prev => saveGallery(prev.filter(item => item.id !== id)))
   }
@@ -135,11 +203,28 @@ export default function AsciiPage() {
       {/* Header */}
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-zinc-100 mb-2">ASCII Art Generator</h1>
-        <p className="text-zinc-400">Type a prompt, pick a font, generate ASCII art.</p>
+        <p className="text-zinc-400">Generate ASCII art from text or images.</p>
       </div>
 
-      {/* Generator Controls */}
-      <div className="mb-8 flex flex-col sm:flex-row gap-3">
+      {/* Mode Tabs */}
+      <div className="mb-6 flex gap-1 rounded-lg bg-zinc-900 p-1 w-fit">
+        <button
+          onClick={() => setMode('text')}
+          className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${mode === 'text' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-400 hover:text-zinc-200'}`}
+        >
+          Text
+        </button>
+        <button
+          onClick={() => setMode('image')}
+          className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${mode === 'image' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-400 hover:text-zinc-200'}`}
+        >
+          Image
+        </button>
+      </div>
+
+      {/* Text Mode Controls */}
+      {mode === 'text' && (
+        <div className="mb-8 flex flex-col sm:flex-row gap-3">
           <input
             type="text"
             value={prompt}
@@ -164,7 +249,51 @@ export default function AsciiPage() {
           >
             Generate
           </button>
-      </div>
+        </div>
+      )}
+
+      {/* Image Mode Controls */}
+      {mode === 'image' && (
+        <div className="mb-8 space-y-4">
+          <div className="flex items-center gap-4">
+            <label className="text-sm text-zinc-400">Width:</label>
+            <input
+              type="range"
+              min={40}
+              max={200}
+              value={imageWidth}
+              onChange={e => setImageWidth(Number(e.target.value))}
+              className="flex-1 accent-blue-600"
+            />
+            <span className="text-sm text-zinc-400 w-16 text-right">{imageWidth} cols</span>
+          </div>
+          <div
+            onDrop={handleDrop}
+            onDragOver={e => e.preventDefault()}
+            className="rounded-lg border-2 border-dashed border-zinc-700 hover:border-zinc-500 bg-zinc-900/50 p-12 text-center transition-colors cursor-pointer"
+            onClick={() => document.getElementById('ascii-image-input')?.click()}
+          >
+            <input
+              id="ascii-image-input"
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={e => {
+                const file = e.target.files?.[0]
+                if (file) handleImageUpload(file)
+              }}
+            />
+            {converting ? (
+              <p className="text-zinc-400 text-sm">Converting...</p>
+            ) : (
+              <>
+                <p className="text-zinc-300 text-sm font-medium mb-1">Drop an image here or click to upload</p>
+                <p className="text-zinc-500 text-xs">PNG, JPG, GIF, WebP</p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Output */}
       {output && (

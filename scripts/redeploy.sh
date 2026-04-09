@@ -8,6 +8,6 @@ cd /home/docker/wallykroeker.com
 git fetch origin
 git reset --hard origin/main
 pnpm install
-pnpm build
+NODE_OPTIONS="--max-old-space-size=512" pnpm build
 sudo systemctl restart wally-web
 echo "Redeployed successfully."

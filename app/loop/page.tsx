@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import { site } from '@/lib/siteConfig'
-import { getAllLoopPosts } from '@/lib/markdown'
+import { getSubstackPosts } from '@/lib/substack'
 
-export const dynamic = 'force-static'
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Cognitive Loop',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function LoopPage() {
-  const posts = await getAllLoopPosts()
+  const posts = await getSubstackPosts()
 
   return (
     <section className="border-t border-zinc-900">
@@ -41,32 +41,32 @@ export default async function LoopPage() {
                 <li key={post.slug}>
                   <a
                     href={`/loop/${post.slug}`}
-                    className="block rounded-2xl border border-zinc-800 p-5 hover:border-zinc-600 transition-colors"
+                    className="block rounded-2xl border border-zinc-800 hover:border-zinc-600 transition-colors overflow-hidden"
                   >
-                    <div className="text-sm text-zinc-500">
-                      {new Date(post.meta.date).toLocaleDateString('en-CA', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        timeZone: 'UTC',
-                      })}
-                    </div>
-                    <div className="mt-1 text-lg font-medium text-zinc-100">{post.meta.title}</div>
-                    {post.meta.subtitle && (
-                      <div className="text-sm text-zinc-400 mt-0.5">{post.meta.subtitle}</div>
-                    )}
-                    {post.excerpt && (
-                      <p className="text-sm text-zinc-400 mt-2 line-clamp-2">{post.excerpt}</p>
-                    )}
-                    {post.meta.tags && post.meta.tags.length > 0 && (
-                      <div className="mt-3 flex flex-wrap gap-1.5">
-                        {post.meta.tags.slice(0, 4).map((tag) => (
-                          <span key={tag} className="text-xs text-zinc-600 border border-zinc-800 rounded px-2 py-0.5">
-                            {tag}
-                          </span>
-                        ))}
+                    {post.thumbnail && (
+                      <div className="w-full h-48 overflow-hidden bg-zinc-900">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={post.thumbnail}
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     )}
+                    <div className="p-5">
+                      <div className="text-sm text-zinc-500">
+                        {new Date(post.date).toLocaleDateString('en-CA', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                          timeZone: 'UTC',
+                        })}
+                      </div>
+                      <div className="mt-1 text-lg font-medium text-zinc-100">{post.title}</div>
+                      {post.description && (
+                        <p className="text-sm text-zinc-400 mt-2 line-clamp-2">{post.description}</p>
+                      )}
+                    </div>
                   </a>
                 </li>
               ))}

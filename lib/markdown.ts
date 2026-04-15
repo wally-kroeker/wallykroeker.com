@@ -10,6 +10,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { visit } from 'unist-util-visit'
 import type { Node } from 'unist'
 
+export type LoopPostMeta = {
+  title: string
+  date: string
+  subtitle?: string
+  description?: string
+  tags?: string[]
+  status?: 'draft' | 'published'
+}
+
 export type PostMeta = {
   title: string
   date: string
@@ -41,6 +50,7 @@ const postsDir = path.join(process.cwd(), 'content', 'posts')
 const guidesDir = path.join(process.cwd(), 'content', 'guides')
 const projectsDir = path.join(process.cwd(), 'content', 'projects')
 const buildLogsDir = path.join(process.cwd(), 'content', 'build-logs')
+const loopDir = path.join(process.cwd(), 'content', 'loop')
 
 export function isPublic(meta: PostMeta): boolean {
   // Default to published/public for existing content without these fields
@@ -222,6 +232,41 @@ export async function getAllBuildLogs() {
   )
 
   return logs.sort((a, b) => (a.date > b.date ? -1 : 1))
+}
+
+export async function getAllLoopPosts() {
+  if (!fs.existsSync(loopDir)) return []
+  const files = fs.readdirSync(loopDir).filter((f) => f.endsWith('.md'))
+  const items = await Promise.all(
+    files.map(async (file) => {
+      const slug = file.replace(/\.md$/, '')
+      const fullPath = path.join(loopDir, file)
+      const raw = fs.readFileSync(fullPath, 'utf8')
+      const { data, content } = matter(raw)
+      const meta = data as LoopPostMeta
+      // Extract first paragraph as excerpt if no description
+      const firstParagraph = content.split('\n\n').find((p) => {
+        const trimmed = p.trim()
+        return trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('>') && !trimmed.startsWith('---') && !trimmed.startsWith('*') && trimmed.length > 30
+      })
+      const excerpt = meta.description || (firstParagraph ? firstParagraph.replace(/[*_`]/g, '').slice(0, 200) : '')
+      return { slug, meta, excerpt }
+    })
+  )
+  return items
+    .filter((p) => (p.meta.status ?? 'published') === 'published')
+    .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1))
+}
+
+export async function getLoopPost(slug: string) {
+  const fullPath = path.join(loopDir, `${slug}.md`)
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Loop post not found: ${slug}`)
+  }
+  const raw = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(raw)
+  const html = await mdToHtml(content)
+  return { meta: data as LoopPostMeta, html, content, slug }
 }
 
 export async function getBuildLogByDate(date: string) {

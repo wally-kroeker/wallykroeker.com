@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import Prose from '@/components/Prose'
-import LoopAudioPlayer from '@/components/LoopAudioPlayer'
+import AudioPlayer from '@/components/AudioPlayer'
 import { getSubstackPosts, getSubstackPost } from '@/lib/substack'
 
 export const revalidate = 3600
@@ -80,10 +80,10 @@ export default async function LoopPostPage({
           <h1 className="mt-1 text-2xl font-semibold text-zinc-100">{post.title}</h1>
 
           <div className="mt-6">
-            <LoopAudioPlayer
-              slug={params.slug}
+            <AudioPlayer
+              audioSrc={`/audio/loop/${params.slug}.mp3`}
               title={post.title}
-              substackAudioUrl={post.audioUrl}
+              fallbackSrc={post.audioUrl}
             />
           </div>
 

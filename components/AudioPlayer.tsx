@@ -2,10 +2,10 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 
-interface LoopAudioPlayerProps {
-  slug: string
+interface AudioPlayerProps {
+  audioSrc: string
   title: string
-  substackAudioUrl?: string
+  fallbackSrc?: string
 }
 
 const SPEEDS = [1, 1.5, 2] as const
@@ -17,7 +17,7 @@ function formatTime(seconds: number): string {
   return `${m}:${s.toString().padStart(2, '0')}`
 }
 
-export default function LoopAudioPlayer({ slug, title, substackAudioUrl }: LoopAudioPlayerProps) {
+export default function AudioPlayer({ audioSrc, title, fallbackSrc }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const scrubberRef = useRef<HTMLDivElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -25,10 +25,8 @@ export default function LoopAudioPlayer({ slug, title, substackAudioUrl }: LoopA
   const [duration, setDuration] = useState(0)
   const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1)
   const [hasError, setHasError] = useState(false)
+  const [src, setSrc] = useState(audioSrc)
 
-  const audioSrc = `/audio/loop/${slug}.mp3`
-
-  // Sync time updates from audio element
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
@@ -81,10 +79,8 @@ export default function LoopAudioPlayer({ slug, title, substackAudioUrl }: LoopA
   }, [duration])
 
   const handleError = () => {
-    // Local Kokoro file missing — swap to Substack audio
-    if (substackAudioUrl && audioRef.current && !audioRef.current.src.includes('substack.com')) {
-      audioRef.current.src = substackAudioUrl
-      setHasError(false)
+    if (fallbackSrc && src !== fallbackSrc) {
+      setSrc(fallbackSrc)
     } else {
       setHasError(true)
     }
@@ -98,14 +94,12 @@ export default function LoopAudioPlayer({ slug, title, substackAudioUrl }: LoopA
     <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-4 space-y-3">
       <audio
         ref={audioRef}
-        src={audioSrc}
+        src={src}
         onError={handleError}
         preload="metadata"
       />
 
-      {/* Top row: play button, scrubber, time */}
       <div className="flex items-center gap-3">
-        {/* Play/Pause */}
         <button
           onClick={handlePlayPause}
           title={isPlaying ? 'Pause' : 'Play'}
@@ -122,7 +116,6 @@ export default function LoopAudioPlayer({ slug, title, substackAudioUrl }: LoopA
           )}
         </button>
 
-        {/* Scrubber */}
         <div
           ref={scrubberRef}
           onClick={handleScrub}
@@ -138,13 +131,11 @@ export default function LoopAudioPlayer({ slug, title, substackAudioUrl }: LoopA
           />
         </div>
 
-        {/* Time */}
         <span className="text-xs text-zinc-500 tabular-nums shrink-0 w-[85px] text-right">
           {formatTime(currentTime)} / {formatTime(duration)}
         </span>
       </div>
 
-      {/* Bottom row: speed controls + title */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           {SPEEDS.map((s) => (

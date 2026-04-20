@@ -1,6 +1,9 @@
+import fs from 'fs'
+import path from 'path'
 import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import Prose from '@/components/Prose'
+import AudioPlayer from '@/components/AudioPlayer'
 import { getAll, getBySlug } from '@/lib/markdown'
 
 export async function generateStaticParams() {
@@ -36,6 +39,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getBySlug('posts', `${params.slug}.md`)
+  const hasAudio = fs.existsSync(path.join(process.cwd(), 'public', 'audio', 'blog', `${params.slug}.mp3`))
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -69,7 +73,15 @@ export default async function PostPage({ params }: { params: { slug: string } })
         <div className="py-10">
           <div className="text-sm text-zinc-400">{new Date(post.meta.date).toLocaleDateString()}</div>
           <h1 className="text-2xl font-semibold">{post.meta.title}</h1>
-          <div className="mt-6">
+          {hasAudio && (
+            <div className="mt-6 max-w-3xl">
+              <AudioPlayer
+                audioSrc={`/audio/blog/${params.slug}.mp3`}
+                title={post.meta.title}
+              />
+            </div>
+          )}
+          <div className="mt-8">
             <Prose html={post.html} />
           </div>
         </div>

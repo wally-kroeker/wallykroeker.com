@@ -94,7 +94,7 @@ export async function getSubstackPosts(): Promise<SubstackPost[]> {
     })
     if (!res.ok) throw new Error(`RSS fetch failed: ${res.status}`)
     const xml = await res.text()
-    const posts = parseItems(xml)
+    const posts = parseItems(xml).sort((a, b) => b.date.localeCompare(a.date))
     cache = { posts, fetchedAt: Date.now() }
     return posts
   } catch (err) {

@@ -4,8 +4,8 @@
 #
 # Runs the full pipeline from source to production:
 #   1. Generate Kokoro TTS audio for any posts that don't yet have it
-#      • /loop  — Cognitive Loop posts (sourced from Substack RSS, local slugs in content/loop/)
-#      • /blog  — Blog posts in content/posts/ (published-only filter)
+#      • /loop  — pulled from cognitiveloop.substack.com/feed via loop-audio-sync.mjs
+#      • /blog  — local markdown in content/posts/ via generate-audio.sh (published-only filter)
 #   2. Stage + commit any NEW .mp3 files in public/audio/ (skips if nothing new)
 #   3. Call scripts/deploy.sh, which pushes to GitHub and SSHs the redeploy to prod
 #
@@ -16,14 +16,17 @@
 #   ./scripts/publish.sh --help          Show this help
 #
 # Notes:
-#   - generate-audio.sh already skips existing files by default, so this script's "incremental"
-#     mode is just calling it without --force. --all forwards --force to regenerate everything.
+#   - Both audio tools skip existing files by default, so "incremental" mode is a no-op when
+#     everything is in sync. --all forwards --force to regenerate everything (~10 min).
+#   - /loop audio comes from Substack RSS (single source of truth). /blog audio comes from
+#     local markdown. Slug sets are independent.
 #   - Audio files live in the repo under public/audio/ and ship to production via git.
-#   - Voice: am_michael (change in scripts/generate-audio.sh if you want to try a different one).
+#   - Voice: am_michael (change in scripts/loop-audio-sync.mjs and scripts/generate-audio.sh).
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LOOP_SYNC_SCRIPT="$REPO_ROOT/scripts/loop-audio-sync.mjs"
 GEN_SCRIPT="$REPO_ROOT/scripts/generate-audio.sh"
 DEPLOY_SCRIPT="$REPO_ROOT/scripts/deploy.sh"
 
@@ -65,14 +68,13 @@ echo ""
 
 echo "🎙️  Step 1/3 — Generating audio"
 echo ""
-
-"$GEN_SCRIPT" \
-  --content-dir "$REPO_ROOT/content/loop" \
+echo "── /loop (from Substack RSS)"
+node "$LOOP_SYNC_SCRIPT" \
   --output-dir "$REPO_ROOT/public/audio/loop" \
   "${GEN_ARGS[@]}"
 
 echo ""
-
+echo "── /blog (from content/posts/)"
 "$GEN_SCRIPT" \
   --content-dir "$REPO_ROOT/content/posts" \
   --output-dir "$REPO_ROOT/public/audio/blog" \

@@ -66,7 +66,7 @@ export function isPublic(meta: PostMeta): boolean {
   return isStatusPublic && reviewed === true && sensitivity === 'public'
 }
 
-async function mdToHtml(markdown: string) {
+export async function mdToHtml(markdown: string) {
   const file = await unified()
     .use(remarkParse)
     .use(remarkRehype)

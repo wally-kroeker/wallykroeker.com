@@ -78,3 +78,139 @@ html, body {
 .speed-slider::-moz-range-thumb {
   @apply w-4 h-4 bg-blue-500 rounded-full cursor-pointer border-0;
 }
+
+/* Food Forest field-journal aesthetic — scoped, doesn't bleed into the rest of the site */
+.food-forest-page {
+  background-color: #f5efe3;
+  color: #2b2419;
+  min-height: 100vh;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.food-forest-page .ff-article {
+  max-width: 44rem;
+  margin: 0 auto;
+  font-family: Charter, 'Iowan Old Style', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.food-forest-page .ff-body h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f1a12;
+  margin: 0 0 0.25rem;
+  line-height: 1.2;
+}
+
+.food-forest-page .ff-body h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f1a12;
+  margin: 3rem 0 0.75rem;
+  line-height: 1.3;
+}
+
+.food-forest-page .ff-body h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.food-forest-page .ff-body p {
+  margin: 0 0 1.1rem;
+}
+
+.food-forest-page .ff-body em {
+  font-style: italic;
+  color: #5b4e3a;
+}
+
+.food-forest-page .ff-body strong {
+  font-weight: 700;
+  color: #1f1a12;
+}
+
+.food-forest-page .ff-body ol,
+.food-forest-page .ff-body ul {
+  padding-left: 1.25rem;
+  margin: 0 0 1.1rem;
+}
+
+.food-forest-page .ff-body li {
+  margin: 0.35rem 0;
+}
+
+.food-forest-page .ff-body a {
+  color: #6e5526;
+  text-decoration: underline;
+  text-decoration-color: #c9b48a;
+}
+
+.food-forest-page .ff-body hr {
+  border: 0;
+  border-top: 1px solid #d8ccb3;
+  margin: 2.5rem 0;
+}
+
+.food-forest-page .ff-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0 0.75rem;
+  border: 1px solid #d8ccb3;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(31, 26, 18, 0.08);
+}
+
+.food-forest-page .ff-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d8ccb3;
+  font-size: 0.95rem;
+  color: #5b4e3a;
+}
+
+.food-forest-page .ff-footer p {
+  margin: 0 0 0.5rem;
+}
+
+.food-forest-page .ff-footer .ff-updated {
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #7a6a52;
+}
+
+@media print {
+  .food-forest-page {
+    background: white;
+    color: black;
+    padding: 0.75in;
+  }
+  .food-forest-page .ff-body img {
+    max-height: 5in;
+    object-fit: contain;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-color: #999;
+  }
+  .food-forest-page .ff-body h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  header, footer[role="contentinfo"], nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .food-forest-page {
+    padding: 1.5rem 1rem 3rem;
+  }
+  .food-forest-page .ff-body h1 {
+    font-size: 1.625rem;
+  }
+  .food-forest-page .ff-body h2 {
+    font-size: 1.2rem;
+  }
+}

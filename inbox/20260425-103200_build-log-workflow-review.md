@@ -51,21 +51,31 @@ Full context for the architecture decision: see `~/.claude/projects/-home-bob-pr
 
 ## Action — Howard
 
-1. **Review existing `publish.sh`** — what does it do today, what assumptions does it bake in.
-2. **Design the holding-space pattern.** Concrete spec:
-   - Where do drafts live? (`content/build-logs/_drafts/` is my proposal — gitignored or committed, your call)
-   - Naming convention? (proposed: `YYYY-MM-DD-HHMMSS_session-id_short-slug.md`)
-   - What metadata does each draft carry? (frontmatter with `session`, `project`, `author` (which Bob), `created` timestamp)
-   - How does consolidation order entries? (chronological by `created` timestamp seems right)
-   - How are drafts cleaned up after consolidation? (move to `_drafts/_published/{date}/` or just delete)
-3. **Update or create the consolidation script.** Could be a new `bin/consolidate-build-log.sh` that:
-   - Takes a date (default: today)
-   - Reads all `_drafts/{date}-*.md` files
-   - Merges into `content/build-logs/{date}.md` with proper frontmatter (incrementing `session_count`, unioning `projects_touched`)
-   - Optional flag to dry-run vs. apply
-4. **Update the BuildLog skill** at `~/.claude/skills/Bob/BuildLog/SKILL.md`. The skill currently writes directly to the canonical file; redirect it to write a draft instead. Date verification can happen at the draft-write step (use `date '+%Y-%m-%d %H:%M:%S'` from system, never infer).
-5. **Document the new workflow** in `~/projects/wallykroeker.com/CLAUDE.md` so all Bobs know the pattern.
-6. **Migrate today.** Today's session (`2026-04-25.md`, written by Bob Prime in TSFUR) should remain as-is, but starting tomorrow all build log writes go through the new pattern.
+### ✅ Already done by Bob Prime (Apr 25, 2026 morning)
+
+1. ✅ **Updated `~/.claude/skills/Bob/BuildLog/SKILL.md`** to the holding-space pattern. Date verification via `date` command at write time. Session-ID + slug naming convention. Drafts written to `content/build-logs/_drafts/`.
+2. ✅ **Created `content/build-logs/_drafts/`** with a `README.md` documenting the convention so future sessions see it.
+3. ✅ **Naming convention chosen:** `YYYY-MM-DD-HHMMSS_{author-slug}_{project-slug}_{short-slug}.md`
+4. ✅ **Frontmatter convention chosen:** see `_drafts/README.md` — includes `date`, `created`, `session_id`, `author`, `project`, `slug`, `sensitivity`, `projects_touched`, `tags`.
+5. ✅ **Today's canonical entry (`2026-04-25.md`)** stays as-is. Was written via the OLD direct-write pattern before the skill update. Pre-existing canonical files are not migrated.
+
+### 🚧 Howard's remaining scope (the consolidation script)
+
+1. **Review existing `publish.sh`** — what does it do today, what assumptions does it bake in. Decide whether to extend `publish.sh` or create a new `bin/consolidate-build-log.sh`.
+2. **Build the consolidation script.** Spec:
+   - Takes a date (default: today, accept `YYYY-MM-DD` arg)
+   - Reads all `content/build-logs/_drafts/{date}-*.md` files
+   - Sorts by `created` ISO timestamp (chronological)
+   - Merges into `content/build-logs/{date}.md` with consolidated frontmatter:
+     - `session_count` = number of drafts merged
+     - `projects_touched` = union of all draft `projects_touched`
+     - `authors` (new field) = list of distinct Bobs who contributed
+     - `tags` = union of all draft tags
+   - Each draft becomes a `## {TimeOfDay} Session — {author}` block in the canonical file
+   - Cleanup: move processed drafts to `_drafts/_published/{date}/` (or delete — Wally's call below)
+   - Optional `--dry-run` flag that prints the merged output without writing
+3. **Document the publish flow** in `~/projects/wallykroeker.com/CLAUDE.md` so all Bobs know how drafts become canonical.
+4. **(Optional) Schedule** — should consolidation run automatically (cron / git hook on push) or be manual? Wally's call (see pending decisions below).
 
 ## Pending Wally decisions Howard should surface
 

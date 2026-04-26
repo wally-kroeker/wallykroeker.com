@@ -7,10 +7,11 @@
  * union frontmatter (session_count, projects_touched, tags, authors).
  *
  * Behavior summary:
- *   - If `content/build-logs/{date}.md` already exists → SKIP with warning. We do not
- *     mutate pre-existing canonical files. Drafts remain in `_drafts/` for manual
- *     handling. (Wally directive 2026-04-25: "don't change existing build logs, just
- *     update the workflow going forward.")
+ *   - If `content/build-logs/{date}.md` already exists AND --merge is NOT passed →
+ *     SKIP with warning. Default behaviour preserves existing canonical files.
+ *   - If --merge is passed AND canonical exists → append draft sessions before any
+ *     `## Day Summary` marker (or at end of body if none), union the frontmatter
+ *     fields (session_count, projects_touched, tags, authors).
  *   - If canonical missing → create from drafts.
  *   - Drafts with `sensitivity != public` → script fails loud (privacy assertion).
  *   - On success → drafts are moved to `_drafts/_published/{date}/` (history preserved).
@@ -19,6 +20,7 @@
  *   bun run scripts/consolidate-build-log.ts                 # consolidate today
  *   bun run scripts/consolidate-build-log.ts --date 2026-04-26
  *   bun run scripts/consolidate-build-log.ts --dry-run       # show plan, don't write
+ *   bun run scripts/consolidate-build-log.ts --merge         # merge into existing canonical
  *   bun run scripts/consolidate-build-log.ts --help
  *
  * Exit codes:
@@ -70,9 +72,10 @@ function humanDate(date: string): string {
   return dt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-function parseArgs(argv: string[]): { date: string; dryRun: boolean } {
+function parseArgs(argv: string[]): { date: string; dryRun: boolean; merge: boolean } {
   let date = todayISO()
   let dryRun = false
+  let merge = false
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
     if (a === '--help' || a === '-h') {
@@ -82,6 +85,7 @@ Usage:
   bun run scripts/consolidate-build-log.ts                  consolidate today's drafts
   bun run scripts/consolidate-build-log.ts --date YYYY-MM-DD
   bun run scripts/consolidate-build-log.ts --dry-run        show plan, write nothing
+  bun run scripts/consolidate-build-log.ts --merge          append into existing canonical
   bun run scripts/consolidate-build-log.ts --help
 
 Exit codes:
@@ -90,6 +94,7 @@ Exit codes:
       process.exit(0)
     }
     if (a === '--dry-run') { dryRun = true; continue }
+    if (a === '--merge') { merge = true; continue }
     if (a === '--date') { date = argv[++i]; continue }
     console.error(`unknown arg: ${a}`)
     process.exit(1)
@@ -98,7 +103,7 @@ Exit codes:
     console.error(`bad --date: ${date} (want YYYY-MM-DD)`)
     process.exit(1)
   }
-  return { date, dryRun }
+  return { date, dryRun, merge }
 }
 
 function loadDrafts(date: string): Draft[] {
@@ -124,8 +129,14 @@ function assertPublicOnly(drafts: Draft[]) {
   }
 }
 
+function createdStr(d: Draft): string {
+  // YAML parses ISO timestamps to Date; coerce back to ISO string for stable sort.
+  const c = d.frontmatter.created as unknown
+  return c instanceof Date ? c.toISOString() : String(c)
+}
+
 function buildCanonical(date: string, drafts: Draft[]): string {
-  const sorted = [...drafts].sort((a, b) => a.frontmatter.created.localeCompare(b.frontmatter.created))
+  const sorted = [...drafts].sort((a, b) => createdStr(a).localeCompare(createdStr(b)))
 
   const tags = new Set<string>(['build-log', 'daily'])
   const projects = new Set<string>()
@@ -169,6 +180,54 @@ function buildCanonical(date: string, drafts: Draft[]): string {
   return fm + '\n' + sessions + footer
 }
 
+function mergeIntoExisting(canonicalPath: string, drafts: Draft[], date: string): string {
+  const raw = fs.readFileSync(canonicalPath, 'utf8')
+  const existing = matter(raw)
+  const sorted = [...drafts].sort((a, b) => createdStr(a).localeCompare(createdStr(b)))
+
+  const tags = new Set<string>([...((existing.data.tags as string[]) ?? [])])
+
+  // Project union, dedup case-insensitively, preserving first-seen casing (canonical wins).
+  const projectMap = new Map<string, string>()
+  for (const p of (existing.data.projects_touched as string[]) ?? []) {
+    if (!projectMap.has(p.toLowerCase())) projectMap.set(p.toLowerCase(), p)
+  }
+  const seedAuthors = (existing.data.authors as string[]) ?? (existing.data.author ? [existing.data.author as string] : [])
+  const authors = new Set<string>(seedAuthors)
+
+  for (const d of sorted) {
+    for (const t of d.frontmatter.tags ?? []) tags.add(t)
+    for (const p of d.frontmatter.projects_touched ?? []) {
+      if (!projectMap.has(p.toLowerCase())) projectMap.set(p.toLowerCase(), p)
+    }
+    if (d.frontmatter.author) authors.add(d.frontmatter.author)
+  }
+
+  const newSessionCount = ((existing.data.session_count as number) ?? 1) + sorted.length
+
+  const fm = {
+    ...existing.data,
+    date, // re-coerce to YYYY-MM-DD string (gray-matter parses YAML date to JS Date)
+    session_count: newSessionCount,
+    tags: Array.from(tags),
+    projects_touched: Array.from(projectMap.values()),
+    authors: Array.from(authors),
+  }
+
+  const insertion = '\n\n---\n\n' + sorted.map((d) => d.body).join('\n\n---\n\n') + '\n'
+  const dayMarker = '\n## Day Summary'
+
+  const body = existing.content
+  let newBody: string
+  if (body.includes(dayMarker)) {
+    newBody = body.replace(dayMarker, insertion + dayMarker)
+  } else {
+    newBody = body.trimEnd() + insertion
+  }
+
+  return matter.stringify(newBody, fm)
+}
+
 function moveDraftsToPublished(date: string, drafts: Draft[]) {
   const dest = path.join(PUBLISHED_ARCHIVE, date)
   fs.mkdirSync(dest, { recursive: true })
@@ -178,32 +237,39 @@ function moveDraftsToPublished(date: string, drafts: Draft[]) {
 }
 
 function main() {
-  const { date, dryRun } = parseArgs(process.argv.slice(2))
+  const { date, dryRun, merge } = parseArgs(process.argv.slice(2))
   const canonical = path.join(BUILD_LOGS_DIR, `${date}.md`)
   const drafts = loadDrafts(date)
+  const flagSuffix = [dryRun ? 'dry-run' : '', merge ? 'merge' : ''].filter(Boolean).join(', ')
+  const flagBadge = flagSuffix ? ` (${flagSuffix})` : ''
 
-  console.log(`📓 consolidate-build-log — ${date}${dryRun ? ' (dry-run)' : ''}`)
+  console.log(`📓 consolidate-build-log — ${date}${flagBadge}`)
 
   if (drafts.length === 0) {
     console.log(`   no drafts for ${date}, nothing to do`)
     return
   }
 
-  if (fs.existsSync(canonical)) {
+  const canonicalExists = fs.existsSync(canonical)
+
+  if (canonicalExists && !merge) {
     console.log(`   ⚠️  canonical ${path.relative(REPO_ROOT, canonical)} already exists`)
     console.log(`   ${drafts.length} draft(s) for ${date} left in _drafts/ for manual handling:`)
     for (const d of drafts) console.log(`      ${d.filename}`)
-    console.log(`   (Per Wally: do not change existing build logs. Workflow only consolidates new days.)`)
+    console.log(`   pass --merge to append draft sessions into the existing canonical`)
     return
   }
 
   assertPublicOnly(drafts)
 
-  const out = buildCanonical(date, drafts)
+  const out = canonicalExists
+    ? mergeIntoExisting(canonical, drafts, date)
+    : buildCanonical(date, drafts)
 
   if (dryRun) {
-    console.log(`   would write ${path.relative(REPO_ROOT, canonical)} (${out.length} bytes)`)
-    console.log(`   would merge ${drafts.length} draft(s):`)
+    const verb = canonicalExists ? 'merge into' : 'write'
+    console.log(`   would ${verb} ${path.relative(REPO_ROOT, canonical)} (${out.length} bytes)`)
+    console.log(`   would consume ${drafts.length} draft(s):`)
     for (const d of drafts) console.log(`      ${d.filename} (${d.frontmatter.author} / ${d.frontmatter.created})`)
     console.log(`   would move drafts to _drafts/_published/${date}/`)
     return
@@ -212,7 +278,8 @@ function main() {
   fs.writeFileSync(canonical, out, 'utf8')
   moveDraftsToPublished(date, drafts)
 
-  console.log(`   ✅ wrote ${path.relative(REPO_ROOT, canonical)} (${drafts.length} session${drafts.length > 1 ? 's' : ''})`)
+  const verb = canonicalExists ? 'merged into' : 'wrote'
+  console.log(`   ✅ ${verb} ${path.relative(REPO_ROOT, canonical)} (${drafts.length} new session${drafts.length > 1 ? 's' : ''})`)
   console.log(`   ✅ archived ${drafts.length} draft(s) to _drafts/_published/${date}/`)
 }
 

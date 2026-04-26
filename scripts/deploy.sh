@@ -22,6 +22,21 @@ PROD_HOST="docker@wallykroeker.apps.kroeker.fun"
 PROD_DIR="/home/docker/wallykroeker.com"
 PROD_PATH="/home/docker/.nvm/versions/node/v22.18.0/bin"
 
+# Lock guard — refuse to run if another deploy is already in progress.
+# The 1GB LXC will OOM if two pnpm builds run concurrently (each capped at
+# --max-old-space-size=512MB plus base OS + sshd). Incident 2026-04-26 took
+# the site down for ~10 minutes after two backgrounded publish.sh invocations
+# raced into deploy.sh at the same time. Use flock with -n (non-blocking) so
+# the second invocation fails fast with a clear message instead of waiting.
+LOCK_FILE="/tmp/wallykroeker-deploy.lock"
+exec {LOCK_FD}>"$LOCK_FILE"
+if ! flock -n "$LOCK_FD"; then
+    echo "❌ Error: Another deploy is already running (lock: $LOCK_FILE)"
+    echo "   Wait for it to finish, or if you're sure it's hung:"
+    echo "   pgrep -af 'scripts/deploy.sh' && rm -f $LOCK_FILE"
+    exit 1
+fi
+
 echo "🚀 Starting deployment..."
 
 if [ ! -f "package.json" ]; then

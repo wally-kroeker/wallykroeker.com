@@ -44,6 +44,12 @@ export default function FoodForestLandingPage() {
             persona who synthesizes what the land says when they walk it. Tiphanie's instinct is
             <em> wild over organized;</em> the design defers to that.
           </p>
+          <p>
+            The first thing this place grows for us is the goats' winter hay. The front
+            field along Janzen Road goes into alfalfa and buckwheat this spring — winter
+            feed for the three goats, on land we already own. The first ring of the
+            loop closing.
+          </p>
 
           <h2>What you'll find here</h2>
           <p>

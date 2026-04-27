@@ -163,6 +163,73 @@ html, body {
   box-shadow: 0 1px 3px rgba(31, 26, 18, 0.08);
 }
 
+.food-forest-page .ff-breadcrumb {
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  color: #6e5526;
+}
+.food-forest-page .ff-breadcrumb a {
+  color: #6e5526;
+  text-decoration: none;
+}
+.food-forest-page .ff-breadcrumb a:hover {
+  text-decoration: underline;
+  text-decoration-color: #c9b48a;
+}
+
+.food-forest-page .ff-lede {
+  font-size: 1.15rem;
+  color: #5b4e3a;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.food-forest-page .ff-stats {
+  margin: 0.5rem 0 1.75rem;
+  font-size: 0.95rem;
+  color: #7a6a52;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.005em;
+}
+
+.food-forest-page .ff-hero {
+  margin: 1.5rem 0 2rem;
+}
+.food-forest-page .ff-hero img {
+  margin: 0 0 0.5rem;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d8ccb3;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(31, 26, 18, 0.08);
+}
+.food-forest-page .ff-article figure figcaption {
+  font-size: 0.9rem;
+  color: #5b4e3a;
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+.food-forest-page .ff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 1.5rem 0 0.75rem;
+}
+.food-forest-page .ff-grid img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d8ccb3;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(31, 26, 18, 0.08);
+}
+@media (max-width: 640px) {
+  .food-forest-page .ff-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .food-forest-page .ff-footer {
   margin-top: 3rem;
   padding-top: 1.5rem;

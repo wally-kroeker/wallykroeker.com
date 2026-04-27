@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Container from '@/components/Container'
 
 export const metadata: Metadata = {
-  title: 'Greybeard AI Collective',
-  description: 'Monthly meetups for infrastructure veterans building with AI. Practitioner-led, no vendor pitches.',
+  title: 'GrayBeard AI Collective',
+  description: 'Monthly meetups for infrastructure veterans building with AI. Veteran-led, no vendor pitches.',
   alternates: { canonical: 'https://wallykroeker.com/community' },
 }
 
@@ -14,7 +14,7 @@ export default function CommunityPage() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-zinc-100 mb-6">
-              Greybeard AI Collective
+              GrayBeard AI Collective
             </h1>
             <p className="text-xl text-zinc-400 leading-relaxed">
               Monthly meetups for infrastructure veterans (10+ years) who are actually building with AI. Not selling it. Building it.
@@ -22,7 +22,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-12">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: April 30, 2026</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: April 29, 2026</h2>
             <p className="text-zinc-300 leading-relaxed mb-4 text-center">
               Wednesday, 7pm Central on Discord
             </p>
@@ -37,7 +37,7 @@ export default function CommunityPage() {
             </p>
             <div className="text-center">
               <a
-                href="https://discord.gg/uvWH2rNwC5"
+                href="https://discord.gg/qH9rAuj4nM"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-4 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors text-lg"
@@ -79,7 +79,7 @@ export default function CommunityPage() {
                 <span className="text-zinc-500 text-sm">member presentation</span>
               </div>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                A member walked the group through their own AI partner setup, "Poe", named after the Altered Carbon AI hotelier. Different shape than Wally's PAI, different bets about how an AI partner should fit into your environment. The conversation that followed was the real value, two practitioners trading actual design decisions instead of theory.
+                A member walked the group through their own AI partner setup, "Poe", named after the Altered Carbon AI hotelier. Different shape than Wally's PAI, different bets about how an AI partner should fit into your environment. The conversation that followed was the real value, two veterans trading actual design decisions instead of theory.
               </p>
               <p className="text-zinc-400 leading-relaxed">
                 Two new members also joined on meeting day. The collective starting to do what it was designed to do.
@@ -92,7 +92,7 @@ export default function CommunityPage() {
                 <span className="text-zinc-500 text-sm">6 attendees · 87 min</span>
               </div>
               <p className="text-zinc-400 leading-relaxed mb-4">
-                First meeting of the collective. Six infrastructure veterans joined for a live demo of PAI deploying Uptime Kuma into a home lab from a single prompt — Proxmox VM clone, Docker setup, DNS record, security patches, all in about 7 minutes. Also demoed building custom tools on the fly at client sites (the "Digital Blacksmith" concept).
+                First meeting of the collective. Six infrastructure veterans joined for a live demo of PAI deploying Uptime Kuma into a home lab from a single prompt. Proxmox VM clone, Docker setup, DNS record, security patches, all in about 7 minutes. Also demoed building custom tools on the fly at client sites (the "Digital Blacksmith" concept).
               </p>
               <p className="text-zinc-400 leading-relaxed mb-4">
                 Discussion covered the real cost of heavy AI usage ($100+/month across providers), the gap between enterprise AI vendor promises and implementation reality, and the value of picking tools and mastering them vs. constant switching.
@@ -138,7 +138,7 @@ export default function CommunityPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-red-500 mt-1">✗</span>
-                <span>Beginner AI tutorials—this isn't that</span>
+                <span>Beginner AI tutorials. This isn't that.</span>
               </li>
             </ul>
           </div>
@@ -146,10 +146,10 @@ export default function CommunityPage() {
           <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-12">
             <h3 className="text-lg font-bold text-zinc-100 mb-3">About Wally</h3>
             <p className="text-zinc-400 leading-relaxed mb-3">
-              I'm Wally Kroeker. Twenty-plus years in security and infrastructure—built systems, hardened networks, automated what could be automated. Currently a security architect for a Manitoba business. On the side I run GoodFields Consulting (helping clients build secure, maintainable infrastructure), and write here on the site about the tech I'm building. The deeper, slower thinking goes to my Substack, <a href="https://cognitiveloop.substack.com" target="_blank" rel="noopener noreferrer" className="text-zinc-300 underline hover:text-white transition">Cognitive Loop</a>.
+              I'm Wally Kroeker. Twenty-plus years in security and infrastructure. Built systems, hardened networks, automated what could be automated. Currently a security architect for a Manitoba business. On the side I run GoodFields Consulting (helping clients build secure, maintainable infrastructure), and write here on the site about the tech I'm building. The deeper, slower thinking goes to my Substack, <a href="https://cognitiveloop.substack.com" target="_blank" rel="noopener noreferrer" className="text-zinc-300 underline hover:text-white transition">Cognitive Loop</a>.
             </p>
             <p className="text-zinc-400 leading-relaxed mb-3">
-              I built Bob (and the rest of PAI) as my AI business partner—not a chatbot, an actual external executive function. Multi-agent orchestration, task delegation, the works. Runs my consulting practice and offloads the ADHD tax.
+              I built Bob (and the rest of PAI) as my AI business partner. Not a chatbot, an actual external executive function. Multi-agent orchestration, task delegation, the works. Runs my consulting practice and offloads the ADHD tax.
             </p>
             <p className="text-zinc-400 leading-relaxed">
               I'm doing this because I'd rather figure this out with peers than alone. If you're the kind of person who builds systems instead of complaining about them, you'll fit right in.
@@ -157,9 +157,9 @@ export default function CommunityPage() {
           </div>
 
           <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-12">
-            <h3 className="text-lg font-bold text-zinc-100 mb-3">Why "Greybeard"?</h3>
+            <h3 className="text-lg font-bold text-zinc-100 mb-3">Why "GrayBeard"?</h3>
             <p className="text-zinc-400 leading-relaxed">
-              In Unix culture, a greybeard was the wizard in the basement—the one who actually knew how the systems worked, got paged at 2am, and remembered why that config file couldn't be changed. You've earned the grey. Now let's figure out AI together.
+              In Unix culture, a GrayBeard was the wizard in the basement. The one who actually knew how the systems worked, got paged at 2am, and remembered why that config file couldn't be changed. You've earned the gray. Now let's figure out AI together.
             </p>
           </div>
 

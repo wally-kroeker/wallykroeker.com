@@ -18,15 +18,19 @@ The land is doing most of the work already. We're just learning to listen to it.
 
 ![The 13 acres from above](/images/food-forest/01-aerial-daydream.webp)
 
-A hand-drawn bird's-eye view of the whole property as it might look in 2036. Janzen Road on the west, Mennonite cemetery pinned at the NW corner, cultivated neighbour fields around the south and east. On the property itself: the mature bluff woodland preserved on the western two-thirds (it's already there — we leave most of it alone), open prairie on the east, two small geodesic domes tucked into the sheltered clearings, a concrete pad with a keyhole garden, a bench at the bluff-prairie edge, a wet-meadow restoration where the septic ejector sits, a reinforced conifer shelterbelt along the road, a Jerusalem artichoke strip, and a curving orchard edge along the eastern prairie. The whole layout is grounded in the nine standing-points from the April 19 walk; every icon above has a real GPS location.
+A hand-drawn bird's-eye view of the property as it might look in 2036. Janzen Road on the west, neighbour grain fields around the perimeter, and Mann Mennonite Cemetery a few parcels further up the road to the NW (clearly outside the property — that's "OUTSIDE" in the upper-left of the map). Tracing the southern boundary and bending up through the SW near the house: the **coulee** — a natural winding seasonal wetland, mostly wet-meadow year-round, rising into a spring waterway that eventually feeds the LaSalle River about a mile south. The coulee is the property's ecological heart — it's why the frogs chorus in April and why the wild turkeys are back this spring.
+
+Layered over the real land: the mature bluff woodland preserved on the western two-thirds, a Trillium Zome in the northern interior clearing, a concrete pad with a keyhole garden next to the goat barn, two red-roofed dilapidated wooden grain bins (kept as ruin-garden features, GPS-anchored at 49.8436 N, 97.7748 W), a wet-meadow restoration where the septic ejector sits, a reinforced conifer shelterbelt along the road, a Jerusalem artichoke strip, a curving orchard edge along the eastern prairie, Wally and Tiphanie's Ford Freestar 2005 white minivan parked at the NE camper-van campsite, and **the front field along Janzen Road planted in an alfalfa + buckwheat polyculture** — the forage block that grows winter hay for the three goats, closes the loop on imported feed, fixes nitrogen with the alfalfa, and feeds the early-season pollinators with the buckwheat blooms.
+
+Overlaid in dashed cyan: the actual loop Wally walked on 2026-04-26 — 0.73 mi from the house corner north into the bluff, east to the dogwood stand, and back along the wetland/coulee edge. Every icon and every line is grounded in real GPS now.
 
 ---
 
-## 2. The sheltered-clearing dome — spring
+## 2. The Zome clearing — spring
 
-![The sheltered-clearing dome](/images/food-forest/02-sheltered-dome.webp)
+![The Zome clearing](/images/food-forest/02-zome-clearing.webp)
 
-This is **cluster-002** from the April walk — the sheltered bluff clearing where the collapsed white shed currently stands. Wally's voice-note daydream put a dome here, and the land agrees: level ground, mature oak shelter on three sides, a path already leading to the intact red shed, south-facing enough for passive solar. The scene is end-of-April, trees still bare, residual snow on the north sides, the first crocuses at the dome's door. This is not a "we will build a dome by 2027" commitment — it's what the clearing would look like if and when one day we did.
+A **Trillium Zome** — polygonal timber-framed, rhombic wall panels, faceted crown roof, mix of solid wood and glazed panels — nestled in a clearing in the upper northern bluff (the purple-marked clearing on the annotated property map). Big enough for 10–12 people. This is not a white-fabric glamping dome; it's hand-crafted architecture that grows out of the landscape, the kind of structure that belongs to the prairie rather than passing through it. The scene is end-of-April, trees still bare, residual snow on the north sides, the first crocuses emerging at the south-facing door. This is a Year 5+ aspiration, not a Year 1 commitment — what the clearing might look like when the time comes.
 
 ---
 
@@ -34,7 +38,7 @@ This is **cluster-002** from the April walk — the sheltered bluff clearing whe
 
 ![The keyhole garden bed](/images/food-forest/03-keyhole-bed.webp)
 
-**Cluster-006** — the concrete pad in the flooded riparian grove, near the go-barn. This is the single strongest Year-1 move on the property: a walk-in keyhole raised bed sitting on the existing pad (no ground-breaking required), ringed with an electric fence for the real deer pressure. Wally already designed this in his voice note — cardboard base, deep mulch, hugel-fill of wood and compost, 4-5 ft high sides. One bed, this year, as a declared practice. Everything the two of you learn from this bed teaches the whole 10-year design. The sketch shows it in July: squash tumbling over the edge, tomatoes on stakes, sunflowers at the back, Wally and Tiphanie harvesting together.
+**Cluster-006** — the concrete pad in the flooded riparian grove, right next to the goat barn. This is the single strongest Year-1 move on the property: a walk-in keyhole raised bed sitting on the existing pad (no ground-breaking required), ringed with an electric fence for the real deer pressure. Wally already designed this in his voice note — cardboard base, deep mulch, hugel-fill of wood and compost, 4-5 ft high sides. One bed, this year, as a declared practice. Everything the two of you learn from this bed teaches the whole 10-year design. The sketch shows it in July: squash tumbling over the edge, tomatoes on stakes, sunflowers at the back, Wally and Tiphanie harvesting together.
 
 ---
 
@@ -51,6 +55,8 @@ This is **cluster-002** from the April walk — the sheltered bluff clearing whe
 ![The ejector-field restoration](/images/food-forest/05-ejector-restoration.webp)
 
 **Cluster-010** — the big clearing with the grey septic ejector box that Wally confirmed pumps liquid effluent from the septic tank out into the surrounding bush. This area can never host food plants — the discharge zone is permanently off-limits to edibles for health and legal reasons. But Wally said: "at some point I'd like to make it look nice." So the sketch is exactly that: red-osier dogwood (those bright red winter stems) and pussy willow screening the box, blue flag iris in bloom in the wet zone, switchgrass waving, not a burdock in sight. Intentional beauty, no food, doing a real ecological job. A Zone 5 that reads as deliberate instead of neglected.
+
+**Update from the 2026-04-26 walk:** the red-osier dogwood we'd planned to source from a nursery is **already growing on the property's east edge** (near the bench node and the cluster-009 area). Year 1 propagation is now hardwood cuttings from the existing stand — late-April through early-May is the perfect window — strike them into damp soil at the ejector boundary and the planting roots itself for free. Locally adapted, no nursery purchase, earned by walking the land.
 
 ---
 
@@ -70,11 +76,11 @@ The cheapest, bravest Year-1 planting we could make. Jerusalem artichokes are ne
 
 ---
 
-## 8. The gathering space between two domes — summer evening
+## 8. The Zome and the gathering space — summer evening
 
-![The gathering space between two domes](/images/food-forest/08-gathering-space.webp)
+![The Zome and the gathering space](/images/food-forest/08-gathering-space.webp)
 
-Wally's voice-note vision spoken aloud: "a gathering space with a stage" between two domes in two clearings. This is the long-arc picture — the Proto Commons connection, the retreat space, the place where the land stops being a solo project and starts being shared. Summer evening, string lights, neighbours arriving with covered dishes and a fiddle. Not a wedding, not a festival — just the gathering that this land, sheltered and welcoming as it is, always wanted to host.
+Wally's voice-note vision, revised: one Trillium Zome in the northern clearing, with an outdoor gathering space adjacent — a raised wooden stage platform under the bur oak canopy, a long plank table with mismatched chairs, string lights in the trees. This is the long-arc picture — the Proto Commons connection, the retreat space, the place where the land stops being a solo project and starts being shared. Summer evening, golden-hour light, neighbours arriving with covered dishes and a fiddle, two kids running ahead. Not a wedding, not a festival — just the gathering that this land, sheltered and welcoming as it is, always wanted to host.
 
 ---
 
@@ -86,11 +92,11 @@ Wally's voice-note vision spoken aloud: "a gathering space with a stage" between
 
 ---
 
-## 10. Wally and Tiphanie walking the land — October
+## 10. The land in October — Year 10
 
-![Wally and Tiphanie walking the land](/images/food-forest/10-walking-together.webp)
+![The land in October](/images/food-forest/10-landscape-closing.webp)
 
-The closing image. Ten years from now, October, late afternoon gold. The food forest has grown in — saskatoon leaves turning orange-red, aspens gold, rose-hips glowing, fruit shrubs heavy with the last of the late berries. Wally and Tiphanie walking the path together, mid-conversation, relaxed. Tiphanie's instinct at the April intake was "wild over organized," and you can see she got her way: the organized zones are small islands in a healthy wild landscape. The dome from picture #2 is visible in the distance between mature oak trunks. This is not a proof. It's a feeling.
+The closing image. Ten years from now, October, late afternoon gold. The food forest has grown in — saskatoon leaves turning orange-red, aspens gold, rose-hips glowing, fruit shrubs heavy with the last of the late berries. A bark-chip path winds through the scene, empty of people — the land speaking for itself. In the middle distance through the mature oak trunks, the faceted crown of the Zome is just visible, catching the afternoon light. Tiphanie's instinct at the April intake was "wild over organized," and you can see she got her way: the organized zones are small islands in a healthy wild landscape. This is not a proof. It's a feeling.
 
 ---
 
@@ -98,13 +104,15 @@ The closing image. Ten years from now, October, late afternoon gold. The food fo
 
 Forget the 10-year view for a moment. Here is what is actually available to Wally and Tiphanie in the next six weeks:
 
-1. **Walk together** the three places that matter most: the cluster-006 concrete pad (picture #3), the cluster-009 bluff-edge node (picture #4), and the cluster-002 sheltered clearing (picture #2). These are decision-making walks, not tours.
+1. **Walk together** the three places that matter most: the cluster-006 concrete pad next to the goat barn (picture #3), the cluster-009 bluff-edge node (picture #4), and the purple-marked Zome clearing in the northern bluff (picture #2). These are decision-making walks, not tours.
 2. **Flag the septic ejector plume at cluster-010** with flagging tape so neither of you inadvertently plans food plantings inside the discharge zone — this is the single most important "do not plant food here" boundary on the property.
 3. **Build one walk-in keyhole bed on the cluster-006 pad** this spring. Wally's voice note already designed it. One bed. Declared practice.
 4. **Plant Jerusalem artichokes and horseradish** as a test strip — near-zero cost, starts the clock.
 5. **Inoculate two or three fallen trunks at cluster-010 with oyster or wine-cap mushroom spawn.** Fresh windthrow + cheap spawn = satisfying results in 18 months.
 6. **Send soil samples** from three spots (cluster-006 near the pad, cluster-009 south-facing clearing, cluster-008 berm) to a Manitoba lab — pH, texture, organic matter, basic NPK.
 7. **Re-photograph the nine standing-points in late June and late August** — same GPS, same bearings. Three-season photo stacks tell us what the site actually does, not just what one April afternoon looked like.
+8. **Take dogwood cuttings now from the east-edge stand** (confirmed by the 2026-04-26 walk). 8–10-inch hardwood lengths, struck into damp soil at the ejector boundary. Late April / early May is the propagation window — locally adapted, free, immediate.
+9. **Seed the front field with alfalfa + buckwheat** as the goat-hay forage block. Alfalfa goes in as a perennial nurse stand; buckwheat is the fast Year-1 cover that bee-feeds while the alfalfa establishes. Cutting timing matters (cut buckwheat at flower-peak, before seed-set, so it doesn't volunteer the next year). This is the season's biggest "close the loop on the goats" move — every bale of imported hay is a bale this field could grow.
 
 Spring is here. It isn't too late. It isn't even close to too late. This is the year we start.
 

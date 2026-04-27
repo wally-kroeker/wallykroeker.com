@@ -112,11 +112,10 @@ export default function FoodForestWalk20260426Page() {
 
           <h3>Moment 3 — Walking the wetland edge</h3>
           <p>
-            From the east edge, Wally turns and walks back along the wetland — what he
-            called, on this walk, his <em>moat</em>: the wet boundary on the south and
-            east that defines what is inside the property and what is outside. It's a
-            good mental model. Zone 5 thinking — wild buffer around the productive
-            interior — fits the feature exactly.
+            From the east edge, Wally turns and walks back along the wetland — the
+            wet boundary on the south and east that defines what is inside the
+            property and what is outside. Zone 5 thinking — wild buffer around the
+            productive interior — fits the feature exactly.
           </p>
           <p>
             On the way back he confirms a few things the land has been telling us.
@@ -176,11 +175,6 @@ export default function FoodForestWalk20260426Page() {
 
           <h2>Open questions</h2>
           <ul>
-            <li>
-              <strong>"Mode" or "moat" — which?</strong> The transcript said one;
-              context suggests the other. Wally to confirm so we use the right word
-              in future docs.
-            </li>
             <li>
               <strong>"Drone path" or "drawn path"?</strong> Either makes sense given
               the upland-edge route. Worth knowing if there's drone sensing in play here too.

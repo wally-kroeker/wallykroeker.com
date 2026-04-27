@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: { images: [] },
 }
 
-const UPDATED = '2026-04-23 (coulee edition)'
+const UPDATED = '2026-04-27 (zome edition)'
 
 async function getDaydream() {
   const fullPath = path.join(process.cwd(), 'content', 'food-forest', 'daydream.md')

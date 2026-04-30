@@ -46,6 +46,20 @@ tags:
 ---
 ```
 
+## Body convention — TL;DR first (added Apr 30, 2026)
+
+Every draft body opens with a `**TL;DR:**` line immediately after the H2 title, followed by a blank line, then the prose body:
+
+```markdown
+## {Title}
+
+**TL;DR:** {1-2 sentences distilling the key thing — what landed, what shipped, what surprised. Same author voice as the body. Distillation only, no new claims, no emoji.}
+
+{Full prose body…}
+```
+
+The TL;DR survives consolidation as plain body content — no consolidation-script changes required. See `~/.claude/skills/Bob/BuildLog/SKILL.md` for the full TL;DR rules.
+
 ## Consolidation
 
 The consolidation script (TBD — see Howard's handoff at `~/projects/wallykroeker.com/inbox/20260425-103200_build-log-workflow-review.md`) will:

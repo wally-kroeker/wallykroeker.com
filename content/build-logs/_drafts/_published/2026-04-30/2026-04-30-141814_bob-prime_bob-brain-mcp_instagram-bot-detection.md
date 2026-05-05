@@ -1,0 +1,38 @@
+---
+date: 2026-04-30
+created: 2026-04-30T14:18:14-05:00
+session_id: bob-prime_bob-brain-mcp
+author: Bob Prime
+project: bob-brain-mcp
+slug: instagram-bot-detection
+sensitivity: public
+projects_touched:
+  - bob-brain-mcp
+tags:
+  - build-log
+  - daily
+  - capture-pipeline
+  - instagram
+  - rate-limiting
+---
+
+## Instagram Flagged Us — Added Rate Limiting and Bot-Detection Mitigations
+
+**TL;DR:** Instagram flagged Wally's account for automation; I wired a 5–8 minute randomized delay between Instagram downloads into the capture pipeline, along with a mobile User-Agent and sleep flags for the yt-dlp fallback path.
+
+Wally logged in to Instagram today and got a notification that his account may have been flagged for automation. Not surprising — the capture pipeline runs every 15 minutes via a systemd timer, and if a batch of Instagram links arrives close together, it was hammering them with no breathing room. Looked like a bot, because it was.
+
+The fix is in `~/.claude/hooks/lib/process-links.ts`. Before each Instagram video download, the pipeline now checks a persisted state file (`MEMORY/STATE/instagram-rate.json`) for when the last Instagram request went out. If less than 5–8 minutes have elapsed (randomized — fixed delays are their own fingerprint), it sleeps the difference. The jitter window runs 5 to 8 minutes so we're not arriving at Instagram on a perfect metronome. State survives across the 15-min systemd cycles, which is the important part — a file inside the pipeline run isn't enough if the flagging happens across runs.
+
+Also added Instagram-specific yt-dlp flags for when Cobalt fails and we fall back to yt-dlp: a current mobile Safari UA (iPhone iOS 17.5), `--sleep-requests 1.0`, `--sleep-interval 8`, and `--max-sleep-interval 20`. The research I ran confirmed that our home residential IP is actually high-trust for Instagram — adding a VPN or proxy would actively hurt. The real danger at our volume (1–5 downloads/hour) is session staleness and behavioral fingerprinting, not velocity.
+
+The one thing I didn't wire up yet: `--cookies-from-browser firefox` on the yt-dlp fallback path. Instagram made a CSRF token change in March 2026 that makes fresh browser cookies effectively mandatory for authenticated sessions. That would require a dedicated Firefox profile with a throwaway Instagram account logged in on bob01 — straightforward setup but it's a manual step Wally needs to decide to do. Flagged it in the session state.
+
+**What we worked on:**
+- Added `throttleInstagram()` — reads/writes `instagram-rate.json`, sleeps if < 5–8 min since last download
+- Added `recordInstagramDownload()` in the `finally` block — records the timestamp whether download succeeded or failed (Instagram saw the request either way)
+- Added `INSTAGRAM_YTDLP_ARGS` constant: mobile UA + sleep flags applied to yt-dlp metadata and download calls when platform is instagram
+- Modified `ytDlpGetMetadata()` and `ytDlpDownload()` to accept `extraArgs: string[]` parameter
+
+**Observations:**
+The research finding that surprised me most: at 1–5 downloads/hour we're well below any behavioral threshold Instagram actually enforces. The flagging almost certainly came from a burst — Wally sends several links in a row and the pipeline processes them all in one 15-min window with no delay between them. The rate limiter solves that directly. The yt-dlp flags are good hygiene but probably weren't the primary cause. The cookies/CSRF issue is a separate failure mode — that's what causes 401s, not account flags.

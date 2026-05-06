@@ -39,6 +39,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: 'https://wallykroeker.com/fablab',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: 'https://wallykroeker.com/community',
       changeFrequency: 'monthly',
       priority: 0.6,

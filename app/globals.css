@@ -281,3 +281,304 @@ html, body {
     font-size: 1.2rem;
   }
 }
+
+/* FabLab capability portfolio — dark, dense, sysadmin-portfolio aesthetic. Scoped. */
+.fablab-page {
+  --fl-bg: #0b0d10;
+  --fl-bg-card: #14171c;
+  --fl-fg: #e7e9ec;
+  --fl-fg-dim: #9aa1ab;
+  --fl-fg-quiet: #6b7280;
+  --fl-border: #23272e;
+  --fl-border-strong: #2e333c;
+  --fl-accent: #f59e0b; /* amber — "infra warning lamp", not stock blue */
+  --fl-accent-soft: rgba(245, 158, 11, 0.12);
+
+  background-color: var(--fl-bg);
+  color: var(--fl-fg);
+  min-height: 100vh;
+  padding: 3rem 1.25rem 4.5rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+}
+
+.fablab-page .fl-article {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.fablab-page a {
+  color: var(--fl-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 158, 11, 0.4);
+  text-underline-offset: 3px;
+}
+.fablab-page a:hover {
+  text-decoration-color: var(--fl-accent);
+}
+
+.fablab-page .fl-hero {
+  margin-bottom: 2.5rem;
+}
+
+.fablab-page .fl-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fl-fg-dim);
+  padding: 0.3rem 0.625rem;
+  border: 1px solid var(--fl-border-strong);
+  border-radius: 999px;
+  background: var(--fl-accent-soft);
+  margin-bottom: 1.25rem;
+}
+
+.fablab-page .fl-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fl-accent);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}
+
+.fablab-page .fl-hero h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  color: #f8fafc;
+}
+
+.fablab-page .fl-subhead {
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: var(--fl-fg);
+  margin: 0 0 1.25rem;
+  max-width: 48rem;
+}
+
+.fablab-page .fl-subhead strong {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.fablab-page .fl-supporting {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--fl-fg-dim);
+  margin: 0;
+  max-width: 48rem;
+}
+
+.fablab-page .fl-supporting em {
+  color: var(--fl-fg);
+  font-style: italic;
+}
+
+/* Stats band */
+.fablab-page .fl-stats {
+  margin: 2.5rem 0 3.5rem;
+  border-top: 1px solid var(--fl-border);
+  border-bottom: 1px solid var(--fl-border);
+  padding: 1.5rem 0;
+}
+
+.fablab-page .fl-stats ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.fablab-page .fl-stats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  padding: 0 0.5rem;
+  border-left: 2px solid var(--fl-border-strong);
+}
+
+.fablab-page .fl-stats li:first-child {
+  border-left-color: var(--fl-accent);
+}
+
+.fablab-page .fl-stat-n {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #f8fafc;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.fablab-page .fl-stat-label {
+  font-size: 0.8125rem;
+  color: var(--fl-fg-dim);
+  line-height: 1.3;
+}
+
+/* Sections */
+.fablab-page .fl-section {
+  margin: 3.5rem 0;
+}
+
+.fablab-page .fl-section h2 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--fl-accent);
+  margin: 0 0 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.fablab-page .fl-section h3 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.fablab-page .fl-section p {
+  margin: 0 0 0.75rem;
+  color: var(--fl-fg-dim);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* Capability cards */
+.fablab-page .fl-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.fablab-page .fl-card {
+  background: var(--fl-bg-card);
+  border: 1px solid var(--fl-border);
+  border-radius: 6px;
+  padding: 1.25rem 1.25rem 1rem;
+  transition: border-color 120ms ease;
+}
+
+.fablab-page .fl-card:hover {
+  border-color: var(--fl-border-strong);
+}
+
+.fablab-page .fl-card p {
+  margin: 0 0 0.75rem;
+}
+
+.fablab-page .fl-card-includes {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
+  color: var(--fl-fg-quiet);
+  line-height: 1.5;
+  margin: 0.75rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--fl-border-strong);
+}
+
+.fablab-page .fl-card-includes span {
+  color: var(--fl-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.6875rem;
+  margin-right: 0.375rem;
+}
+
+/* How it's built — pillars */
+.fablab-page .fl-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem;
+}
+
+.fablab-page .fl-pillar {
+  border-left: 2px solid var(--fl-border-strong);
+  padding-left: 1rem;
+}
+
+.fablab-page .fl-pillar h3 {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fl-accent);
+  margin: 0 0 0.5rem;
+}
+
+/* Why — long-form */
+.fablab-page .fl-why p {
+  font-size: 1rem;
+  color: var(--fl-fg);
+  line-height: 1.7;
+  max-width: 44rem;
+}
+
+.fablab-page .fl-why h2 {
+  margin-bottom: 1.5rem;
+}
+
+/* Footer */
+.fablab-page .fl-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--fl-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.fablab-page .fl-crosslinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.fablab-page .fl-updated {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--fl-fg-quiet);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Responsive — tighter than food-forest, this audience reads fast */
+@media (max-width: 900px) {
+  .fablab-page .fl-stats ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem 1rem;
+  }
+  .fablab-page .fl-cards,
+  .fablab-page .fl-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .fablab-page {
+    padding: 2rem 1rem 3rem;
+  }
+  .fablab-page .fl-stats ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fablab-page .fl-stat-n {
+    font-size: 1.625rem;
+  }
+}

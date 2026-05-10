@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: { images: [] },
 }
 
-const UPDATED = '2026-04-26'
+const UPDATED = '2026-05-10'
 
 export default function FoodForestLandingPage() {
   return (
@@ -72,6 +72,11 @@ export default function FoodForestLandingPage() {
                   </Link>
                 </li>
               </ul>
+            </li>
+            <li>
+              <strong><Link href="/food-forest/build-plan">Year-1 Raised Bed Build Plan</Link></strong> — a
+              4×8 ft log-walled hugelkultur bed built from downed wood and aged goat-bedding straw.
+              Three corner-joint variants and a layer order. The first physical build.
             </li>
           </ul>
 

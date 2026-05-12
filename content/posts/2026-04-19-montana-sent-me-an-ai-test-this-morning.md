@@ -84,8 +84,6 @@ I've been using AI seriously for a while now. I've seen it write code, draft ema
 
 If this is what a single conversation can do now — how is anyone going to price work anymore? How are estimates going to survive? What does a Saturday project even mean?
 
-I don't know. I'm going to show this post to Montana before I publish it, because he's going to have a clearer read on what I just watched than I do. I'll update this with his reaction.
-
-In the meantime: that old site lives again in a modern form, and I didn't have to build it.
+That old site lives again in a modern form, and I didn't have to build it.
 
 — Wally

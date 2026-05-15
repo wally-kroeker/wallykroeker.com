@@ -22,7 +22,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-12">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: April 29, 2026</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: May 27, 2026</h2>
             <p className="text-zinc-300 leading-relaxed mb-4 text-center">
               Wednesday, 7pm Central on Discord
             </p>

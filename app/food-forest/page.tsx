@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: { images: [] },
 }
 
-const UPDATED = '2026-05-10'
+const UPDATED = '2026-05-20'
 
 export default function FoodForestLandingPage() {
   return (
@@ -71,12 +71,35 @@ export default function FoodForestLandingPage() {
                     April 26, 2026 — the dogwood is already on our land
                   </Link>
                 </li>
+                <li>
+                  <Link href="/food-forest/walks/2026-05-10">
+                    May 10, 2026 — choosing where to build the first bed
+                  </Link>
+                </li>
               </ul>
             </li>
             <li>
               <strong><Link href="/food-forest/build-plan">Year-1 Raised Bed Build Plan</Link></strong> — a
               4×8 ft log-walled hugelkultur bed built from downed wood and aged goat-bedding straw.
               Three corner-joint variants and a layer order. The first physical build.
+              {' '}Companion designs:{' '}
+              <Link href="/food-forest/builds/clay-patch-annex">clay-patch annex</Link> and{' '}
+              <Link href="/food-forest/builds/ne-campsite-moon-dance-mat">NE-campsite Moon-Dance Mat</Link>.
+            </li>
+            <li>
+              <strong>Season designs</strong>
+              <ul>
+                <li>
+                  <Link href="/food-forest/designs/2026-summer-plan">
+                    2026 Summer Plan — the late-spring season
+                  </Link>{' '}— whole-season action plan keyed off a soil-temperature gate, not a calendar.
+                </li>
+                <li>
+                  <Link href="/food-forest/designs/cuttings-program">
+                    Cuttings Program — free propagation from the property
+                  </Link>{' '}— 15-species propagation reference + October Propagation Day.
+                </li>
+              </ul>
             </li>
           </ul>
 

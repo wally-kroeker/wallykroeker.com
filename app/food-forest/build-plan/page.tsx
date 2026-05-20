@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 }
 
 const PUBLISHED = '2026-05-10'
+const UPDATED = '2026-05-12'
 const IMG = '/images/food-forest/build-plan'
 
 export default function FoodForestBuildPlanPage() {
@@ -291,6 +292,29 @@ export default function FoodForestBuildPlanPage() {
             <li>Fill bed in stages, watering each layer</li>
             <li>Plant Y1 — squash, beans, kale, potatoes recommended</li>
           </ul>
+
+          <h2>What got added since v1 — Cluster A companion plantings</h2>
+          <p>
+            The May 10 recon walk confirmed the bed site and surfaced two companion designs
+            that share Cluster A&apos;s footprint and resources. Both are written up as their
+            own pages so the build plan stays focused on the wall.
+          </p>
+          <ul>
+            <li>
+              <Link href="/food-forest/builds/clay-patch-annex">
+                <strong>Clay-Patch Annex</strong> — no-fence root and bulb planting
+              </Link>
+              {' '}— daikon, sunchokes, hardneck garlic in the existing tilled 15×20 ft patch.
+              Saves the electric fence wire for the raised bed.
+            </li>
+            <li>
+              <Link href="/food-forest/builds/ne-campsite-moon-dance-mat">
+                <strong>NE Campsite Moon-Dance Mat</strong> — clover/thyme/strawberry cover crop
+              </Link>
+              {' '}— a separate spot on the property, designed in the same walk. Soft, fragrant,
+              nitrogen-fixing, white-flowered by moonlight.
+            </li>
+          </ul>
         </section>
 
         <footer className="ff-footer">
@@ -299,7 +323,10 @@ export default function FoodForestBuildPlanPage() {
             Built by <strong>Wally</strong> (and maybe <strong>Tiphanie</strong>, if she picks the saddle-notch).
             Published by <strong>Howard</strong>.
           </p>
-          <p className="ff-updated">Published {PUBLISHED}.</p>
+          <p className="ff-updated">
+            Build plan v2 · {UPDATED} — added clay-patch annex and NE-campsite Moon-Dance Mat.
+            {' '}Originally published {PUBLISHED}.
+          </p>
         </footer>
       </article>
     </div>

@@ -9,7 +9,7 @@ links:
   upstream: "https://github.com/danielmiessler/Personal_AI_Infrastructure"
   docs: "/projects/bob/build-log"
 reviewed: true
-sensitivity: "public"
+sensitivity: "private"
 ---
 
 Personal AI Infrastructure (PAI) system customized for WSL2 environments. Bob is a skills-based AI orchestration framework built on Claude Code, providing context management, automation hooks, and workflow integration for augmenting daily development and research tasks.

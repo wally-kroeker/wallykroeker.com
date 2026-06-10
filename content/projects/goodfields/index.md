@@ -4,6 +4,9 @@ project: "goodfields"
 type: "project"
 status: "active"
 stage: "MVP"
+featured: false
+category: "Security"
+description: "Professional security consulting and technology services. Helping organizations build resilient infrastructure and strengthen security practices."
 links:
   repo: "https://github.com/wally-kroeker/goodfields.io"
   demo: "https://goodfields.io"

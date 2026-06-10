@@ -4,6 +4,9 @@ project: "wk-site"
 type: "project"
 status: "active"
 stage: "Implementation"
+featured: false
+category: "Infrastructure"
+description: "This site — Next.js 14, dark-first design, git-first publishing, automated build logs and daily overviews."
 links:
   repo: "https://github.com/wally-kroeker/wallykroeker.com"
   docs: "/projects/wk-site/build-log"

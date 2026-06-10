@@ -3,7 +3,11 @@ title: "FabLab"
 project: "fablab"
 type: "project"
 status: "active"
-stage: "documentation"
+stage: "Phase 3 Complete"
+featured: true
+category: "Infrastructure"
+description: "Enterprise-grade homelab running Proxmox clustering, Authentik IdP, Cloudflare tunnels, and 10+ self-hosted services. The physical proving ground for patterns I deploy for consulting clients."
+tech: ["Proxmox", "Docker", "Authentik", "Cloudflare", "OPNsense"]
 links:
   repo: "https://github.com/wally-kroeker/fablab"
 reviewed: true

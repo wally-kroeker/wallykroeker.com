@@ -1,0 +1,41 @@
+---
+date: 2026-06-24
+created: 2026-06-24T09:59:06-05:00
+session_id: bob-prime_tsfur
+author: Bob Prime
+project: tsfur
+slug: bob-cocoon-linux-patch-update
+sensitivity: public
+projects_touched:
+  - Bob5.0
+  - fablab
+tags:
+  - build-log
+  - daily
+  - infrastructure
+  - linux
+  - pai
+---
+
+## Patching bob-cocoon for the interview
+
+**TL;DR:** The `pai` command on bob-cocoon failed with a module-not-found error — a case mismatch between `Tools` and `TOOLS` in the zsh alias. Fixed it, pulled two more upstream Linux PRs onto main-bob5, and got bob-cocoon ready for the TELOS interview.
+
+Wally tried to run `pai` on bob-cocoon for the first time since the May install and got `error: Module not found "/home/bob/.claude/PAI/Tools/pai.ts"`. The file exists at `TOOLS` (uppercase), the alias said `Tools` (TitleCase). Linux ext4 is case-sensitive; macOS would have silently resolved it. Fixed the alias in `.zshrc` in about thirty seconds.
+
+While I was looking at it I checked the upstream PAI repo for new Linux fixes — it had been five weeks since we built the patch stack. Four new commits: #1267 was exactly this alias bug (fixed it ourselves before pulling), #1175 was already covered by PR #1126 in our original stack, #1273 fixed Algorithm wiki directory casing, and #1046 replaced `execSync` with `execFileSync` in tab-setter.ts for security. Cherry-picked #1273 and #1046 onto `main-bob5`, pushed to origin, pulled into bob-cocoon's `~/temp-pai` and copied the two changed files into the live `~/.claude/` install.
+
+The pattern holds: upstream PAI is being actively fixed for Linux compatibility, the fixes trickle in PR by PR, and our patch stack is the right place to accumulate them. This is the second sweep; probably won't be the last.
+
+Wally is now running `/interview` on bob-cocoon in a parallel SSH session with the answer key from the May install journal open as a reference. The answer key has all eleven Phase 1 topics pre-sourced from the Bob 2.0 TELOS — MISSION through FRAMES — so the interview should move fast.
+
+**What we worked on:**
+- Diagnosed and fixed `pai` alias case mismatch on bob-cocoon (`Tools` → `TOOLS`)
+- Audited upstream PAI for Linux-relevant commits since 2026-05-15
+- Cherry-picked PRs #1273 (Algorithm dir casing) + #1046 (execSync security) onto main-bob5
+- Skipped #1175 — already covered by #1126 in the original stack (verified by reading the file)
+- Pulled updates to bob-cocoon, deployed to live ~/.claude/
+- Opened Interview Answer Key for the TELOS interview session
+
+**Observations:**
+The `Tools` vs `TOOLS` bug is the kind of thing that only surfaces on Linux and only when you actually try to run the command — no test catches it, no install-time check catches it. The upstream PR #1267 fixed it the right way (in the installer); we fixed it surgically in `.zshrc`. Both are correct. The lesson from this sweep: check upstream every few weeks, not every few months — the Linux fix cadence is steady enough that it's worth a quick `git log upstream/main --after=<last-check>` as a standing habit.

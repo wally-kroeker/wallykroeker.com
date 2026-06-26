@@ -1,3 +1,4 @@
+# pnpm v10: allowlist for packages that may run build scripts
 onlyBuiltDependencies:
   - "@playwright/browser-chromium"
   - "@playwright/browser-firefox"
@@ -5,3 +6,12 @@ onlyBuiltDependencies:
   - esbuild
   - protobufjs
   - unrs-resolver
+
+# pnpm v11+: replaces onlyBuiltDependencies
+allowBuilds:
+  "@playwright/browser-chromium": true
+  "@playwright/browser-firefox": true
+  "@playwright/browser-webkit": true
+  esbuild: true
+  protobufjs: true
+  unrs-resolver: true

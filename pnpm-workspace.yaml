@@ -1,17 +1,16 @@
-# pnpm v10: allowlist for packages that may run build scripts
+# Allow native build scripts for packages that need them.
+# @playwright/browser-* are intentionally excluded — browsers are installed
+# by the explicit `pnpm exec playwright install --with-deps` CI step, not
+# here. Running both causes a parallel-download lockfile conflict.
+
+# pnpm v10
 onlyBuiltDependencies:
-  - "@playwright/browser-chromium"
-  - "@playwright/browser-firefox"
-  - "@playwright/browser-webkit"
   - esbuild
   - protobufjs
   - unrs-resolver
 
-# pnpm v11+: replaces onlyBuiltDependencies
+# pnpm v11+
 allowBuilds:
-  "@playwright/browser-chromium": true
-  "@playwright/browser-firefox": true
-  "@playwright/browser-webkit": true
   esbuild: true
   protobufjs: true
   unrs-resolver: true

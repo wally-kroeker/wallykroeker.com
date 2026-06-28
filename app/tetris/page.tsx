@@ -1142,6 +1142,14 @@ export default function TetrisPage() {
   };
 
   return (
+    <>
+    {/* Hide site nav + footer on mobile — they eat ~240px and push controls off screen */}
+    <style>{`
+      @media (max-width: 1023px) {
+        body > header { display: none !important; }
+        body > main ~ * { display: none !important; }
+      }
+    `}</style>
     <div
       className="min-h-screen flex flex-col items-center justify-start lg:justify-center p-2 lg:p-4"
       style={{ background: '#0F380F', touchAction: 'none' }}
@@ -1424,5 +1432,6 @@ export default function TetrisPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

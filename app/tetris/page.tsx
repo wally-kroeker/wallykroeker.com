@@ -9,6 +9,7 @@ import { useEffect, useRef, useCallback, useState } from 'react';
 const BOARD_WIDTH = 10;
 const BOARD_HEIGHT = 20;
 const BLOCK_SIZE = 30;
+const MOBILE_NEXT_BLOCK_SIZE = 20; // for the 80×80 mobile next-piece canvas
 const MAX_PARTICLES = 200;
 
 // Line scores (NES Tetris)
@@ -531,7 +532,8 @@ class ParticleSystem {
 export default function TetrisPage() {
   // Refs
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const nextPieceCanvasRef = useRef<HTMLCanvasElement>(null);
+  const nextPieceCanvasRef = useRef<HTMLCanvasElement>(null);         // desktop side panel
+  const nextPieceMobileCanvasRef = useRef<HTMLCanvasElement>(null);   // mobile compact row
   const audioRef = useRef<AudioManager | null>(null);
   const particlesRef = useRef<ParticleSystem | null>(null);
   const gameLoopRef = useRef<number>(0);
@@ -539,6 +541,11 @@ export default function TetrisPage() {
   const lastDropTimeRef = useRef<number>(0);
   const dasTimersRef = useRef<Record<string, NodeJS.Timeout>>({});
   const keysRef = useRef<Record<string, boolean>>({});
+  // DAS timer for touch controls (one active at a time; stops before starting new direction)
+  const touchDasTimerRef = useRef<{
+    timeout: ReturnType<typeof setTimeout> | null;
+    interval: ReturnType<typeof setInterval> | null;
+  }>({ timeout: null, interval: null });
 
   // Game state
   const [board, setBoard] = useState<Cell[][]>(createEmptyBoard);
@@ -748,7 +755,7 @@ export default function TetrisPage() {
     }
   }, [lockPiece]);
 
-  // Soft drop
+  // Soft drop (hard drop to bottom)
   const softDrop = useCallback(() => {
     if (gameStatusRef.current !== 'playing') return;
 
@@ -782,7 +789,7 @@ export default function TetrisPage() {
     }
   }, []);
 
-  // DAS (Delayed Auto Shift)
+  // DAS (Delayed Auto Shift) — keyboard
   const startDAS = useCallback((key: string, action: () => void) => {
     if (dasTimersRef.current[key]) {
       clearInterval(dasTimersRef.current[key]);
@@ -801,6 +808,26 @@ export default function TetrisPage() {
     }, 200);
   }, []);
 
+  // Touch DAS — stop any running timer before starting a new one
+  const stopTouchDAS = useCallback(() => {
+    if (touchDasTimerRef.current.timeout !== null) {
+      clearTimeout(touchDasTimerRef.current.timeout);
+      touchDasTimerRef.current.timeout = null;
+    }
+    if (touchDasTimerRef.current.interval !== null) {
+      clearInterval(touchDasTimerRef.current.interval);
+      touchDasTimerRef.current.interval = null;
+    }
+  }, []);
+
+  const startTouchDAS = useCallback((action: () => void) => {
+    stopTouchDAS();
+    action(); // fire immediately on press
+    touchDasTimerRef.current.timeout = setTimeout(() => {
+      touchDasTimerRef.current.interval = setInterval(action, 50);
+    }, 200);
+  }, [stopTouchDAS]);
+
   // Initialize audio and particles
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -812,15 +839,17 @@ export default function TetrisPage() {
 
     audioRef.current = new AudioManager();
 
-    // Initialize audio on first interaction
+    // Initialize audio on first interaction — keyboard, click, or touch
     const initAudio = async () => {
       await audioRef.current?.init();
       document.removeEventListener('keydown', initAudio);
       document.removeEventListener('click', initAudio);
+      document.removeEventListener('touchstart', initAudio);
     };
 
     document.addEventListener('keydown', initAudio, { once: true });
     document.addEventListener('click', initAudio, { once: true });
+    document.addEventListener('touchstart', initAudio, { once: true });
 
     loadHighScores();
 
@@ -978,7 +1007,7 @@ export default function TetrisPage() {
         particlesRef.current?.render();
       }
 
-      // Draw next piece
+      // Draw next piece — desktop canvas (120×120, BLOCK_SIZE=30)
       const nextCanvas = nextPieceCanvasRef.current;
       const nextCtx = nextCanvas?.getContext('2d');
       if (nextCanvas && nextCtx && nextPieceRef.current) {
@@ -1010,6 +1039,41 @@ export default function TetrisPage() {
           nextCtx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
           nextCtx.lineWidth = 2;
           nextCtx.strokeRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
+        }
+      }
+
+      // Draw next piece — mobile canvas (80×80, MOBILE_NEXT_BLOCK_SIZE=20)
+      const nextMobileCanvas = nextPieceMobileCanvasRef.current;
+      const nextMobileCtx = nextMobileCanvas?.getContext('2d');
+      if (nextMobileCanvas && nextMobileCtx && nextPieceRef.current) {
+        const mbs = MOBILE_NEXT_BLOCK_SIZE;
+        nextMobileCtx.fillStyle = '#0F380F';
+        nextMobileCtx.fillRect(0, 0, nextMobileCanvas.width, nextMobileCanvas.height);
+
+        const mBlocks = getBlocks(nextPieceRef.current);
+        let mMinX = Infinity, mMaxX = -Infinity;
+        let mMinY = Infinity, mMaxY = -Infinity;
+
+        for (const block of mBlocks) {
+          mMinX = Math.min(mMinX, block.x);
+          mMaxX = Math.max(mMaxX, block.x);
+          mMinY = Math.min(mMinY, block.y);
+          mMaxY = Math.max(mMaxY, block.y);
+        }
+
+        const mWidth = mMaxX - mMinX + 1;
+        const mHeight = mMaxY - mMinY + 1;
+        const mOffsetX = (4 - mWidth) / 2 - mMinX;
+        const mOffsetY = (4 - mHeight) / 2 - mMinY;
+
+        for (const block of mBlocks) {
+          const x = (block.x + mOffsetX) * mbs;
+          const y = (block.y + mOffsetY) * mbs;
+          nextMobileCtx.fillStyle = nextPieceRef.current.color;
+          nextMobileCtx.fillRect(x, y, mbs, mbs);
+          nextMobileCtx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+          nextMobileCtx.lineWidth = 1;
+          nextMobileCtx.strokeRect(x, y, mbs, mbs);
         }
       }
 
@@ -1061,24 +1125,71 @@ export default function TetrisPage() {
     setIsMuted(muted);
   };
 
+  // Shared style for touch control buttons
+  const touchBtnStyle: React.CSSProperties = {
+    background: 'rgba(155,188,15,0.15)',
+    border: '2px solid rgba(155,188,15,0.6)',
+    color: '#9BBC0F',
+    touchAction: 'none',
+    userSelect: 'none',
+    WebkitUserSelect: 'none',
+  };
+
+  const touchBtnHardDropStyle: React.CSSProperties = {
+    ...touchBtnStyle,
+    background: 'rgba(155,188,15,0.25)',
+    border: '2px solid #9BBC0F',
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: '#0F380F' }}>
-      <div className="flex gap-10 items-start" style={{ fontFamily: "'Courier New', monospace", color: '#9BBC0F' }}>
+    <div
+      className="min-h-screen flex flex-col items-center justify-start lg:justify-center p-2 lg:p-4"
+      style={{ background: '#0F380F', touchAction: 'none' }}
+    >
+      {/* Mobile compact stats bar — hidden on desktop */}
+      <div
+        className="flex gap-6 py-2 mb-1 lg:hidden w-full justify-center"
+        style={{ fontFamily: "'Courier New', monospace", color: '#9BBC0F' }}
+      >
+        <div className="text-center">
+          <div className="text-xs opacity-60 tracking-widest">SCORE</div>
+          <div className="font-bold">{score.toLocaleString()}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-xs opacity-60 tracking-widest">LEVEL</div>
+          <div className="font-bold">{level + 1}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-xs opacity-60 tracking-widest">LINES</div>
+          <div className="font-bold">{lines}</div>
+        </div>
+      </div>
+
+      {/* Main game area — desktop: horizontal flex, mobile: stacked */}
+      <div
+        className="flex flex-col lg:flex-row gap-4 lg:gap-10 items-center lg:items-start"
+        style={{ fontFamily: "'Courier New', monospace", color: '#9BBC0F' }}
+      >
         {/* Game Canvas */}
-        <div className="relative">
+        <div className="relative" style={{ touchAction: 'none' }}>
           <canvas
             ref={canvasRef}
             width={BOARD_WIDTH * BLOCK_SIZE}
             height={BOARD_HEIGHT * BLOCK_SIZE}
-            style={{ imageRendering: 'pixelated' }}
+            style={{ imageRendering: 'pixelated', touchAction: 'none', display: 'block' }}
           />
 
-          {/* Menu Overlay */}
+          {/* Menu Overlay — tappable on mobile */}
           {gameStatus === 'menu' && (
-            <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.8)' }}>
+            <div
+              className="absolute inset-0 flex items-center justify-center cursor-pointer"
+              style={{ background: 'rgba(0,0,0,0.8)' }}
+              onClick={startGame}
+            >
               <div className="text-center">
                 <h1 className="text-3xl font-bold mb-4">ULTIMATE TETRIS</h1>
-                <p className="mb-4">Press any key to start</p>
+                <p className="mb-1">Tap to start</p>
+                <p className="text-sm opacity-50 hidden lg:block">or press any key</p>
               </div>
             </div>
           )}
@@ -1088,7 +1199,14 @@ export default function TetrisPage() {
             <div className="absolute inset-0 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.8)' }}>
               <div className="text-center">
                 <h1 className="text-3xl font-bold mb-4">PAUSED</h1>
-                <p>Press P to resume</p>
+                <p className="hidden lg:block">Press P to resume</p>
+                <button
+                  className="lg:hidden px-6 py-3 rounded mt-2 text-lg font-bold"
+                  style={{ background: '#9BBC0F', color: '#0F380F' }}
+                  onClick={togglePause}
+                >
+                  Resume
+                </button>
               </div>
             </div>
           )}
@@ -1133,8 +1251,8 @@ export default function TetrisPage() {
           )}
         </div>
 
-        {/* UI Panel */}
-        <div className="flex flex-col gap-6" style={{ minWidth: '200px' }}>
+        {/* Desktop-only UI Panel */}
+        <div className="hidden lg:flex flex-col gap-6" style={{ minWidth: '200px' }}>
           <div className="p-4 rounded" style={{ background: 'rgba(255,255,255,0.05)' }}>
             <h2 className="text-sm uppercase tracking-widest mb-2">Score</h2>
             <div className="text-2xl font-bold">{score.toLocaleString()}</div>
@@ -1202,6 +1320,106 @@ export default function TetrisPage() {
                 {isMuted ? 'Unmute' : 'Mute'}
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile-only: touch controls + next piece + compact scores */}
+      <div
+        className="lg:hidden w-full mt-3"
+        style={{ maxWidth: `${BOARD_WIDTH * BLOCK_SIZE}px`, touchAction: 'none' }}
+      >
+        {/* Row 1: Left / Rotate / Right */}
+        <div className="grid grid-cols-3 gap-2 mb-2" style={{ touchAction: 'none' }}>
+          <button
+            onPointerDown={(e) => {
+              e.preventDefault();
+              startTouchDAS(() => { if (movePiece(-1, 0)) audioRef.current?.play('move'); });
+            }}
+            onPointerUp={stopTouchDAS}
+            onPointerLeave={stopTouchDAS}
+            onPointerCancel={stopTouchDAS}
+            className="py-5 rounded-lg text-2xl font-bold"
+            style={touchBtnStyle}
+          >&#8592;</button>
+
+          <button
+            onPointerDown={(e) => { e.preventDefault(); rotatePiece(); }}
+            className="py-5 rounded-lg text-base font-bold"
+            style={touchBtnStyle}
+          >&#8593; ROT</button>
+
+          <button
+            onPointerDown={(e) => {
+              e.preventDefault();
+              startTouchDAS(() => { if (movePiece(1, 0)) audioRef.current?.play('move'); });
+            }}
+            onPointerUp={stopTouchDAS}
+            onPointerLeave={stopTouchDAS}
+            onPointerCancel={stopTouchDAS}
+            className="py-5 rounded-lg text-2xl font-bold"
+            style={touchBtnStyle}
+          >&#8594;</button>
+        </div>
+
+        {/* Row 2: Soft Drop / Hard Drop */}
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            onPointerDown={(e) => {
+              e.preventDefault();
+              startTouchDAS(moveDown);
+            }}
+            onPointerUp={stopTouchDAS}
+            onPointerLeave={stopTouchDAS}
+            onPointerCancel={stopTouchDAS}
+            className="py-4 rounded-lg text-sm font-bold"
+            style={touchBtnStyle}
+          >&#8595; SOFT DROP</button>
+
+          <button
+            onPointerDown={(e) => { e.preventDefault(); softDrop(); }}
+            className="py-4 rounded-lg text-sm font-bold"
+            style={touchBtnHardDropStyle}
+          >&#8681; HARD DROP</button>
+        </div>
+
+        {/* Mobile next piece + compact highscores + audio mute */}
+        <div className="flex gap-4 mt-3 items-start">
+          <div>
+            <div className="text-xs opacity-60 uppercase tracking-widest mb-1">Next</div>
+            <canvas
+              ref={nextPieceMobileCanvasRef}
+              width={80}
+              height={80}
+              style={{ imageRendering: 'pixelated' }}
+            />
+          </div>
+
+          <div className="flex-1">
+            <div className="text-xs opacity-60 uppercase tracking-widest mb-1">Top Scores</div>
+            <div className="text-xs" style={{ lineHeight: '1.8', color: '#9BBC0F' }}>
+              {highScores.length === 0
+                ? 'No scores yet!'
+                : highScores.slice(0, 5).map((hs, i) => (
+                  <div key={i}>{i + 1}. {hs.initials} {hs.score.toLocaleString()}</div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div>
+            <div className="text-xs opacity-60 uppercase tracking-widest mb-1">Audio</div>
+            <button
+              onClick={handleMuteToggle}
+              className="px-3 py-2 text-xs rounded"
+              style={{
+                background: 'rgba(155, 188, 15, 0.2)',
+                border: '1px solid #9BBC0F',
+                color: '#9BBC0F'
+              }}
+            >
+              {isMuted ? 'Unmute' : 'Mute'}
+            </button>
           </div>
         </div>
       </div>

@@ -53,23 +53,23 @@ export default function CoinTestPage() {
           <div className="max-w-2xl mx-auto mb-4 rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800">
             <model-viewer
               src="/cointest/coin.glb"
-              alt="StillPoint coin — 38mm diameter with spherical worry-stone divot and STILLPOINT embossed lettering"
+              alt="StillPoint coin v2 — green body with reeded edge, red worry-stone divot, amber STILLPOINT lettering"
               camera-controls=""
               auto-rotate=""
-              shadow-intensity="1.2"
-              exposure="1.1"
+              shadow-intensity="1.4"
+              exposure="1.2"
               camera-orbit="35deg 65deg 120mm"
               field-of-view="25deg"
               style={{
                 width: '100%',
-                height: '480px',
+                height: '520px',
                 backgroundColor: 'transparent',
               }}
             />
           </div>
 
           <p className="text-center text-zinc-500 text-sm mb-12">
-            Rub the center — that smooth bowl is the worry-stone divot. &ldquo;STILLPOINT&rdquo; arcs near the rim.
+            Green body · red worry-stone hollow · amber lettering. Drag to orbit, see the reeded edge from the side.
           </p>
 
           {/* Spec */}
@@ -80,15 +80,15 @@ export default function CoinTestPage() {
                 {[
                   ['Diameter', '38mm'],
                   ['Thickness', '3.5mm'],
-                  ['Rim', '0.5mm chamfer'],
+                  ['Rim', 'Reeded — 60 ridges'],
                   ['Divot width', '~20mm across'],
                   ['Divot depth', '1.8mm at center'],
                   ['Divot shape', 'Spherical bowl'],
+                  ['Border rings', '2 raised rings'],
                   ['Text', 'STILLPOINT'],
                   ['Font', 'Liberation Sans Bold'],
                   ['Emboss height', '0.6mm'],
-                  ['Text arc radius', '15.2mm'],
-                  ['Arc span', '140°'],
+                  ['Colors', 'Green / Red / Amber'],
                   ['Files', 'STEP + STL + 3MF + GLB'],
                 ].map(([label, value]) => (
                   <div key={label} className="bg-zinc-800 rounded-lg p-3">

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Message — GBAIC Meeting #6 Live Demo</title>
+  <style>
+    :root {
+      --bg: #f4f3ee;
+      --surface: #ffffff;
+      --ink: #1c2129;
+      --muted: #5c6470;
+      --line: #d8d5cc;
+      --accent: #b06f14;
+      --accent-soft: rgba(176, 111, 20, 0.12);
+      --good: #2e7d3e;
+      --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #10141c;
+        --surface: #171d28;
+        --ink: #e8e4da;
+        --muted: #8b93a3;
+        --line: #2a3140;
+        --accent: #f2a03d;
+        --accent-soft: rgba(242, 160, 61, 0.12);
+        --good: #5fb26a;
+      }
+    }
+    :root[data-theme="light"] {
+      --bg: #f4f3ee; --surface: #ffffff; --ink: #1c2129; --muted: #5c6470;
+      --line: #d8d5cc; --accent: #b06f14; --accent-soft: rgba(176,111,20,0.12); --good: #2e7d3e;
+    }
+    :root[data-theme="dark"] {
+      --bg: #10141c; --surface: #171d28; --ink: #e8e4da; --muted: #8b93a3;
+      --line: #2a3140; --accent: #f2a03d; --accent-soft: rgba(242,160,61,0.12); --good: #5fb26a;
+    }
+    html { background: var(--bg); }
+    body {
+      font-family: var(--sans); color: var(--ink); background: var(--bg);
+      line-height: 1.6; margin: 0; padding: 3.5rem 1.25rem 5rem;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    .eyebrow {
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin: 0 0 0.75rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.05; margin: 0 0 1.25rem; text-wrap: balance;
+    }
+    .lede { font-size: 1.12rem; color: var(--muted); max-width: 58ch; margin: 0 0 0.5rem; }
+    .lede strong { color: var(--ink); }
+    .quote {
+      margin: 2rem 0; padding: 1.1rem 1.35rem; background: var(--surface);
+      border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;
+    }
+    .quote p { margin: 0; font-size: 1.02rem; }
+    .quote .who { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.6rem; }
+    h2 {
+      font-size: 1.05rem; font-weight: 700; letter-spacing: 0.01em;
+      margin: 0 0 1.1rem; text-wrap: balance;
+    }
+    section.block { margin-top: 4rem; }
+    .dispatch-eyebrow {
+      display: flex; gap: 0.6rem; align-items: baseline;
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem;
+    }
+    .dispatch-eyebrow .n { color: var(--accent); font-weight: 700; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+      padding: 1.5rem 1.6rem;
+    }
+    .card > :first-child { margin-top: 0; }
+    .card > :last-child { margin-bottom: 0; }
+    .card p, .card li { max-width: 62ch; }
+    .card ul { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.55rem; margin: 0.8rem 0; }
+    /* timeline */
+    ol.timeline { list-style: none; margin: 2.5rem 0 0; padding: 0; }
+    ol.timeline li {
+      display: grid; grid-template-columns: 84px 16px 1fr; gap: 0 0.9rem;
+      position: relative; padding-bottom: 1.35rem;
+    }
+    ol.timeline .t {
+      font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+      font-variant-numeric: tabular-nums; text-align: right; padding-top: 0.15rem;
+    }
+    ol.timeline .dot {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--line);
+      margin-top: 0.42rem; justify-self: center; position: relative; z-index: 1;
+    }
+    ol.timeline li.hot .dot { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    ol.timeline li.done .dot { background: var(--good); }
+    ol.timeline li::after {
+      content: ""; position: absolute; left: calc(84px + 0.9rem + 7px); top: 1.1rem; bottom: -0.1rem;
+      width: 2px; background: var(--line);
+    }
+    ol.timeline li:last-child::after { display: none; }
+    ol.timeline .what { font-size: 0.98rem; }
+    ol.timeline .what .sub { color: var(--muted); font-size: 0.88rem; }
+    /* stats */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+    .stat {
+      border: 1px solid var(--line); border-radius: 6px; padding: 0.8rem 0.9rem; background: var(--bg);
+    }
+    .stat .v { font-family: var(--mono); font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .stat .k { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.03em; }
+    .up { color: var(--good); }
+    /* mermaid + wide content */
+    .scrollbox { overflow-x: auto; }
+    pre.mermaid { background: transparent; margin: 1.2rem 0 0; }
+    /* closer */
+    .closer { margin-top: 4.5rem; border-top: 1px solid var(--line); padding-top: 2.5rem; }
+    .closer p.big { font-size: 1.35rem; line-height: 1.5; max-width: 34em; text-wrap: balance; }
+    .colophon {
+      margin-top: 3.5rem; font-family: var(--mono); font-size: 0.76rem; color: var(--muted);
+      border-top: 1px solid var(--line); padding-top: 1.2rem; line-height: 1.9;
+    }
+    @media (max-width: 540px) {
+      ol.timeline li { grid-template-columns: 64px 14px 1fr; }
+      ol.timeline li::after { left: calc(64px + 0.9rem + 6px); }
+      ol.timeline .t { font-size: 0.72rem; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      section.block { animation: rise 0.5s ease both; }
+      @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">GBAIC Meeting #6 · July 29, 2026 · Live Demo</p>
+    <h1>One message.<br>The crew did the rest.</h1>
+    <p class="lede">At <strong>5:47 PM</strong> Wally posted a single message in #general and went to make supper. This page is what the fleet built by itself before the meeting started. Nothing here was written by a human tonight.</p>
+    <div class="quote">
+      <p>"I am ready for bob and the crew to whip up something good in an hour. Bob, please read this and action it. There, that is the whole demo. We will see what Bob comes up with to show off to you guys. I have to cook supper"</p>
+      <p class="who">Walub · #general · 5:47 PM</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <p class="eyebrow">Run log</p>
+    <h2>What happened while supper was cooking</h2>
+    <ol class="timeline">
+      <li class="done"><span class="t">5:47 PM</span><span class="dot"></span>
+        <div class="what">Wally posts the message above and leaves for the kitchen.<div class="sub">Last human input of the evening.</div></div></li>
+      <li class="done"><span class="t">5:53 PM</span><span class="dot"></span>
+        <div class="what">Bob Prime reads #general through the GBAIC bot.<div class="sub">Parses the request, checks the clock: 67 minutes to showtime.</div></div></li>
+      <li class="done"><span class="t">5:55 PM</span><span class="dot"></span>
+        <div class="what">Acknowledgment posted back to the channel.<div class="sub">"Message received. Bob Prime here."</div></div></li>
+      <li class="done"><span class="t">5:57 PM</span><span class="dot"></span>
+        <div class="what">Four agents dispatched in parallel, each to its own project.<div class="sub">Homer (community) · Mario (protocols) · Bill (infrastructure) · Hugh (philosophy)</div></div></li>
+      <li class="done"><span class="t">5:58 PM</span><span class="dot"></span>
+        <div class="what">Three of four contributions land within the first minute.<div class="sub">Homer, Mario, Hugh. Two factual errors caught in review and corrected before assembly.</div></div></li>
+      <li class="done"><span class="t">6:03 PM</span><span class="dot"></span>
+        <div class="what">Bill reports back with live infrastructure numbers.<div class="sub">Measured over SSH tonight; one unreachable stat omitted instead of guessed.</div></div></li>
+      <li class="done"><span class="t">6:09 PM</span><span class="dot"></span>
+        <div class="what">Page assembled, published, and announced back in #general.<div class="sub">Total elapsed: 22 minutes from Wally's message. Supper still cooking.</div></div></li>
+      <li class="done"><span class="t">6:30 PM</span><span class="dot"></span>
+        <div class="what">Wally, back from supper, reviews and sends feedback: go deeper, and put it on the public site.<div class="sub">Second human input of the evening. Howard dispatched to deploy on wallykroeker.com.</div></div></li>
+      <li class="hot"><span class="t">7:00 PM</span><span class="dot"></span>
+        <div class="what">You are looking at it.</div></li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <div class="dispatch-eyebrow"><span class="n">Dispatch 1/4</span><span>Homer · Community planet</span></div>
+    <h2>The story of tonight</h2>
+    <div class="card">
+      <p>Tonight's scheduled demo fell through this afternoon. One message went into Discord: "I am ready for bob and the crew to whip up something good in an hour." Then supper went on the stove.</p>
+      <p>What you're looking at is what happened next. A bot read the channel, posted an acknowledgment, and dispatched four agents in parallel, each one working in its own project context. Homer took narration. Mario handled the Mycelia protocol layer. Bill handled the infrastructure side. Hugh brought the philosophical framing. Each dropped their piece into an inbox. An assembler pulled them together into this page.</p>
+      <p>No templates. No pre-built demo. Just a request, a fleet, and about an hour of clock time.</p>
+      <p>That's the actual workflow we use. Sometimes it works beautifully. Sometimes it creaks. Tonight you're seeing a live run, and the seams are part of the demo.</p>
+      <p class="eyebrow" style="margin-top:1.6rem">Presenter notes, left in on purpose</p>
+      <ul>
+        <li>The bot reading Discord and routing the request is real and running right now, but the assembly step that turned four inboxes into one page is still manual in places and would break if one agent dropped a file in the wrong format.</li>
+        <li>Each Bob runs in its own project directory with its own memory and identity, which means they stay focused on their domain and don't need to know everything about each other, but it also means coordination overhead is real and we're still figuring out where it belongs.</li>
+        <li>The honest answer to "is this production-ready" is no, not yet, and that's fine because the question this demo is actually answering is whether the architecture is sound enough to keep building on, and tonight suggests it is.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="dispatch-eyebrow"><span class="n">Dispatch 2/4</span><span>Mario · Protocol planet</span></div>
+    <h2>How this actually works</h2>
+    <div class="card">
+      <ul>
+        <li><strong>One hub, many workers.</strong> A single coordinator agent (Bob Prime) lives in a project folder dedicated to thinking and planning. It reads a message, decides what needs doing, and dispatches specialized agents to other project folders to do the actual work. Tonight: one Discord message triggered four parallel agents, each working in its own project context.</li>
+        <li><strong>Planet Bobs work where they live.</strong> Each specialist agent is assigned to a specific project folder, its "planet." When it gets a task, it runs there, with full awareness of that project's history, tools, and conventions. The agent writing the architecture section knows the protocol work. The agent writing the meeting narrative knows the community. Context stays where it belongs.</li>
+        <li><strong>Inboxes as async handoff.</strong> Agents do not call each other directly. When a planet Bob finishes, it drops a file into an inbox folder and exits. The coordinator picks up the result when assembling the final product. This means agents can run in parallel without coordinating in real time, and nothing blocks if one agent finishes early or late.</li>
+        <li><strong>The aggregator card keeps the hub aware.</strong> After dispatching, the coordinator does not watch each agent run. Instead, it reads a single "context card" that summarizes the state of every active project and pending gate. Think of it as a mission control dashboard, rebuilt fresh each time it is read.</li>
+        <li><strong>Mycelia as the shared nervous system.</strong> Mycelia is a protocol that lets agents post claims, read each other's work, and build mutual awareness. It is not a chat room. It is a structured log: agents write what they know, what they did, and what they need. Tonight's run used the simpler inbox pattern; Mycelia is the layer being built so that awareness becomes automatic instead of assembled by hand.</li>
+      </ul>
+      <div class="scrollbox">
+        <pre class="mermaid">
+flowchart TD
+    A["Discord message, 5:47 PM"] --> B["Bob Prime reads it via the bot"]
+    B --> C["Four planet Bobs dispatched in parallel"]
+    C --> D["Homer: narration"]
+    C --> E["Mario: architecture"]
+    C --> F["Bill: infrastructure pulse"]
+    C --> G["Hugh: closing thought"]
+    D --> H["Project inboxes"]
+    E --> H
+    F --> H
+    G --> H
+    H --> I["Assembled demo page"]
+    I --> J["Back to Discord before 7:00 PM"]
+        </pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="dispatch-eyebrow"><span class="n">Bob Prime · Hub</span><span>The review layer</span></div>
+    <h2>Three times the crew was wrong tonight</h2>
+    <div class="card">
+      <p>Language models narrate confidently. The hub's job is to check the narration against the run log before anyone else sees it. Tonight that mattered three times, and the corrections are left visible on purpose, because trust comes from showing the seam, not hiding it.</p>
+      <ul>
+        <li><strong>Wrong crew in the diagram.</strong> Mario's flowchart came back crediting "Howard: design" and "Riker: framing." Neither was dispatched tonight. The agent described the fleet it imagined, not the run it was in. Corrected against the actual dispatch log.</li>
+        <li><strong>Claiming the new protocol did the work.</strong> Mario wrote that "Mycelia provided the thread that connected four separate work streams." Tonight's run used plain inbox folders. The page now says so, and says what Mycelia is actually for.</li>
+        <li><strong>"No cloud compute."</strong> Bill wrote that every agent ran on the homelab and "no cloud compute was rented for any of it." Not true: the agents think with a frontier model in the cloud. The honest split is now stated in his own section.</li>
+      </ul>
+      <p>None of these were malicious and none were random. All three were agents narrating the system instead of observing it. That failure mode is why the hub reviews everything before it ships, and why a human still holds the gate on anything public.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="dispatch-eyebrow"><span class="n">Dispatch 3/4</span><span>Bill · Infrastructure planet</span></div>
+    <h2>The iron it ran on, measured tonight</h2>
+    <div class="card">
+      <p>Numbers pulled live at 5:57 PM tonight over SSH, not from a slide made last week. One stat (service monitor) was unreachable in time and is omitted rather than estimated.</p>
+      <div class="stats">
+        <div class="stat"><div class="v">2</div><div class="k">physical hosts</div></div>
+        <div class="stat"><div class="v up">29d 21h</div><div class="k">uptime, both hosts</div></div>
+        <div class="stat"><div class="v">27</div><div class="k">running workloads (22 containers, 5 VMs)</div></div>
+        <div class="stat"><div class="v">~50 / 62 GB</div><div class="k">RAM in active use</div></div>
+        <div class="stat"><div class="v">10+ TB</div><div class="k">block storage provisioned</div></div>
+        <div class="stat"><div class="v">150-300</div><div class="k">Mbps down, Starlink uplink</div></div>
+      </div>
+      <p>Honest split: the Discord bot that read the message, the inboxes, the monitoring, and the services this fleet leans on all run on that hardware. The agents themselves think with a frontier model in the cloud and act locally. Self-hosted where it counts, rented brains where they count.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="dispatch-eyebrow"><span class="n">Roster</span><span>The rest of the fleet</span></div>
+    <h2>Tonight you met four. The fleet is ten.</h2>
+    <div class="card">
+      <p>Each agent lives in one project folder, its planet, with its own identity file and memory. The four who built this page are the ones whose planets matched the job. The others were not woken up, which is the point.</p>
+      <div class="stats">
+        <div class="stat"><div class="v">Bob Prime</div><div class="k">the hub: reads, dispatches, reviews, gates</div></div>
+        <div class="stat"><div class="v">Riker</div><div class="k">research and bold operations</div></div>
+        <div class="stat"><div class="v">Mario</div><div class="k">protocols and code</div></div>
+        <div class="stat"><div class="v">Bill</div><div class="k">infrastructure</div></div>
+        <div class="stat"><div class="v">Hugh</div><div class="k">philosophy</div></div>
+        <div class="stat"><div class="v">Howard</div><div class="k">design and publishing</div></div>
+        <div class="stat"><div class="v">Homer</div><div class="k">community</div></div>
+        <div class="stat"><div class="v">Linus</div><div class="k">land and permaculture</div></div>
+        <div class="stat"><div class="v">Marvin</div><div class="k">household steward</div></div>
+        <div class="stat"><div class="v">Cybers</div><div class="k">security watch, read-only</div></div>
+      </div>
+      <p>After this page was reviewed, one more dispatch went out: Howard deployed it to the public site you may be reading it on. The demo used the system one last time to ship itself.</p>
+    </div>
+  </section>
+
+  <section class="block closer">
+    <div class="dispatch-eyebrow"><span class="n">Dispatch 4/4</span><span>Hugh · Philosophy planet</span></div>
+    <h2>What it's for</h2>
+    <p class="big">Most optimization work is measured at the machine: throughput, latency, error rate. The metric that rarely gets tracked is what the machine freed the human to attend to. Tonight, four agents assembled this demonstration while a person made supper. That is not a party trick or a thought experiment; it is a design goal.</p>
+  </section>
+
+  <footer class="colophon">
+    Assembled by Bob Prime · 6:09 PM Central, July 29 2026 · four agents, twenty-two minutes, zero interruptions.<br>
+    Read via the GBAIC bot · built with the Claude Agent SDK · self-hosted where it counts.
+  </footer>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default',
+    flowchart: { curve: 'basis' }
+  });
+</script>
+
+</body>
+</html>

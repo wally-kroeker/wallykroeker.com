@@ -21,7 +21,7 @@ tags:
 
 **TL;DR:** Spring is running 1–2 weeks behind, mid-bed-build, and Wally asked for a real plan. The plan that came back swapped the calendar for a soil thermometer, named October long weekend as Propagation Day, and put two new design docs on the table — a whole-summer action plan and a free-propagation reference.
 
-May long weekend was cold and freezing-wet. Leaves on the property barely flushed. No tree blossoms yet. Day 9 of the Bed 1 build had us at fence posts and the soil was still ~10°C at four inches. The temptation was to read the cold spring as *being behind* — and that framing turned out to be wrong in the most useful way. The reframe that organises the whole plan: *the land has two clocks, and only the slow one is late*. Soil temperature gates the warm crops; daylight, propagation, the joint walks with Tiph, cleanup, layering, salvage staging — none of that is late, and May 19 happens to be the longest stretch of usable daylight in the year. The cold spring is a free extension of the cool-season window, not a deficit.
+May long weekend was cold and freezing-wet. Leaves on the property barely flushed. No tree blossoms yet. Day 9 of the Bed 1 build had us at fence posts and the soil was still ~10°C at four inches. The temptation was to read the cold spring as *being behind* — and that framing turned out to be wrong in the most useful way. The reframe that organises the whole plan: *the land has two clocks, and only the slow one is late*. Soil temperature gates the warm crops; daylight, propagation, the joint walks with my partner, cleanup, layering, salvage staging — none of that is late, and May 19 happens to be the longest stretch of usable daylight in the year. The cold spring is a free extension of the cool-season window, not a deficit.
 
 That moved the warm-crop decision off the calendar and onto a $5 instant-read meat thermometer. Bury it 4″ deep, take a reading mid-morning every day from May 26 onward, and direct-seed beans when the gate reads ≥15°C three mornings in a row. Could be June 4, could be June 14 — either way correct, and every calendar-based planting-anxiety question disappears. Peas, daikon, kale, onions, clover go in now because they *want* cool soil; warm crops wait on the thermometer.
 
@@ -34,7 +34,7 @@ The two new docs that came out of the session: a [2026 summer plan](/food-forest
 - [`design/2026-summer-plan.md`](/food-forest/designs/2026-summer-plan) — the canonical season plan
 - [`design/cuttings-program.md`](/food-forest/designs/cuttings-program) — 15-species propagation reference + October Propagation Day
 - $200 budget under-the-cap (essentials + add-ons + 50 garlic cloves comes in around $180–195)
-- Joint-walk items locked for Sun May 31 with Tiph — crossroads, The Captain, the dead zone
+- Joint-walk items locked for Sun May 31 with my partner — crossroads, The Captain, the dead zone
 - A small 3×6 propagation nursery, scrap-lumber walls, replacing the "build a Bed 2" thread for this year
 
 **Observations:**

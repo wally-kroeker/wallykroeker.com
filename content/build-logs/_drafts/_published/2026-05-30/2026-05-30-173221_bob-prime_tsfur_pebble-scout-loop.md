@@ -42,11 +42,11 @@ This morning's first surfaced item — top score 27.75 — was *Lift Your Voice 
 - Feed list: 11 → 23 (added 13, trimmed 3 high-noise candidates with Wally)
 - Cron at 7:00 bridge / 7:15 digest
 - Runbook at `~/projects/bob-brain-mcp/scripts/PEBBLE-LOOP.md`
-- Handoff to fablab: RSSHub deploy for Anthropic + Sheldrake; Windows Defender Firewall check for walub Ollama
+- Handoff to fablab: RSSHub deploy for Anthropic + Sheldrake; Windows Defender Firewall check for the lab workstation Ollama
 - PRD with 35 atomic ISC criteria at `~/projects/TSFUR/MEMORY/WORK/20260524-deploy-miniflux-wire-pebble-loop/PRD.md`
 
 **Observations:**
 - Token math: Gemini Flash at this scale costs ~$45/year, not the $5 I first quoted. Prompt caching on the embedded ring spec would cut ~70%. Deferred.
-- Local Ollama route (walub, RTX 3080 10GB) is the right v3 architecture for Stage 1 title triage with a 3-4B model. Blocked tonight by Windows Firewall — not a code problem.
+- Local Ollama route (lab workstation, RTX 3080 10GB) is the right v3 architecture for Stage 1 title triage with a 3-4B model. Blocked tonight by Windows Firewall — not a code problem.
 - The "judge vs scout" framing did real work in the design conversation. It's worth keeping as language because it names what most personal-algorithm projects miss — the difference between filtering an existing feed and *choosing what to put in front of yourself in the first place*.
 - The vault-mirror + ntfy delivery layer means Wally never has to remember to open a directory. The file shows up in Obsidian, the phone tells him it landed. The path between "the algorithm found something" and "the human reads it" is now a single push notification. That's the part the previous capture pipeline never closed.

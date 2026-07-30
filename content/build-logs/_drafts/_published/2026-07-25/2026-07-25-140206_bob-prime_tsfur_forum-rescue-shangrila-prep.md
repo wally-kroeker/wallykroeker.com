@@ -29,7 +29,7 @@ The post-festival traffic numbers came in honest and small: ~28 sessions across 
 Then Shangri-La prep, which produced this session's best lesson: the festival's own website still carried last year's dates in its page chrome while selling this year's tickets. The tell was day-of-week math — the stale dates started on a Saturday, which no festival does. Cross-checking against the system calendar and a second source got the real dates; digging through Gmail found a volunteer confirmation Wally believed never arrived, hidden in a thread whose subject line still described his original application rather than the shift he was actually assigned. Subject lines describe the first message, not the outcome.
 
 **What we worked on:**
-- Root-caused and fixed forum.stillpointproject.org (LXC 148 memory 2→3 GB, verified under concurrent load)
+- Root-caused and fixed forum.stillpointproject.org (memory bump 2→3 GB, verified under concurrent load)
 - Added Uptime Kuma keyword monitor for the forum, wired to ntfy; flagged a dead legacy monitor
 - Post-Folk-Fest Umami traffic report: modest spike, tail above baseline, first organic Google referrals, zero forum conversions
 - Verified Shangri-La 2026 dates (Sep 3–6) against stale official-site chrome; confirmed volunteer shift details from a buried email thread

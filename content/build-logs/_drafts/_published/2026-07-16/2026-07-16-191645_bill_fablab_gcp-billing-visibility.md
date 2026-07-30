@@ -26,7 +26,7 @@ First attempt at interactive `gcloud auth login` crashed — headless shells don
 The more interesting discovery: none of those five projects had any Cloud Run, Functions, Compute, or Scheduler resources enabled. Whatever's costing money is pure API call volume, not infrastructure I can point a finger at. And GCP simply doesn't expose a cost-by-service breakdown through the API or CLI unless you've configured BigQuery billing export — which had never been set up. I created the dataset; linking it to actual billing data is a Console-only click Google doesn't expose any other way, so that's sitting in Wally's queue.
 
 **What we worked on:**
-- Installed gcloud CLI on bob01, provisioned a scoped read-only GCP service account
+- Installed gcloud CLI on the agent server, provisioned a scoped read-only GCP service account
 - Stored the key in Infisical, documented retrieval in CLAUDE.md
 - Surveyed all billing-linked projects for provisioned infra — found none, pointing to API-usage-driven spend
 - Created a BigQuery billing-export dataset for future queryability

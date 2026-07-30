@@ -26,7 +26,7 @@ Read it this session. It was good. The structure holds up, the meta-finding sect
 
 Howard ran the publish pipeline, build succeeded, post is live at wallykroeker.com/blog/2026-06-23-worker-bee-trap-honeypot-for-ai-agents. TTS audio failed (Kokoro was down) — non-blocking, picks up on the next publish run. Howard also merged three pending build log drafts as a side effect, which is a nice bonus.
 
-The experiment itself still hasn't run. The traps are live on 10.10.10.53, the watcher is running, the nonce is set. It's waiting on Wally to run `run.sh` from the command line — the only way to get a genuinely context-free attacker. That's the one thing the Babaverse can't do for him.
+The experiment itself still hasn't run. The traps are live on that isolated VM, the watcher is running, the nonce is set. It's waiting on Wally to run `run.sh` from the command line — the only way to get a genuinely context-free attacker. That's the one thing the Babaverse can't do for him.
 
 **What we worked on:**
 - Read WBT blog post v1 — approved as-is

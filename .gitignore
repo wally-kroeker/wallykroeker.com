@@ -27,3 +27,8 @@ CLAUDE.md
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+MEMORY/
+
+# Private podcast feed — token path and audio files must not go in git
+# Deploy to production server directly; see scripts/add-pebble-episode.sh
+/public/pf/

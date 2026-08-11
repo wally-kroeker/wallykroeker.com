@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/pai-demo/', '/food-forest/', '/private/'],
+      disallow: ['/api/', '/pai-demo/', '/food-forest/', '/private/', '/pf/'],
     },
     sitemap: 'https://wallykroeker.com/sitemap.xml',
   }

@@ -3,6 +3,15 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {},
+  async rewrites() {
+    return [
+      // Rewrite bare token URL to the static index.html (Next.js strips trailing slashes)
+      {
+        source: '/pf/:token',
+        destination: '/pf/:token/index.html',
+      },
+    ];
+  },
   async headers() {
     return [
       {

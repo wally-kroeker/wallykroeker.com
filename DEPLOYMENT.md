@@ -96,11 +96,14 @@ A Cloudflare Tunnel securely exposes the local application (running on port 3000
 
 ## 3. Deployment Workflow
 
-To deploy new changes to the application, run the `redeploy.sh` script.
+To deploy new changes to the application, run the `deploy.sh` script.
 
-### Redeployment Script
+### Deployment Script
 
-The script is located at `/home/docker/wallykroeker.com/scripts/redeploy.sh`.
+The script is located at `/home/docker/wallykroeker.com/scripts/deploy.sh`.
+
+Note: DEPLOYMENT.md previously referenced `redeploy.sh` but the actual script on the server
+is `deploy.sh`. Fixed 2026-08-27.
 
 ```bash
 #!/usr/bin/env bash
@@ -118,4 +121,4 @@ echo "Redeployed."
 Run this command as the `docker` user from anywhere on the server:
 
 ```bash
-/home/docker/wallykroeker.com/scripts/redeploy.sh
+/home/docker/wallykroeker.com/scripts/deploy.sh

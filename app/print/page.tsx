@@ -20,12 +20,12 @@ const SMS_HREF = `sms:${PHONE}?&body=${encodeURIComponent(SMS_BODY)}`
 export const metadata: Metadata = {
   title: 'The FabLab: local 3D printing and design',
   description:
-    'Your local digital blacksmith in Manitoba. Bring the broken part, the idea on the back of an envelope, or just a name, and I design it and 3D print it. Help with tech problems too.',
+    'Your local digital blacksmith in Manitoba. Bring the broken part or the idea on the back of an envelope, and I design it and 3D print it. Help with tech problems too.',
   alternates: { canonical: 'https://wallykroeker.com/print' },
   openGraph: {
     title: 'The FabLab: your local digital blacksmith',
     description:
-      'Broken part? Idea on the back of an envelope? A name on a keychain? I design it and 3D print it, locally. Tech help too.',
+      'Broken part? Idea on the back of an envelope? Custom gifts and favours? I design it and 3D print it, locally. Tech help too.',
     url: 'https://wallykroeker.com/print',
     type: 'website',
     images: [{ url: '/images/print/ripple-coin-front-render.jpg', width: 800, height: 800 }],
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'The FabLab: local 3D printing and design',
     description:
-      'Your local digital blacksmith in Manitoba. Bring the broken part, the idea on the back of an envelope, or just a name, and I design it and 3D print it. Help with tech problems too.',
+      'Your local digital blacksmith in Manitoba. Bring the broken part or the idea on the back of an envelope, and I design it and 3D print it. Help with tech problems too.',
     images: ['/images/print/ripple-coin-front-render.jpg'],
   },
 }
@@ -96,7 +96,8 @@ const OFFERINGS: Array<{ id: string; title: string; lead: string; body: string[]
     title: 'Make it yours',
     lead: 'Names, gifts, toys',
     body: [
-      'Custom name keychains, gifts, toys and fidgets, in the colours you pick. A good one for kids to design with me.',
+      'Custom name keychains, gifts, toys and fidgets, and favours for weddings, showers and reunions, in the colours you pick. A good one for kids to design with me.',
+      'Custom 3D-printed business cards, with your logo and a QR code that really scans.',
     ],
     photos: [],
   },
@@ -133,8 +134,8 @@ export default function PrintPage() {
             Your local digital blacksmith.
           </h1>
           <p className="mt-5 text-xl leading-relaxed text-zinc-200">
-            Bring me the broken part, the idea on the back of an envelope, or just a name. I&rsquo;ll design
-            it and 3D print it, right here in Manitoba.
+            Bring me the broken part or the idea on the back of an envelope. I&rsquo;ll design it and 3D print
+            it, right here in Manitoba.
           </p>
           <p className="mt-4 text-base leading-relaxed text-zinc-400">
             My dad grew up watching the Elm Creek blacksmith turn a farmer&rsquo;s problem into the tool that

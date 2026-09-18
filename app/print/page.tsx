@@ -28,7 +28,7 @@ export const metadata: Metadata = {
       'Broken part? Idea on the back of an envelope? Custom gifts and favours? I design it and 3D print it, locally. Tech help too.',
     url: 'https://wallykroeker.com/print',
     type: 'website',
-    images: [{ url: '/images/print/ripple-coin-front-render.jpg', width: 800, height: 800 }],
+    images: [{ url: '/images/print/fablab-printer.jpg', width: 1000, height: 750 }],
   },
   // Without this the site-wide twitter card from the root layout leaks through
   twitter: {
@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     title: 'The FabLab: local 3D printing and design',
     description:
       'Your local digital blacksmith in Manitoba. Bring the broken part or the idea on the back of an envelope, and I design it and 3D print it. Help with tech problems too.',
-    images: ['/images/print/ripple-coin-front-render.jpg'],
+    images: ['/images/print/fablab-printer.jpg'],
   },
 }
 
-// half: shown square, two to a row (used for the front and back renders)
+// half: shown square, two to a row (used for the coin front and back)
 type Photo = { src: string; alt: string; caption: string; width: number; height: number; half?: boolean }
 
 // Real photos of Wally's own work only. To add one: drop the file in
@@ -53,7 +53,6 @@ const OFFERINGS: Array<{ id: string; title: string; lead: string; body: string[]
     lead: 'Broken or discontinued parts',
     body: [
       'A snapped knob, a broken clip, a cracked bracket, a lost cap or cover. If they don’t make it anymore, I can often measure the old one, model it, and print you a new one.',
-      'Not every part can be printed. Some need metal, or take too much heat or strain. If yours is one of those, I’ll tell you straight.',
     ],
     photos: [],
   },
@@ -67,15 +66,15 @@ const OFFERINGS: Array<{ id: string; title: string; lead: string; body: string[]
     ],
     photos: [
       {
-        src: '/images/print/ripple-coin-front-render.jpg',
-        alt: 'A 3D design render of a black StillPoint coin, with rippled rings circling out from a red touchstone in the centre',
-        caption: 'The StillPoint coin, designed from scratch in Blender: a touchstone for your thumb, with ripples circling out from it.',
+        src: '/images/print/stillpoint-coin-front.jpg',
+        alt: 'A black 3D printed StillPoint coin on a wooden table, with rippled rings circling out from a red touchstone in the centre',
+        caption: 'The StillPoint coin: a touchstone for your thumb, with ripples circling out from it.',
         width: 800,
         height: 800,
         half: true,
       },
       {
-        src: '/images/print/ripple-coin-back-render.jpg',
+        src: '/images/print/stillpoint-coin-back.jpg',
         alt: 'The back of the StillPoint coin, with the words FIND A THIRD WAY and STILLPOINTPROJECT.ORG around the rim',
         caption: 'The back reads: Find a third way.',
         width: 800,
@@ -96,7 +95,7 @@ const OFFERINGS: Array<{ id: string; title: string; lead: string; body: string[]
     title: 'Make it yours',
     lead: 'Names, gifts, toys',
     body: [
-      'Custom name keychains, gifts, toys and fidgets, and favours for weddings, showers and reunions, in the colours you pick. A good one for kids to design with me.',
+      'Custom name keychains, gifts, toys and fidgets, and favours for weddings, showers and reunions, in the colours you pick.',
       'Custom 3D-printed business cards, with your logo and a QR code that really scans.',
     ],
     photos: [],
@@ -161,6 +160,20 @@ export default function PrintPage() {
           </div>
           <p className="mt-3 text-center text-sm text-zinc-400 sm:text-left">Free quotes. Local, in Manitoba.</p>
         </header>
+
+        {/* The shop */}
+        <figure className="mt-10">
+          <Image
+            src="/images/print/fablab-printer.jpg"
+            alt="A 3D printer labelled The FabLab on a workbench, with spools of filament"
+            width={1000}
+            height={750}
+            priority
+            sizes="(max-width: 672px) 90vw, 672px"
+            className="w-full rounded-xl"
+          />
+          <figcaption className="mt-1.5 text-sm text-zinc-400">The FabLab: where your part gets made.</figcaption>
+        </figure>
 
         {/* Offerings */}
         <section className="mt-16 space-y-12" aria-label="What I can make">

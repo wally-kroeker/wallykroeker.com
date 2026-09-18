@@ -582,3 +582,10 @@ html, body {
     font-size: 1.625rem;
   }
 }
+
+/* /print QR landing page. The site header stacks into a tall sticky block on phones,
+   which buries a page people reach by scanning a flyer. The page carries its own slim
+   wordmark bar instead. Scoped: only applies when .print-page is on the page. */
+body:has(.print-page) > header {
+  display: none;
+}

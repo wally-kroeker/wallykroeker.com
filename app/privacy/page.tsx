@@ -21,6 +21,13 @@ export default function Privacy() {
         All analytics data is stored on our own infrastructure — no third parties involved.
       </p>
       <p>Minimal server logs are retained for operational purposes only.</p>
+      <h2 id="print-requests" className="pt-4 text-lg font-semibold text-white">FabLab requests</h2>
+      <p>
+        When you send a request from the <a href="/print" className="underline hover:text-white">FabLab page</a>, your
+        name, phone or email, description, and any photos are stored privately on my own server. They are never
+        published, and I use them only to reply to you and quote your job. I get a notification on my phone when a
+        request comes in. Ask me any time and I&rsquo;ll delete yours.
+      </p>
     </div>
   )
 }

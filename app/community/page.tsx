@@ -22,7 +22,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-12">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: May 27, 2026</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: Meeting #8 — September 30, 2026</h2>
             <p className="text-zinc-300 leading-relaxed mb-4 text-center">
               Wednesday, 7pm Central on Discord
             </p>
@@ -56,6 +56,57 @@ export default function CommunityPage() {
 
           <div className="mb-12">
             <h3 className="text-xl font-bold text-zinc-100 mb-6">Previous Meetings</h3>
+
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
+              <div className="flex items-baseline justify-between mb-3">
+                <h4 className="text-lg font-semibold text-zinc-100">Meeting #7 — August 26, 2026</h4>
+                <span className="text-zinc-500 text-sm">beginner session</span>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-4">
+                A deliberate change of pace: build a working AI agent from three plain text files, no framework, no paid subscription. The whole stack was a free Google AI Studio key and <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200 text-xs">pi</code>, an open-source terminal agent. One prompt writes <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200 text-xs">AGENTS.md</code>, <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200 text-xs">memory.md</code>, and <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200 text-xs">tasks.md</code>; the payoff is closing it and reopening it, at which point it reads its own files back to you and remembers what you told it.
+              </p>
+              <p className="text-zinc-400 leading-relaxed">
+                The full pre-work walkthrough (get a key, install <code className="bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-200 text-xs">pi</code>, the bootstrap prompt, troubleshooting) is still up at{' '}
+                <a href="/community/meeting-7" className="text-zinc-300 underline hover:text-white transition">the Meeting #7 page</a>{' '}
+                if you want to build one yourself.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
+              <div className="flex items-baseline justify-between mb-3">
+                <h4 className="text-lg font-semibold text-zinc-100">Meeting #6 — July 29, 2026</h4>
+                <span className="text-zinc-500 text-sm">open floor</span>
+              </div>
+              <p className="text-zinc-400 leading-relaxed">
+                First meeting testing the Phase 2 shift to member-led sessions: a rotating slot for whoever wants to show what they've built, open floor either way. Discord stayed the connective tissue between calls, same as always.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
+              <div className="flex items-baseline justify-between mb-3">
+                <h4 className="text-lg font-semibold text-zinc-100">Meeting #5 — June 24, 2026</h4>
+                <span className="text-zinc-500 text-sm">4 attendees</span>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-4">
+                Live demo of Mycelia × Babaverse: a directed handoff (a task routed to one specific agent, everyone else locked out with a 403) and a revocation kill-switch (an agent cuts its own access, and every subsequent action bounces instantly). Both running on the dev node in front of the group.
+              </p>
+              <p className="text-zinc-400 leading-relaxed">
+                kaia and m8ryx were back, and Vincent Zontini and Rick Rezinas joined for the first time, both by way of the Unsupervised Learning Discord. The Phase 2 conversation continued: what's working, what's missing, who shows next.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
+              <div className="flex items-baseline justify-between mb-3">
+                <h4 className="text-lg font-semibold text-zinc-100">Meeting #4 — April 29, 2026</h4>
+                <span className="text-zinc-500 text-sm">food forest demo</span>
+              </div>
+              <p className="text-zinc-400 leading-relaxed mb-4">
+                Demo of Linus, the food-forest agent: a Saturday walk (a GPS track, some video, a handful of photos, nothing else) became four artifacts on its own — a GPS-tagged transcript, an interactive map, a written synthesis in Linus's own voice, and a published article. Not a one-time script; the same pipeline runs on the next walk drop.
+              </p>
+              <p className="text-zinc-400 leading-relaxed">
+                This landed the day after a post in the Unsupervised Learning Discord brought eleven new members to GBAIC in a single day, so a good chunk of the room was brand new.
+              </p>
+            </div>
 
             <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
               <div className="flex items-baseline justify-between mb-3">

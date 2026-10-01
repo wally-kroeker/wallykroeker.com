@@ -22,7 +22,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 mb-12">
-            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: Meeting #8 — September 30, 2026</h2>
+            <h2 className="text-2xl font-bold text-zinc-100 mb-4 text-center">Next Meetup: Meeting #9 — October 28, 2026</h2>
             <p className="text-zinc-300 leading-relaxed mb-4 text-center">
               Wednesday, 7pm Central on Discord
             </p>
@@ -56,6 +56,16 @@ export default function CommunityPage() {
 
           <div className="mb-12">
             <h3 className="text-xl font-bold text-zinc-100 mb-6">Previous Meetings</h3>
+
+            <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
+              <div className="flex items-baseline justify-between mb-3">
+                <h4 className="text-lg font-semibold text-zinc-100">Meeting #8 — September 30, 2026</h4>
+                <span className="text-zinc-500 text-sm">quiet month</span>
+              </div>
+              <p className="text-zinc-400 leading-relaxed">
+                Nobody made it this month. The planned talk on Morty, a local sysadmin agent, and on verifying what agents actually did versus what they report, carries forward to Meeting #9.
+              </p>
+            </div>
 
             <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-6 mb-4">
               <div className="flex items-baseline justify-between mb-3">

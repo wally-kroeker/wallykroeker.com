@@ -10,6 +10,11 @@ const nextConfig = {
         source: '/pf/:token',
         destination: '/pf/:token/index.html',
       },
+      // Static demo page (public/lisalearns/index.html)
+      {
+        source: '/lisalearns',
+        destination: '/lisalearns/index.html',
+      },
     ];
   },
   async headers() {

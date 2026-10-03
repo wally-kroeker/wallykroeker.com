@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning Rohingya, for Lisa</title>
+<style>
+  :root{
+    --bg:#f4f1ea; --card:#fbfaf6; --ink:#2b2f2e; --soft:#6b716d;
+    --line:#e2ddd2; --accent:#4f6f68; --accent-soft:#dfe8e4; --warn:#f3e7cf; --warn-ink:#6b5320;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:19px/1.65 Georgia,"Iowan Old Style","Palatino Linotype",serif}
+  main{max-width:640px;margin:0 auto;padding:28px 22px 80px}
+  .banner{background:var(--warn);color:var(--warn-ink);border-radius:14px;
+    padding:14px 18px;font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;margin-bottom:36px}
+  h1{font-weight:normal;font-size:34px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--soft);margin:0 0 36px;font-style:italic}
+  h2{font-weight:normal;font-size:25px;margin:56px 0 14px;color:var(--accent)}
+  h3{font:600 15px/1.4 system-ui,-apple-system,sans-serif;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--soft);margin:36px 0 10px}
+  p{margin:0 0 18px}
+  .phrase{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin:0 0 12px}
+  .en{color:var(--soft);font-size:17px;font-family:system-ui,-apple-system,sans-serif}
+  .ro{font-size:24px;margin:2px 0}
+  .say{font-size:16px;color:var(--soft);font-family:system-ui,-apple-system,sans-serif}
+  .say b{font-weight:600;color:var(--ink)}
+  .unsure{display:inline-block;font:13px system-ui,sans-serif;background:var(--warn);
+    color:var(--warn-ink);border-radius:20px;padding:1px 9px;margin-left:6px;vertical-align:middle}
+  .nums{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .nums .phrase{margin:0}
+  /* flashcard */
+  .flash{perspective:1000px;margin:10px 0 16px}
+  .card{position:relative;height:220px;cursor:pointer;transition:transform .6s;transform-style:preserve-3d}
+  .card.flipped{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:20px;border:1px solid var(--line)}
+  .front{background:var(--card)}
+  .back{background:var(--accent-soft);transform:rotateY(180deg)}
+  .face .big{font-size:30px;line-height:1.3}
+  .face .hint{font:15px system-ui,sans-serif;color:var(--soft);margin-top:10px}
+  .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  button{font:17px system-ui,-apple-system,sans-serif;background:var(--card);color:var(--ink);
+    border:1px solid var(--line);border-radius:999px;padding:12px 22px;cursor:pointer;min-height:48px}
+  button:active{background:var(--accent-soft)}
+  .count{text-align:center;color:var(--soft);font:15px system-ui,sans-serif;margin-top:8px}
+  /* quiz */
+  .q{font-size:22px;margin:6px 0 16px}
+  .opts{display:grid;gap:10px}
+  .opts button{text-align:left;border-radius:14px;width:100%}
+  .opts button.right{background:#dbe9df;border-color:#9fbfa8}
+  .opts button.wrong{background:#f1dcd6;border-color:#d4a99c}
+  .feedback{min-height:28px;margin:14px 0 8px;color:var(--soft);font:17px system-ui,sans-serif}
+  .sources li{margin-bottom:14px}
+  .tag{font:13px system-ui,sans-serif;color:var(--warn-ink);background:var(--warn);
+    border-radius:20px;padding:1px 9px;white-space:nowrap}
+  footer{margin-top:60px;color:var(--soft);font-size:16px;text-align:center}
+</style>
+</head>
+<body>
+<main>
+
+<div class="banner"><strong>Demo:</strong> phrases not yet checked by a Rohingya speaker. Treat every line as a starting guess, and let a real speaker correct it.</div>
+
+<h1>Learning Rohingya</h1>
+<p class="sub">for Lisa, a few first words</p>
+
+<h2>About the language</h2>
+<p>Rohingya (in the language itself, <em>Ruáingga</em>) is spoken by the Rohingya people of Rakhine State in Myanmar, and by the large Rohingya communities in Bangladesh and around the world.</p>
+<p>It's mostly an <strong>oral</strong> language. Families pass it on by speaking, not reading. It's a close cousin of Chittagonian, spoken just over the border in Bangladesh, but it's its own language with its own voice.</p>
+<p>There are two main ways to write it. <strong>Hanifi Rohingya</strong> is a script of its own, created in the 1980s and now part of Unicode. <strong>Rohingyalish</strong> uses the Latin alphabet. This page uses a simple romanization only.</p>
+<p>A gentle tip: listen first. Hearing a real voice will teach you more than any spelling here.</p>
+
+<h2>Starter phrases</h2>
+<p class="say">Pronunciation hints use English sounds. <b>Bold</b> marks the stressed part. A tag means I'm less sure of that one.</p>
+
+<h3>Greetings and courtesy</h3>
+<div id="g-greet"></div>
+
+<h3>Introductions</h3>
+<div id="g-intro"></div>
+
+<h3>Numbers 1 to 10</h3>
+<div id="g-num" class="nums"></div>
+
+<h3>Everyday needs</h3>
+<div id="g-every"></div>
+
+<h2>Flashcards</h2>
+<p>Tap the card to flip it.</p>
+<div class="flash"><div class="card" id="card">
+  <div class="face front"><div class="big" id="cf"></div><div class="hint">tap to see the Rohingya</div></div>
+  <div class="face back"><div class="big" id="cb"></div><div class="hint" id="cbh"></div></div>
+</div></div>
+<div class="row">
+  <button id="prev">Back</button>
+  <button id="shuffle">Shuffle</button>
+  <button id="next">Next</button>
+</div>
+<div class="count" id="ccount"></div>
+
+<h2>A tiny quiz</h2>
+<p>Five quick questions. No pressure.</p>
+<div id="quiz">
+  <div class="count" id="qnum"></div>
+  <div class="q" id="qtext"></div>
+  <div class="opts" id="qopts"></div>
+  <div class="feedback" id="qfb"></div>
+  <div class="row"><button id="qnext">Next question</button></div>
+</div>
+
+<h2>Learn from real sources</h2>
+<p>These are the places to go next. I believe they exist, but every one is <span class="tag">to verify</span> before you rely on it.</p>
+<ul class="sources">
+  <li><strong>Rohingya Language Foundation / Rohingyalish</strong>: the group behind the Latin-alphabet way of writing Rohingya. A good place to find spelling and learning material. <span class="tag">to verify</span></li>
+  <li><strong>Translators without Borders (now part of CLEAR Global)</strong>: has done a lot of Rohingya language work in the Bangladesh camps, including glossaries and research on how people actually speak. <span class="tag">to verify</span></li>
+  <li><strong>Omniglot</strong>: has overview pages on the Rohingya language and the Hanifi Rohingya script. <span class="tag">to verify</span></li>
+  <li><strong>Unicode: Hanifi Rohingya</strong>: the script was added to Unicode in 2018, so it can be typed on modern phones with the right font and keyboard. <span class="tag">to verify</span></li>
+  <li><strong>The best source of all:</strong> a Rohingya speaker. Local settlement agencies or Rohingya community groups may be able to connect you with someone.</li>
+</ul>
+
+<footer>Made with care as a demo. Corrections welcome.</footer>
+</main>
+
+<script>
+const P = {
+  greet: [
+    {en:"Hello (peace be upon you)", ro:"Assalamu alaikum", say:"ah-sah-LAH-moo ah-LAY-koom"},
+    {en:"Reply to hello", ro:"Walaikum assalam", say:"wah-LAY-koom ah-sah-LAHM"},
+    {en:"How are you?", ro:"Kenka asó?", say:"KEN-kah ah-SHOH", unsure:1},
+    {en:"I'm fine", ro:"Gom asi", say:"GOHM ah-shee", unsure:1},
+    {en:"Thank you", ro:"Shukuriya", say:"shoo-koo-REE-yah", unsure:1},
+    {en:"Yes", ro:"Oy", say:"OY"},
+    {en:"No", ro:"Na", say:"NAH"},
+    {en:"Goodbye (God protect you)", ro:"Allah hafez", say:"ahl-LAH HAH-fez"}
+  ],
+  intro: [
+    {en:"My name is ...", ro:"Añr nam ...", say:"AHNG-r NAHM", unsure:1},
+    {en:"What is your name?", ro:"Tuañr nam ki?", say:"twahng-r NAHM kee", unsure:1},
+    {en:"I don't understand", ro:"Añí na buzi", say:"ahng-EE nah BOO-zee", unsure:1}
+  ],
+  num: [
+    {en:"1", ro:"ek", say:"EK"},
+    {en:"2", ro:"dui", say:"DOO-ee"},
+    {en:"3", ro:"tin", say:"TEEN"},
+    {en:"4", ro:"sair", say:"SHY-r", unsure:1},
+    {en:"5", ro:"fañs", say:"FAHNS", unsure:1},
+    {en:"6", ro:"só", say:"SHOH", unsure:1},
+    {en:"7", ro:"sát", say:"SHAHT"},
+    {en:"8", ro:"át", say:"AHT"},
+    {en:"9", ro:"nó", say:"NOH"},
+    {en:"10", ro:"dosh", say:"DOHSH"}
+  ],
+  every: [
+    {en:"Water", ro:"fani", say:"FAH-nee"},
+    {en:"Rice / a meal", ro:"bat", say:"BAHT"},
+    {en:"House / home", ro:"gor", say:"GOHR"},
+    {en:"Mother", ro:"ma", say:"MAH"}
+  ]
+};
+
+const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const stress = s => esc(s).replace(/\b([A-Z][A-Z\-]*[A-Z]|[A-Z]{2,})\b/g, "<b>$1</b>");
+function render(id, list){
+  document.getElementById(id).innerHTML = list.map(p =>
+    `<div class="phrase"><div class="en">${esc(p.en)}${p.unsure?'<span class="unsure">less sure</span>':''}</div>
+     <div class="ro">${esc(p.ro)}</div><div class="say">say: ${stress(p.say)}</div></div>`).join("");
+}
+render("g-greet", P.greet); render("g-intro", P.intro); render("g-num", P.num); render("g-every", P.every);
+
+const ALL = [...P.greet, ...P.intro, ...P.num.map(n => ({...n, en:"The number " + n.en})), ...P.every];
+
+// Flashcards
+let deck = ALL.slice(), i = 0;
+const card = document.getElementById("card");
+function show(){
+  card.classList.remove("flipped");
+  const c = deck[i];
+  setTimeout(() => {
+    document.getElementById("cf").textContent = c.en;
+    document.getElementById("cb").textContent = c.ro;
+    document.getElementById("cbh").textContent = "say: " + c.say;
+  }, 150);
+  document.getElementById("ccount").textContent = (i+1) + " of " + deck.length;
+}
+card.onclick = () => card.classList.toggle("flipped");
+document.getElementById("next").onclick = () => { i = (i+1) % deck.length; show(); };
+document.getElementById("prev").onclick = () => { i = (i-1+deck.length) % deck.length; show(); };
+const shuffle = a => { for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]];} return a; };
+document.getElementById("shuffle").onclick = () => { shuffle(deck); i = 0; show(); };
+show();
+
+// Quiz
+let qn = 0, score = 0, answered = false, current;
+function newQ(){
+  answered = false;
+  document.getElementById("qfb").textContent = "";
+  if(qn >= 5){
+    document.getElementById("qnum").textContent = "";
+    document.getElementById("qtext").textContent = "You got " + score + " of 5. Lovely work.";
+    document.getElementById("qopts").innerHTML = "";
+    document.getElementById("qnext").textContent = "Try again";
+    qn = -1; score = 0; return;
+  }
+  document.getElementById("qnext").textContent = "Next question";
+  current = ALL[Math.floor(Math.random()*ALL.length)];
+  const others = shuffle(ALL.filter(p => p !== current)).slice(0,3);
+  const opts = shuffle([current, ...others]);
+  document.getElementById("qnum").textContent = "Question " + (qn+1) + " of 5";
+  document.getElementById("qtext").textContent = "How do you say “" + current.en + "”?";
+  const box = document.getElementById("qopts");
+  box.innerHTML = "";
+  opts.forEach(o => {
+    const b = document.createElement("button");
+    b.textContent = o.ro;
+    b.onclick = () => {
+      if(answered) return; answered = true;
+      if(o === current){ b.classList.add("right"); score++; document.getElementById("qfb").textContent = "Yes! " + current.ro + "  (" + current.say + ")"; }
+      else { b.classList.add("wrong");
+        [...box.children].forEach(x => { if(x.textContent === current.ro) x.classList.add("right"); });
+        document.getElementById("qfb").textContent = "Not quite. It's " + current.ro + ".";
+      }
+    };
+    box.appendChild(b);
+  });
+}
+document.getElementById("qnext").onclick = () => { qn++; newQ(); };
+newQ();
+</script>
+</body>
+</html>

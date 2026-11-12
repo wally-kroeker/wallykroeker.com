@@ -11,8 +11,8 @@ export default function Page() {
           <div className="grid md:grid-cols-12 gap-12 items-center">
             {/* Left Column - Text */}
             <div className="md:col-span-6 flex flex-col gap-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-                I build the security controls that let AI run inside real systems.
+              <h1 className="text-[2.5rem] md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+                Security and AI, built together.
               </h1>
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-lg">
                 I'm a security and infrastructure architect with 28 years in IT. When ChatGPT arrived, I realized AI was going to change everything, especially security. Since then I've been doing two jobs: securing the organizations I work for, and working out how they should use AI, because there's still no playbook for AI security.

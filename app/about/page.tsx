@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import Container from '@/components/Container'
 import Prose from '@/components/Prose'
+import { showConsulting } from '@/lib/flags'
 
 export const metadata = {
     title: 'About Wally Kroeker - AI Security Consultant & Infrastructure Architect',
-    description: 'Technical architect with 15+ years experience in infrastructure, security, and pragmatic AI adoption. Based in Winnipeg, Canada.',
+    description: 'Technical architect with 28 years in IT, focused on infrastructure, security, and pragmatic AI adoption. Based in Winnipeg, Canada.',
 }
 
 export default function AboutPage() {
@@ -26,27 +27,28 @@ export default function AboutPage() {
 
                 <div className="md:col-span-3">
                     <h1 className="text-4xl font-semibold mb-4 text-white">About Wally</h1>
-                    <p className="text-xl text-zinc-300 leading-relaxed">
-                        Technical Architect and Eclectic Generalist focused on building
-                        secure AI systems that reduce cognitive overhead through automation.
+                    <p className="text-lg text-zinc-300 leading-relaxed">
+                        AI has made it possible for anyone to build. Without a grounding in security, that means leaked keys and credentials, bugs that never get fixed, and vulnerabilities left exposed. My background in networks, infrastructure and security is what lets me build AI that is secure from the first line, not patched after something breaks. Outside work I run a self-hosted AI lab where agents do real infrastructure work under scoped credentials and sandboxes. In January I founded the GrayBeard AI Collective, an online community where industry veterans and people curious about AI get together to share what they're building, show off experiments and learn from each other.
                     </p>
 
                     {/* Quick links */}
                     <div className="mt-6 flex flex-wrap gap-3">
+                        {showConsulting && (
                         <a
                             href="/work"
                             className="px-5 py-2.5 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors"
                         >
                             Work With Me
                         </a>
+                        )}
                         <a
-                            href="https://linkedin.com/in/wallykroeker"
+                            href="https://www.linkedin.com/in/wally-kroeker-50aa2425/"
                             className="px-5 py-2.5 border border-zinc-600 text-zinc-300 rounded-lg hover:border-zinc-500 hover:text-white transition-colors"
                         >
                             LinkedIn
                         </a>
                         <a
-                            href="mailto:wally@goodfields.io"
+                            href="mailto:wally@kroeker.co"
                             className="px-5 py-2.5 border border-zinc-600 text-zinc-300 rounded-lg hover:border-zinc-500 hover:text-white transition-colors"
                         >
                             Email
@@ -59,7 +61,7 @@ export default function AboutPage() {
             <Prose>
                 <h2>Background</h2>
                 <p>
-                    I've spent 15+ years building infrastructure, designing security
+                    I've spent 28 years in IT building infrastructure, designing security
                     systems, and helping organizations adopt technology pragmatically.
                     My work bridges three domains that rarely overlap: infrastructure
                     operations, security architecture, and AI adoption strategy.
@@ -136,12 +138,14 @@ export default function AboutPage() {
                     If you're evaluating AI adoption, need security architecture review,
                     or want infrastructure design guidance, I'd love to help.
                 </p>
+                {showConsulting && (
                 <a
                     href="/work"
                     className="px-6 py-3 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors"
                 >
                     View Services & Pricing
                 </a>
+                )}
             </div>
         </Container>
     );

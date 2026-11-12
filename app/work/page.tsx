@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Container from '@/components/Container'
+import { notFound } from 'next/navigation'
+import { showConsulting } from '@/lib/flags'
 
 export const metadata: Metadata = {
   title: 'Work With Me',
@@ -8,6 +10,8 @@ export const metadata: Metadata = {
 }
 
 export default function WorkPage() {
+  if (!showConsulting) notFound()
+
   const services = [
     {
       title: "Secure Foundations Review",
@@ -88,10 +92,10 @@ export default function WorkPage() {
                 Let's Connect
               </a>
               <a 
-                href="mailto:wally@goodfields.io" 
+                href="mailto:wally@kroeker.co" 
                 className="text-zinc-300 hover:text-white underline underline-offset-4 decoration-zinc-700 hover:decoration-white transition"
               >
-                wally@goodfields.io
+                wally@kroeker.co
               </a>
             </div>
           </div>

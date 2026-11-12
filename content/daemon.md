@@ -10,7 +10,7 @@ Content follows until the next section.
 
 My name is Wally Kroeker and I'm a Technical Architect and Security Consultant based in Winnipeg, Canada.
 
-I've spent 20+ years building infrastructure, designing security systems, and helping organizations adopt technology pragmatically. My work bridges three domains that rarely overlap: infrastructure operations, security architecture, and AI adoption strategy.
+I've spent 28 years in IT building infrastructure, designing security systems, and helping organizations adopt technology pragmatically. My work bridges three domains that rarely overlap: infrastructure operations, security architecture, and AI adoption strategy.
 
 I work with an AI assistant named Bob, built on [Personal AI Infrastructure](https://github.com/danielmiessler/Personal_AI_Infrastructure) (PAI) - an open-source framework for building context-rich AI assistants. Bob helps me stay focused, manage tasks, and ship work consistently. I build systems with low friction, high automation, and externalized memory to reduce cognitive overhead.
 

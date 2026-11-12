@@ -12,7 +12,7 @@ export const dynamic = 'force-static'
 
 const PHONE_DISPLAY = '204-799-8082'
 const PHONE = '+12047998082'
-const EMAIL = 'wallyk@gmail.com'
+const EMAIL = 'wally@kroeker.co'
 // Pre-filled text for the sms: links. `?&body=` works on both iOS (&body) and Android (?body).
 const SMS_BODY = "Hi Wally, I saw your FabLab table at the garage sale. Here's a photo of what I need: "
 const SMS_HREF = `sms:${PHONE}?&body=${encodeURIComponent(SMS_BODY)}`
@@ -138,7 +138,7 @@ export default function PrintPage() {
           </p>
           <p className="mt-4 text-base leading-relaxed text-zinc-400">
             My dad grew up watching the Elm Creek blacksmith turn a farmer&rsquo;s problem into the tool that
-            fixed it. I do the same work, but with digital tools instead of an anvil, using my 20+ years of IT
+            fixed it. I do the same work, but with digital tools instead of an anvil, using my 28 years in IT
             experience to solve local problems.
           </p>
           <p className="mt-5 border-l-2 border-amber-500 pl-4 text-xl font-semibold leading-snug text-white">

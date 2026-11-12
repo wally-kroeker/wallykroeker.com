@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Container from './Container'
+import { showConsulting } from '@/lib/flags'
 
 export default function Header() {
   return (
@@ -15,7 +16,7 @@ export default function Header() {
             <Link href="/blog" className="hover:text-white">Tech Blog</Link>
             <Link href="/loop" className="hover:text-white">Cognitive Loop</Link>
             <Link href="/community" className="hover:text-white">Community</Link>
-            <Link href="/work" className="hover:text-white">Work With Me</Link>
+            {showConsulting && <Link href="/work" className="hover:text-white">Work With Me</Link>}
           </nav>
         </div>
       </Container>

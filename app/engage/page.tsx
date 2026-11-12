@@ -33,9 +33,9 @@ export default function Page() {
     {
       icon: "💼",
       title: "Follow on LinkedIn",
-      description: "Technical posts, AI insights, and announcements about the GrayBeard AI Collective (launching early 2026).",
+      description: "Technical posts, AI insights, and announcements about the GrayBeard AI Collective (running since January 2026).",
       cta: "Connect on LinkedIn",
-      href: "https://www.linkedin.com/in/wally-kroeker/"
+      href: "https://www.linkedin.com/in/wally-kroeker-50aa2425/"
     }
   ]
 

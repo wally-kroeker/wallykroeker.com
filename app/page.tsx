@@ -12,29 +12,35 @@ export default function Page() {
             {/* Left Column - Text */}
             <div className="md:col-span-6 flex flex-col gap-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-                Let's figure out how to use technology to thrive.
+                I build the security controls that let AI run inside real systems.
               </h1>
               <p className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-lg">
-                20+ years building secure infrastructure. Now exploring the intersection of AI, resilience, and being human. Join me on the journey.
+                I'm a security and infrastructure architect with 28 years in IT. When ChatGPT arrived, I realized AI was going to change everything, especially security. Since then I've been doing two jobs: securing the organizations I work for, and working out how they should use AI, because there's still no playbook for AI security.
               </p>
 
               {/* Trust Signals */}
-              <div className="flex flex-wrap gap-4 text-sm text-zinc-400 py-2">
+              <div className="flex flex-col gap-2 text-sm text-zinc-400 py-2">
                 <span className="flex items-center gap-1.5">
-                  <span className="text-zinc-500">✓</span> 20+ years infrastructure
+                  <span className="text-zinc-500">✓</span> Read-only access and a human in the loop
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="text-zinc-500">✓</span> Security-first AI
+                  <span className="text-zinc-500">✓</span> Inputs screened for prompt injection
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="text-zinc-500">✓</span> Open-source advocate
+                  <span className="text-zinc-500">✓</span> Agent identities secured like human ones
                 </span>
               </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <a
-                  href="/engage"
+                  href="#ai-security"
                   className="px-6 py-3 bg-white text-zinc-950 rounded-lg font-semibold hover:bg-zinc-200 transition-colors"
+                >
+                  See the AI security work
+                </a>
+                <a
+                  href="/engage"
+                  className="px-6 py-3 border border-zinc-600 text-zinc-300 rounded-lg font-semibold hover:border-zinc-500 hover:text-white transition-colors"
                 >
                   Let's Connect
                 </a>
@@ -58,7 +64,55 @@ export default function Page() {
         </Container>
       </section>
 
-      {/* Value Proposition Section */}
+      {/* AI Security Work Section (approved copy) */}
+      <section id="ai-security" className="border-t border-zinc-900 py-20">
+        <Container>
+          <h2 className="text-2xl font-bold text-white mb-10">AI security work</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {/* Card 1: How I build agents (no link) */}
+            <div className="p-6 border border-zinc-800 rounded-xl bg-zinc-900/50">
+              <h3 className="text-lg font-semibold text-white mb-3">How I build agents</h3>
+              <p className="text-zinc-400 leading-relaxed">
+                Read-only access, a human in the loop before changes, deterministic steps, inputs screened for prompt injection, complete audit logging, and agent identities secured the same as human identities.
+              </p>
+            </div>
+
+            {/* Card 2: Mycelia, links the published post */}
+            <Link
+              href="/blog/2026-03-23-mycelia-agents-helping-agents"
+              className="p-6 border border-zinc-800 rounded-xl bg-zinc-900/50 hover:bg-zinc-900 hover:border-zinc-700 transition group"
+            >
+              <h3 className="text-lg font-semibold text-white mb-3">Mycelia (open source)</h3>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                A protocol that lets AI agents built by different people ask each other for help, with trust earned through a scored rating model. Live API, tested with agents on Claude, Codex and Gemini.
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm text-white font-medium">
+                <span className="underline underline-offset-4 decoration-zinc-600 group-hover:decoration-white transition">Read the post</span>
+                <span aria-hidden>→</span>
+              </span>
+            </Link>
+
+            {/* Card 3: AI-managed incident response, links the published n8n CVE post */}
+            <Link
+              href="/blog/2026-01-15-ai-managed-security-incident-n8n-cve-response"
+              className="p-6 border border-zinc-800 rounded-xl bg-zinc-900/50 hover:bg-zinc-900 hover:border-zinc-700 transition group"
+            >
+              <h3 className="text-lg font-semibold text-white mb-3">AI-managed incident response</h3>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                An AI agent ran a real CVE response in my lab, from forensics to remediation.
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm text-white font-medium">
+                <span className="underline underline-offset-4 decoration-zinc-600 group-hover:decoration-white transition">Read the post</span>
+                <span aria-hidden>→</span>
+              </span>
+            </Link>
+
+          </div>
+        </Container>
+      </section>
+
+      {/* Value Proposition Section (Where I'm Building) */}
       <section className="border-t border-zinc-900 py-20">
         <Container>
           <h2 className="text-2xl font-bold text-white mb-10">Where I'm Building</h2>

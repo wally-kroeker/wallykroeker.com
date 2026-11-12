@@ -277,7 +277,7 @@ export async function POST(request: NextRequest) {
   } catch (e) {
     console.error('[print-request] save failed', e)
     return NextResponse.json(
-      { error: 'Sorry, that did not go through on my end. Please text 204-799-8082 or email wallyk@gmail.com.' },
+      { error: 'Sorry, that did not go through on my end. Please text 204-799-8082 or email wally@kroeker.co.' },
       { status: 500 }
     )
   }

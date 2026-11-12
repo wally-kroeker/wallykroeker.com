@@ -1,0 +1,25 @@
+# Same file for staging and prod. TAG/PORT come from .env, secrets from .env.secrets (both written by deploy.sh).
+# network_mode host: Docker 29 / runc 1.3.4 in an unprivileged LXC on PVE 8.2 can't give containers their own netns.
+# Not read_only (unlike the other sites): /loop uses ISR, and Next writes regenerated pages into .next/server at runtime.
+services:
+  web:
+    image: wallykroeker:${TAG:?TAG not set}
+    restart: unless-stopped
+    network_mode: host
+    env_file: [.env.secrets]
+    environment:
+      PORT: ${PORT:?PORT not set}
+      PRINT_REQUESTS_DIR: /home/node/print-requests
+    volumes:
+      - tetris:/app/data
+      - podcast:/app/public/pf
+      - uploads:/app/public/uploads
+      - easter:/home/node/easter2026-uploads
+      - print-requests:/home/node/print-requests
+    mem_limit: 448m
+volumes:
+  tetris: {}
+  podcast: {}
+  uploads: {}
+  easter: {}
+  print-requests: {}

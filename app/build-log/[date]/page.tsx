@@ -1,5 +1,6 @@
 import Container from '@/components/Container'
 import Prose from '@/components/Prose'
+import AilBadge from '@/components/AilBadge'
 import { getAllBuildLogs, getBuildLogByDate } from '@/lib/markdown'
 
 export async function generateStaticParams() {
@@ -33,6 +34,11 @@ export default async function BuildLogPage({ params }: { params: { date: string 
           </div>
           <h1 className="text-2xl font-semibold">{log.meta.title}</h1>
 
+          {log.meta.ail !== undefined && (
+            <div className="mt-3">
+              <AilBadge level={log.meta.ail} />
+            </div>
+          )}
           {log.meta.author && (
             <div className="mt-2 text-sm text-zinc-400">Written by {log.meta.author}</div>
           )}

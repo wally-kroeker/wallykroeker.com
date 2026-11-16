@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import Prose from '@/components/Prose'
 import AudioPlayer from '@/components/AudioPlayer'
+import AilBadge from '@/components/AilBadge'
 import { getAll, getBySlug } from '@/lib/markdown'
 
 export async function generateStaticParams() {
@@ -73,6 +74,11 @@ export default async function PostPage({ params }: { params: { slug: string } })
         <div className="py-10">
           <div className="text-sm text-zinc-400">{new Date(post.meta.date).toLocaleDateString()}</div>
           <h1 className="text-2xl font-semibold">{post.meta.title}</h1>
+          {post.meta.ail !== undefined && (
+            <div className="mt-3">
+              <AilBadge level={post.meta.ail} />
+            </div>
+          )}
           {hasAudio && (
             <div className="mt-6 max-w-3xl">
               <AudioPlayer

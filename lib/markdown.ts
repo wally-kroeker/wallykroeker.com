@@ -44,6 +44,14 @@ export type PostMeta = {
   session_count?: number
   projects_touched?: string[]
   work_types?: string[]
+  // AI Influence Level (Daniel Miessler's AIL framework)
+  // 0 = Human Created, No AI Involved
+  // 1 = Human Created, Minor AI Assistance
+  // 2 = Human Created, Major AI Augmentation
+  // 3 = AI Created, Human Full Structure
+  // 4 = AI Created, Human Basic Idea
+  // 5 = AI Created, Little Human Involvement
+  ail?: number
 }
 
 const postsDir = path.join(process.cwd(), 'content', 'posts')

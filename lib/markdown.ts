@@ -24,6 +24,9 @@ export type PostMeta = {
   date: string
   tags?: string[]
   description?: string
+  // Local video (served from public/video/blog/, mp4 kept off git)
+  video?: string
+  poster?: string
   // Publishing gates
   status?: 'draft' | 'published' | 'active'
   reviewed?: boolean

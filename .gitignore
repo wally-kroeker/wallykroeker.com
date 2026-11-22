@@ -32,3 +32,5 @@ MEMORY/
 # Private podcast feed — token path and audio files must not go in git
 # Deploy to production server directly; see scripts/add-pebble-episode.sh
 /public/pf/
+# Post video files: too large for git, placed on the server directly
+/public/video/blog/*.mp4

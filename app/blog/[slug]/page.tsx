@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import Container from '@/components/Container'
 import Prose from '@/components/Prose'
 import AudioPlayer from '@/components/AudioPlayer'
+import VideoPlayer from '@/components/VideoPlayer'
 import AilBadge from '@/components/AilBadge'
 import { getAll, getBySlug } from '@/lib/markdown'
 
@@ -86,6 +87,13 @@ export default async function PostPage({ params }: { params: { slug: string } })
                 title={post.meta.title}
               />
             </div>
+          )}
+          {post.meta.video && (
+            <VideoPlayer
+              src={post.meta.video}
+              poster={post.meta.poster}
+              title={post.meta.title}
+            />
           )}
           <div className="mt-8">
             <Prose html={post.html} />
